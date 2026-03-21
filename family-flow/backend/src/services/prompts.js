@@ -159,9 +159,11 @@ IMPORTANT: Chaque quiz doit etre UNIQUE et DIFFERENT des precedents. Varie les s
 
 Pour VICTOIRE (CE2, 8 ans) - 2 questions:
 - target_member_name = "Victoire", difficulty = "easy"
-- Maths simples (additions, multiplications, mesures) et francais (grammaire, vocabulaire)
-- Questions amusantes et encourageantes
-- Varie les types: calcul mental, conjugaison, orthographe, geometrie, etc.
+- Programme CE2 STRICT: additions/soustractions jusqu'a 999, numeration (dizaines/centaines), mesures simples (cm/m/kg), geographie (pays, capitales faciles), animaux
+- Francais CE2: vocabulaire du quotidien, mots intrus, rimes, syllabe, lettre manquante, une phrase a completer
+- JAMAIS de multiplications ni de divisions (pas encore au programme de Victoire)
+- Questions courtes, fun, avec des themes qu'elle aime (animaux, couleurs, nature, ecole)
+- Formulations encourageantes type "Sais-tu que..." ou "Quel est..."
 
 Pour CHARLES (6eme, 11 ans) - 2 questions:
 - target_member_name = "Charles", difficulty = "medium"

@@ -340,6 +340,16 @@ function handleLoginSuccess(result, username) {
 
   sessions[username] = session;
 
+  // Persist session to DB
+  try {
+    const expiresAt = Date.now() + 2 * 60 * 60 * 1000;
+    db.prepare(
+      'INSERT OR REPLACE INTO ed_sessions_persistent (username, token, login_time, expires_at, student_accounts_json, is_parent) VALUES (?, ?, ?, ?, ?, ?)'
+    ).run(username, result.token, Date.now(), expiresAt, JSON.stringify(allStudents), session.isParent ? 1 : 0);
+  } catch (err) {
+    console.error('Failed to persist ED session:', err.message);
+  }
+
   return {
     success: true,
     isParent: session.isParent,
@@ -356,7 +366,7 @@ function handleLoginSuccess(result, username) {
 // Store/retrieve cn/cv for reusable auth (in-memory + db)
 const db = require('../db/init');
 
-// Ensure table exists
+// Ensure tables exist
 db.exec(`
   CREATE TABLE IF NOT EXISTS ed_double_auth (
     username TEXT PRIMARY KEY,
@@ -365,6 +375,38 @@ db.exec(`
     created_at TEXT DEFAULT (datetime('now'))
   )
 `);
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS ed_sessions_persistent (
+    username TEXT PRIMARY KEY,
+    token TEXT NOT NULL,
+    login_time INTEGER NOT NULL,
+    expires_at INTEGER NOT NULL,
+    student_accounts_json TEXT,
+    is_parent INTEGER DEFAULT 0
+  )
+`);
+
+// Restore any valid sessions from DB on startup
+(function restoreSessionsOnStartup() {
+  try {
+    const stored = db.prepare('SELECT * FROM ed_sessions_persistent WHERE expires_at > ?').all(Date.now());
+    for (const row of stored) {
+      const studentAccounts = JSON.parse(row.student_accounts_json || '[]');
+      sessions[row.username] = {
+        token: row.token,
+        accounts: [],
+        studentAccounts,
+        isParent: !!row.is_parent,
+        username: row.username,
+        loginTime: row.login_time,
+      };
+      console.log('Restored ED session from DB for', row.username);
+    }
+  } catch (err) {
+    console.error('Failed to restore ED sessions:', err.message);
+  }
+})();
 
 function storeAuth(username, faData) {
   db.prepare(
@@ -379,11 +421,33 @@ function getStoredAuth(username) {
 }
 
 function getSession(username) {
-  const session = sessions[username];
+  let session = sessions[username];
+  if (!session) {
+    // Try restoring from persistent DB
+    try {
+      const stored = db.prepare('SELECT * FROM ed_sessions_persistent WHERE username = ? AND expires_at > ?').get(username, Date.now());
+      if (stored) {
+        const studentAccounts = JSON.parse(stored.student_accounts_json || '[]');
+        session = {
+          token: stored.token,
+          accounts: [],
+          studentAccounts,
+          isParent: !!stored.is_parent,
+          username,
+          loginTime: stored.login_time,
+        };
+        sessions[username] = session;
+        console.log('Restored ED session from DB for', username);
+      }
+    } catch (err) {
+      console.error('Failed to restore ED session:', err.message);
+    }
+  }
   if (!session) return null;
   // Token expiry check (refresh after 2 hours)
   if (Date.now() - session.loginTime > 2 * 60 * 60 * 1000) {
     delete sessions[username];
+    db.prepare('DELETE FROM ed_sessions_persistent WHERE username = ?').run(username);
     return null;
   }
   return session;
@@ -412,6 +476,11 @@ async function authenticatedRequest(username, path, postData = {}) {
   // Update token if new one provided
   if (result.token) {
     session.token = result.token;
+    try {
+      db.prepare('UPDATE ed_sessions_persistent SET token = ? WHERE username = ?').run(result.token, username);
+    } catch (err) {
+      console.error('Failed to update persisted token:', err.message);
+    }
   }
 
   if (result.code === 520 || result.code === 525) {

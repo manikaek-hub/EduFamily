@@ -134,14 +134,21 @@ ${todayContext}
 REGLES CRITIQUES:
 1. ${children.length * 2 + 1} questions au total (2 par enfant + 1 question famille)
 2. CHAQUE question DOIT etre directement liee aux devoirs/sujets ci-dessus
-3. Exemples: si Charles a un devoir sur les fractions, pose une question sur les fractions. Si Gauthier revise les cites grecques, pose une question d'histoire sur la Grece.
-4. Les questions doivent etre FUN et ENGAGEANTES, pas ennuyeuses
-5. La question "famille" peut etre de culture generale ou une question rigolote
+3. Les questions doivent etre STIMULANTES, pas triviales !
+4. La question "famille" = culture generale fun, target_member_name = "Famille"
+
+DIFFICULTE PAR NIVEAU (IMPORTANT - ne pas sous-estimer les enfants !):
+- CE2 (8 ans): difficulty "easy" - mais pas bebe ! Questions qui font reflechir avec des calculs vrais ou de la comprehension
+- 6eme (11 ans): difficulty "medium" - questions de niveau college qui necessitent du raisonnement
+- 4eme (14 ans): difficulty "hard" - questions exigeantes qui testent la comprehension profonde
+- Famille: difficulty "medium" - culture generale stimulante
+
+Les reponses fausses doivent etre PLAUSIBLES (pas des reponses ridicules).
+Les explications doivent etre INSTRUCTIVES (2-3 phrases qui apprennent quelque chose).
 
 FORMAT JSON array strict:
-[{"question_text":"...","choices":["A","B","C","D"],"correct_answer":0,"difficulty":"easy","target_member_name":"Charles","subject":"Maths","explanation":"..."}]
+[{"question_text":"...","choices":["A","B","C","D"],"correct_answer":0,"difficulty":"medium","target_member_name":"Charles","subject":"Maths","explanation":"..."}]
 
-Adapte la difficulte: CE2=simple, 6eme=moyen, 4eme=avance.
 Reponds UNIQUEMENT avec le JSON array.`;
 }
 

@@ -255,7 +255,13 @@ function getChildSummary(memberId) {
     'SELECT * FROM kb_sync_log WHERE member_id = ? ORDER BY synced_at DESC LIMIT 1'
   ).get(memberId);
 
-  return { subjects, topicCounts, pendingHomework, timetable, lastSync };
+  // Get textbooks
+  let textbooks = [];
+  try {
+    textbooks = db.prepare('SELECT subject, title, publisher, isbn, digital_url FROM kb_textbooks WHERE member_id = ?').all(memberId);
+  } catch {}
+
+  return { subjects, topicCounts, pendingHomework, timetable, lastSync, textbooks };
 }
 
 function updateMastery(memberId, subject, topic, mastery) {

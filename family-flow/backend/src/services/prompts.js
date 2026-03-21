@@ -96,10 +96,17 @@ child.age <= 12 ? `PROFIL ${child.name.toUpperCase()} (${child.grade}, ${child.a
 ${context}${kbSection}`;
 }
 
-function buildQuizPrompt(children, childrenContext) {
+function buildQuizPrompt(children, childrenContext, today, recentQuestions) {
   const childDescriptions = children
     .map(c => `- ${c.name}, ${c.age} ans, en ${c.grade}`)
     .join('\n');
+
+  const dateStr = today || new Date().toISOString().split('T')[0];
+  // Use day-of-year as a rotation seed for variety
+  const dayOfYear = Math.floor((new Date(dateStr) - new Date(new Date(dateStr).getFullYear(), 0, 0)) / 86400000);
+  const actuThemes = ['science et découvertes', 'sport et records', 'espace et astronomie', 'environnement et nature', 'France et Europe', 'technologie et innovation', 'animaux et biodiversité'];
+  const actuTheme1 = actuThemes[dayOfYear % actuThemes.length];
+  const actuTheme2 = actuThemes[(dayOfYear + 2) % actuThemes.length];
 
   // Build DETAILED context from KB
   let todayContext = '';
@@ -128,27 +135,43 @@ function buildQuizPrompt(children, childrenContext) {
     }
   }
 
+  // Build list of recent questions to avoid repeating
+  let avoidSection = '';
+  if (recentQuestions && recentQuestions.length > 0) {
+    avoidSection = '\n\nQUESTIONS DEJA POSEES CES 7 DERNIERS JOURS (NE PAS REPETER ces sujets/themes):\n';
+    recentQuestions.forEach(q => {
+      avoidSection += `- [${q.target_name || 'Famille'}/${q.subject}] ${q.question_text.slice(0, 80)}\n`;
+    });
+    avoidSection += '\nTROUVE des sujets DIFFERENTS de ceux listes ci-dessus !\n';
+  }
+
   return `Tu es le generateur du "Defi du Soir" pour la famille EK !
 C'est un quiz FUN et EDUCATIF que toute la famille joue ensemble le soir.
+Date du jour: ${dateStr}
 
 Les enfants:
 ${childDescriptions}
 ${todayContext}
+${avoidSection}
 
 REGLES CRITIQUES - GENERE EXACTEMENT 12 QUESTIONS:
+IMPORTANT: Chaque quiz doit etre UNIQUE et DIFFERENT des precedents. Varie les sujets, les formulations, et les angles d'approche.
 
 Pour VICTOIRE (CE2, 8 ans) - 2 questions:
 - target_member_name = "Victoire", difficulty = "easy"
 - Maths simples (additions, multiplications, mesures) et francais (grammaire, vocabulaire)
 - Questions amusantes et encourageantes
+- Varie les types: calcul mental, conjugaison, orthographe, geometrie, etc.
 
 Pour CHARLES (6eme, 11 ans) - 2 questions:
 - target_member_name = "Charles", difficulty = "medium"
 - BASEES sur ses devoirs ci-dessus (fractions, histoire, etc.)
+- Si pas de devoirs specifiques, pioche dans ses matieres habituelles en variant a chaque fois
 
 Pour GAUTHIER (4eme, 14 ans) - 2 questions:
 - target_member_name = "Gauthier", difficulty = "hard"
 - BASEES sur ses devoirs ci-dessus (physique, francais, etc.)
+- Si pas de devoirs specifiques, varie entre maths/sciences/litterature/histoire
 
 Pour MAMAN - 3 questions:
 - target_member_name = "Maman", difficulty = "medium"
@@ -158,12 +181,11 @@ Pour MAMAN - 3 questions:
 
 Pour TOUTE LA FAMILLE - 3 questions:
 - target_member_name = "Famille", difficulty = "medium"
-- Question 1 & 2: ACTUALITES RECENTES du monde (science, sport, France, espace, environnement)
-  * Choisis des evenements reels survenus ces derniers mois
-  * Adapte aux enfants: une decouverte scientifique, un record sportif, une mission spatiale, etc.
-  * Explications instructives et positives
+- Question 1: ACTUALITES sur le theme "${actuTheme1}" (evenement reel des derniers mois)
   * subject = "Actualites"
-- Question 3: Culture generale fun ou devinette rigolote
+- Question 2: ACTUALITES sur le theme "${actuTheme2}" (evenement reel des derniers mois)
+  * subject = "Actualites"
+- Question 3: Culture generale fun ou devinette rigolote (varie: etymologie, geographie, science, art, cuisine...)
 - Tout le monde peut repondre
 
 Les reponses fausses doivent etre PLAUSIBLES.

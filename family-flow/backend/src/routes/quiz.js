@@ -37,7 +37,19 @@ router.post('/generate', async (req, res) => {
       console.log(`  ${ctx.name}: ${ctx.recentHomework?.length || 0} homework, ${ctx.recentTopics?.length || 0} topics`);
     });
 
-    const systemPrompt = buildQuizPrompt(children, childrenContext);
+    // Fetch recent quiz topics to avoid repetition (last 7 days)
+    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    const recentQuestions = db.prepare(`
+      SELECT q.question_text, q.subject, q.target_member, m.name as target_name
+      FROM quiz_questions q
+      JOIN quiz_sessions s ON q.quiz_session_id = s.id
+      LEFT JOIN members m ON q.target_member = m.id
+      WHERE s.date >= ? AND s.date < ?
+      ORDER BY s.date DESC
+      LIMIT 40
+    `).all(sevenDaysAgo, today);
+
+    const systemPrompt = buildQuizPrompt(children, childrenContext, today, recentQuestions);
     let userMessage = 'Genere le quiz du soir pour la famille.';
     if (topics && topics.length > 0) {
       userMessage += '\nAujourd\'hui, les enfants ont travaille sur:\n';

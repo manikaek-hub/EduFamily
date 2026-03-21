@@ -158,7 +158,12 @@ Pour MAMAN - 3 questions:
 
 Pour TOUTE LA FAMILLE - 3 questions:
 - target_member_name = "Famille", difficulty = "medium"
-- Culture generale fun, devinettes, questions rigolotes
+- Question 1 & 2: ACTUALITES RECENTES du monde (science, sport, France, espace, environnement)
+  * Choisis des evenements reels survenus ces derniers mois
+  * Adapte aux enfants: une decouverte scientifique, un record sportif, une mission spatiale, etc.
+  * Explications instructives et positives
+  * subject = "Actualites"
+- Question 3: Culture generale fun ou devinette rigolote
 - Tout le monde peut repondre
 
 Les reponses fausses doivent etre PLAUSIBLES.

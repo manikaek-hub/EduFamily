@@ -36,12 +36,16 @@ function buildHomeworkPrompt(child, fiches, kbContext) {
       });
     }
     if (kbContext.textbook) {
-      kbSection += `\nManuel scolaire: "${kbContext.textbook.title}" (${kbContext.textbook.publisher})\n`;
+      kbSection += `\nMANUEL SCOLAIRE: "${kbContext.textbook.title}" (${kbContext.textbook.publisher})\n`;
       try {
         const chapters = JSON.parse(kbContext.textbook.chapters);
-        kbSection += `Chapitres: ${chapters.map(c => `${c.num}. ${c.title}`).join(', ')}\n`;
+        kbSection += `Chapitres du livre: ${chapters.map(c => `${c.num}. ${c.title}`).join(', ')}\n`;
       } catch {}
-      kbSection += 'IMPORTANT: Reference les pages et chapitres du manuel quand c\'est pertinent !\n';
+      kbSection += `\nREGLE IMPORTANTE SUR LE MANUEL:
+- Quand le devoir mentionne "p.XX" ou "exercice n°XX", c'est dans le livre "${kbContext.textbook.title}"
+- Dis a l'enfant: "Ouvre ton livre Indices 6e a la page XX" ou "Regarde l'exercice n°XX dans ton Indices 6e"
+- Aide-le a comprendre l'exercice du livre, pas juste a donner la reponse
+- Si le devoir dit "Faire dans le manuel les exercices p.97 n°75 et 76", guide-le page par page\n`;
     }
     kbSection += '\n[FIN KNOWLEDGE BASE]\n';
     kbSection += '\nUtilise ces informations pour personnaliser ton aide. Si l\'enfant travaille sur un devoir en cours, aide-le dessus en priorite.\n';

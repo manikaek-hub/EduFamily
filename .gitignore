@@ -1,0 +1,8 @@
+node_modules/
+.env
+*.db
+*.pyc
+__pycache__/
+.DS_Store
+family-flow/backend/data/*.db
+family-flow/frontend/build/

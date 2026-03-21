@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); c=d[''''curriculum'''']; [print\\(f''''{level}: {list\\(c[level].keys\\(\\)\\)}''''\\) for level in c]\")",
+      "Bash(python3 -c \":*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(npx create-react-app:*)",
+      "Bash(node -e \"require\\(''./src/db/init''\\); console.log\\(''DB OK''\\); const family = require\\(''./src/routes/family''\\); console.log\\(''Routes OK''\\); const curriculum = require\\(''./src/services/curriculum''\\); console.log\\(''Curriculum loaded OK''\\); const r = curriculum.searchCurriculum\\(''addition retenue'', ''CE2'', ''maths''\\); console.log\\(''Search result:'', r.length, ''fiches''\\);\")",
+      "Bash(curl -s http://localhost:3002/api/family/members)",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s http://localhost:3002/api/activities)",
+      "Bash(npx react-scripts:*)",
+      "WebSearch",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s -w \"\\\\n---HTTP_STATUS:%{http_code}---\" -X POST 'https://api.ecoledirecte.com/v3/login.awp?v=4.75.0' -H 'Content-Type: application/x-www-form-urlencoded' -H 'User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36' -H 'Accept: application/json, text/plain, */*' -d 'data={\"\"\"\"identifiant\"\"\"\":\"\"\"\"test\"\"\"\",\"\"\"\"motdepasse\"\"\"\":\"\"\"\"test\"\"\"\"}')",
+      "Bash(sqlite3 /Users/manikaek/Documents/EduFamily/family-flow/backend/data/familyflow.db \":*)",
+      "Bash(curl -s -X POST http://localhost:3002/api/ecoledirecte/login -H 'Content-Type: application/json' -d '{\"\"\"\"username\"\"\"\":\"\"\"\"manika.ek@gmail.com\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"dummy\"\"\"\"}')",
+      "Bash(sqlite3 /Users/manikaek/Documents/EduFamily/family-flow/backend/data/familyflow.db \"DELETE FROM ed_settings;\")",
+      "Bash(sqlite3 /Users/manikaek/Documents/EduFamily/family-flow/backend/data/familyflow.db \"SELECT * FROM ed_settings\")",
+      "Bash(curl -s \"http://localhost:3002/api/ecoledirecte/homework?studentId=8276\")",
+      "Bash(curl -s \"http://localhost:3002/api/ecoledirecte/timetable?studentId=8276&start=2026-03-17&end=2026-03-21\")",
+      "Bash(sqlite3 /Users/manikaek/Documents/EduFamily/family-flow/backend/data/familyflow.db \"SELECT id, name, role, grade, age FROM members\")",
+      "WebFetch(domain:www.editions-bordas.fr)",
+      "WebFetch(domain:www.calameo.com)",
+      "WebFetch(domain:college.editions-bordas.fr)",
+      "Bash(git status:*)"
+    ]
+  }
+}

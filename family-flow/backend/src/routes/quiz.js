@@ -65,7 +65,9 @@ router.post('/generate', async (req, res) => {
       for (const q of questions) {
         if (!q.question_text || !q.choices) continue; // skip malformed questions
 
-        const targetMember = children.find(c => c.name === q.target_member_name);
+        // Search in ALL members (not just children) to find Maman/Papa too
+        const allMembers = db.prepare('SELECT * FROM members').all();
+        const targetMember = allMembers.find(c => c.name === q.target_member_name);
         const diff = ['easy', 'medium', 'hard'].includes((q.difficulty || '').toLowerCase())
           ? q.difficulty.toLowerCase() : 'medium';
         const correctAnswer = typeof q.correct_answer === 'number' ? q.correct_answer : 0;

@@ -135,22 +135,36 @@ Les enfants:
 ${childDescriptions}
 ${todayContext}
 
-REGLES CRITIQUES:
-1. ${children.length * 2 + 1} questions au total (2 par enfant + 1 question famille)
-2. CHAQUE question DOIT etre directement liee aux devoirs/sujets ci-dessus
-3. Les questions doivent etre STIMULANTES, pas triviales !
-4. La question "famille" = culture generale fun, target_member_name = "Famille"
+REGLES CRITIQUES - GENERE EXACTEMENT 12 QUESTIONS:
 
-DIFFICULTE PAR NIVEAU (IMPORTANT - ne pas sous-estimer les enfants !):
-- CE2 (8 ans): difficulty "easy" - mais pas bebe ! Questions qui font reflechir avec des calculs vrais ou de la comprehension
-- 6eme (11 ans): difficulty "medium" - questions de niveau college qui necessitent du raisonnement
-- 4eme (14 ans): difficulty "hard" - questions exigeantes qui testent la comprehension profonde
-- Famille: difficulty "medium" - culture generale stimulante
+Pour VICTOIRE (CE2, 8 ans) - 2 questions:
+- target_member_name = "Victoire", difficulty = "easy"
+- Maths simples (additions, multiplications, mesures) et francais (grammaire, vocabulaire)
+- Questions amusantes et encourageantes
 
-Les reponses fausses doivent etre PLAUSIBLES (pas des reponses ridicules).
-Les explications doivent etre INSTRUCTIVES (2-3 phrases qui apprennent quelque chose).
+Pour CHARLES (6eme, 11 ans) - 2 questions:
+- target_member_name = "Charles", difficulty = "medium"
+- BASEES sur ses devoirs ci-dessus (fractions, histoire, etc.)
 
-FORMAT JSON array strict:
+Pour GAUTHIER (4eme, 14 ans) - 2 questions:
+- target_member_name = "Gauthier", difficulty = "hard"
+- BASEES sur ses devoirs ci-dessus (physique, francais, etc.)
+
+Pour MAMAN - 3 questions:
+- target_member_name = "Maman", difficulty = "medium"
+- Question 1: sur les devoirs de Charles (pour qu'elle puisse l'interroger ensuite)
+- Question 2: sur les devoirs de Gauthier (idem)
+- Question 3: culture generale / actualite / vie quotidienne
+
+Pour TOUTE LA FAMILLE - 3 questions:
+- target_member_name = "Famille", difficulty = "medium"
+- Culture generale fun, devinettes, questions rigolotes
+- Tout le monde peut repondre
+
+Les reponses fausses doivent etre PLAUSIBLES.
+Les explications doivent etre INSTRUCTIVES (2-3 phrases).
+
+FORMAT JSON array strict (12 elements):
 [{"question_text":"...","choices":["A","B","C","D"],"correct_answer":0,"difficulty":"medium","target_member_name":"Charles","subject":"Maths","explanation":"..."}]
 
 Reponds UNIQUEMENT avec le JSON array.`;

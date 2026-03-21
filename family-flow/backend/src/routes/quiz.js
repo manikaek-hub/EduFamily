@@ -48,33 +48,50 @@ router.post('/generate', async (req, res) => {
 
     const questions = await generateJSON(systemPrompt, userMessage);
 
-    // Save quiz session
-    const session = db.prepare('INSERT INTO quiz_sessions (date) VALUES (?)').run(today);
-    const sessionId = session.lastInsertRowid;
-
-    // Save questions
-    const insertQ = db.prepare(
-      'INSERT INTO quiz_questions (quiz_session_id, target_member, question_text, choices, correct_answer, difficulty, subject, explanation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
-    );
-
-    for (const q of questions) {
-      const targetMember = children.find(c => c.name === q.target_member_name);
-      // Normalize difficulty to valid values
-      let diff = (q.difficulty || 'medium').toLowerCase();
-      if (!['easy', 'medium', 'hard'].includes(diff)) diff = 'medium';
-
-      insertQ.run(
-        sessionId,
-        targetMember ? targetMember.id : null,
-        q.question_text,
-        JSON.stringify(q.choices),
-        q.correct_answer,
-        diff,
-        q.subject,
-        q.explanation
-      );
+    if (!Array.isArray(questions) || questions.length === 0) {
+      return res.status(500).json({ success: false, error: 'Le quiz n\'a pas pu etre genere. Reessayez.' });
     }
 
+    // Save in a transaction so if any question fails, nothing is saved
+    const saveQuiz = db.transaction(() => {
+      const session = db.prepare('INSERT INTO quiz_sessions (date) VALUES (?)').run(today);
+      const sessionId = session.lastInsertRowid;
+
+      const insertQ = db.prepare(
+        'INSERT INTO quiz_questions (quiz_session_id, target_member, question_text, choices, correct_answer, difficulty, subject, explanation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+      );
+
+      let savedCount = 0;
+      for (const q of questions) {
+        if (!q.question_text || !q.choices) continue; // skip malformed questions
+
+        const targetMember = children.find(c => c.name === q.target_member_name);
+        const diff = ['easy', 'medium', 'hard'].includes((q.difficulty || '').toLowerCase())
+          ? q.difficulty.toLowerCase() : 'medium';
+        const correctAnswer = typeof q.correct_answer === 'number' ? q.correct_answer : 0;
+
+        insertQ.run(
+          sessionId,
+          targetMember ? targetMember.id : null,
+          q.question_text,
+          JSON.stringify(Array.isArray(q.choices) ? q.choices : []),
+          correctAnswer,
+          diff,
+          q.subject || '',
+          q.explanation || ''
+        );
+        savedCount++;
+      }
+
+      if (savedCount === 0) {
+        throw new Error('Aucune question valide generee');
+      }
+
+      console.log(`Quiz saved: ${savedCount} questions for session ${sessionId}`);
+      return sessionId;
+    });
+
+    const sessionId = saveQuiz();
     res.json({ success: true, sessionId });
   } catch (error) {
     console.error('Quiz generation error:', error);

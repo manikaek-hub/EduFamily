@@ -1,0 +1,1272 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "generated": "2024-12-14",
+    "source": "Programme Éducation Nationale française",
+    "purpose": "EduFamily - Curriculum vectorisable pour Foxie",
+    "levels": ["CE2", "6ème", "4ème"],
+    "total_fiches": 60
+  },
+  
+  "curriculum": {
+    
+    "CE2": {
+      "level_info": {
+        "age": "7-8 ans",
+        "cycle": "Cycle 2",
+        "tone": "Très encourageant, vocabulaire simple, exemples concrets du quotidien",
+        "child": "Victoire"
+      },
+      
+      "maths": [
+        {
+          "id": "ce2-math-001",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Addition et soustraction",
+          "concept": "Poser et calculer une addition avec retenue",
+          "definition": "L'addition, c'est quand on met ensemble deux nombres pour en faire un plus grand. La retenue, c'est quand la somme d'une colonne dépasse 9.",
+          "methode": [
+            "1. Écris les deux nombres l'un sous l'autre, en alignant bien les unités, les dizaines, les centaines",
+            "2. Commence TOUJOURS par la colonne de droite (les unités)",
+            "3. Additionne les chiffres de la colonne",
+            "4. Si le résultat est 10 ou plus, écris le chiffre des unités et retiens la dizaine (le petit 1 en haut)",
+            "5. Passe à la colonne suivante et n'oublie pas d'ajouter la retenue !",
+            "6. Continue jusqu'à la dernière colonne"
+          ],
+          "erreurs_frequentes": [
+            "Oublier la retenue",
+            "Mal aligner les chiffres (unités pas sous unités)",
+            "Commencer par la gauche au lieu de la droite",
+            "Oublier d'ajouter la retenue à la colonne suivante"
+          ],
+          "exemples": [
+            {
+              "enonce": "45 + 38",
+              "solution_guidee": "Unités: 5+8=13, j'écris 3 et je retiens 1. Dizaines: 4+3+1(retenue)=8. Résultat: 83"
+            },
+            {
+              "enonce": "156 + 87",
+              "solution_guidee": "Unités: 6+7=13, j'écris 3, retenue 1. Dizaines: 5+8+1=14, j'écris 4, retenue 1. Centaines: 1+0+1=2. Résultat: 243"
+            }
+          ],
+          "astuces_foxie": [
+            "Imagine que les retenues sont des petits cadeaux que tu passes à la colonne d'à côté !",
+            "Utilise tes doigts pour vérifier les petits calculs"
+          ],
+          "questions_socratiques": [
+            "Par quelle colonne tu dois commencer ?",
+            "Qu'est-ce que tu fais quand ça dépasse 9 ?",
+            "Où est-ce que tu mets la retenue ?"
+          ],
+          "prerequis": ["Compter jusqu'à 100", "Notion d'unités et dizaines"],
+          "mots_cles": ["addition", "retenue", "poser", "calculer", "somme", "total"]
+        },
+        
+        {
+          "id": "ce2-math-002",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Addition et soustraction",
+          "concept": "Poser et calculer une soustraction avec retenue",
+          "definition": "La soustraction, c'est quand on enlève un nombre d'un autre. La retenue (ou emprunt), c'est quand le chiffre du haut est plus petit que celui du bas.",
+          "methode": [
+            "1. Écris le plus grand nombre en haut, le plus petit en bas",
+            "2. Aligne bien les unités sous les unités",
+            "3. Commence par la droite (les unités)",
+            "4. Si le chiffre du haut est plus petit, emprunte 1 à la colonne de gauche (ça fait +10)",
+            "5. N'oublie pas de barrer et de réduire de 1 le chiffre où tu as emprunté",
+            "6. Continue colonne par colonne"
+          ],
+          "erreurs_frequentes": [
+            "Soustraire le petit du grand au lieu du haut moins le bas",
+            "Oublier de réduire de 1 après l'emprunt",
+            "Mal placer les nombres (le plus grand doit être en haut)"
+          ],
+          "exemples": [
+            {
+              "enonce": "52 - 28",
+              "solution_guidee": "Unités: 2-8 impossible ! J'emprunte: 12-8=4. Dizaines: 4(car 5-1)-2=2. Résultat: 24"
+            },
+            {
+              "enonce": "143 - 67",
+              "solution_guidee": "Unités: 3-7 impossible, j'emprunte: 13-7=6. Dizaines: 3-6 impossible, j'emprunte: 13-6=7. Centaines: 0. Résultat: 76"
+            }
+          ],
+          "astuces_foxie": [
+            "L'emprunt c'est comme demander 10 bonbons à ton voisin de gauche !",
+            "Vérifie toujours: résultat + petit nombre = grand nombre"
+          ],
+          "questions_socratiques": [
+            "Est-ce que tu peux enlever 8 de 2 directement ?",
+            "À qui tu vas emprunter ?",
+            "Combien ça fait maintenant en haut après l'emprunt ?"
+          ],
+          "prerequis": ["Addition", "Notion d'unités/dizaines/centaines"],
+          "mots_cles": ["soustraction", "retenue", "emprunt", "différence", "enlever", "reste"]
+        },
+        
+        {
+          "id": "ce2-math-003",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Multiplication",
+          "concept": "Tables de multiplication (2 à 9)",
+          "definition": "La multiplication, c'est une addition répétée. 3 × 4 veut dire 3 + 3 + 3 + 3 (3 répété 4 fois) ou 4 + 4 + 4 (4 répété 3 fois).",
+          "methode": [
+            "1. Apprends les tables petit à petit (commence par 2, 5 et 10)",
+            "2. Utilise des astuces pour retenir (voir ci-dessous)",
+            "3. Entraîne-toi tous les jours un petit peu",
+            "4. Si tu oublies, reviens à l'addition répétée"
+          ],
+          "erreurs_frequentes": [
+            "Confondre 6×7 et 7×6 (c'est pareil !)",
+            "Mélanger les tables proches (6×8 et 7×8)",
+            "Ne pas s'entraîner régulièrement"
+          ],
+          "exemples": [
+            {
+              "enonce": "7 × 8",
+              "solution_guidee": "Astuce: 5×8=40, puis 2×8=16, donc 40+16=56. Ou retenir: '56=7×8' comme '5678'!"
+            },
+            {
+              "enonce": "6 × 9",
+              "solution_guidee": "Astuce des doigts pour ×9: baisse le 6ème doigt, tu vois 5 doigts à gauche et 4 à droite = 54!"
+            }
+          ],
+          "astuces_foxie": [
+            "Table de 9: le résultat a toujours des chiffres qui font 9 ensemble (18→1+8=9, 27→2+7=9)",
+            "Table de 5: ça finit toujours par 0 ou 5",
+            "Si tu connais 3×4, tu connais aussi 4×3 !"
+          ],
+          "questions_socratiques": [
+            "3×4, ça veut dire combien de fois 3 ?",
+            "Tu connais une astuce pour la table de 9 ?",
+            "Si tu sais 5×6, est-ce que tu sais aussi 6×5 ?"
+          ],
+          "prerequis": ["Addition"],
+          "mots_cles": ["multiplication", "table", "fois", "produit", "multiplier"]
+        },
+        
+        {
+          "id": "ce2-math-004",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Problèmes",
+          "concept": "Résoudre un problème avec les 4 opérations",
+          "definition": "Un problème, c'est une petite histoire avec des nombres où on te pose une question. Il faut trouver quelle opération faire.",
+          "methode": [
+            "1. LIS le problème 2 fois (au moins !)",
+            "2. SURLIGNE ou entoure les nombres importants",
+            "3. TROUVE la question (qu'est-ce qu'on te demande ?)",
+            "4. CHERCHE les mots-clés qui t'indiquent l'opération",
+            "5. POSE l'opération et calcule",
+            "6. VÉRIFIE que ta réponse a du sens"
+          ],
+          "erreurs_frequentes": [
+            "Lire trop vite et rater des informations",
+            "Ne pas identifier ce qu'on cherche",
+            "Donner juste un nombre sans phrase-réponse"
+          ],
+          "exemples": [
+            {
+              "enonce": "Marie a 24 billes. Elle en donne 9 à Paul. Combien lui en reste-t-il ?",
+              "solution_guidee": "Mots-clés: 'donne' et 'reste' → soustraction. Calcul: 24 - 9 = 15. Réponse: Il reste 15 billes à Marie."
+            },
+            {
+              "enonce": "Un fermier a 6 poules. Chaque poule pond 3 œufs. Combien d'œufs en tout ?",
+              "solution_guidee": "Mots-clés: 'chaque' et 'en tout' → multiplication. Calcul: 6 × 3 = 18. Réponse: Il y a 18 œufs en tout."
+            }
+          ],
+          "mots_cles_operations": {
+            "addition": ["en tout", "au total", "ajouter", "de plus", "et"],
+            "soustraction": ["reste", "de moins", "enlever", "différence", "retirer", "perdre"],
+            "multiplication": ["chaque", "par", "fois", "groupes de"],
+            "division": ["partager", "répartir", "distribuer", "chacun"]
+          },
+          "astuces_foxie": [
+            "Fais un petit dessin si ça t'aide !",
+            "Demande-toi: est-ce que le résultat sera plus grand ou plus petit que les nombres de départ ?",
+            "Toujours écrire une phrase-réponse complète"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qu'on te demande de trouver ?",
+            "Est-ce qu'on aura plus ou moins à la fin ?",
+            "Quel mot dans l'énoncé t'aide à choisir l'opération ?"
+          ],
+          "prerequis": ["Les 4 opérations de base"],
+          "mots_cles": ["problème", "énoncé", "question", "opération", "réponse"]
+        },
+        
+        {
+          "id": "ce2-math-005",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Reconnaître et tracer des figures (carré, rectangle, triangle, cercle)",
+          "definition": "Les figures géométriques sont des formes avec des propriétés précises. Le carré a 4 côtés égaux, le rectangle a 4 angles droits, le triangle a 3 côtés, le cercle est tout rond.",
+          "methode": [
+            "1. Pour reconnaître: compte les côtés, regarde les angles",
+            "2. Pour tracer un carré: utilise ta règle et ton équerre, 4 côtés de même longueur, 4 angles droits",
+            "3. Pour tracer un rectangle: 2 longueurs et 2 largeurs, 4 angles droits",
+            "4. Pour tracer un cercle: utilise le compas, choisis le centre et le rayon"
+          ],
+          "erreurs_frequentes": [
+            "Confondre carré et rectangle (le carré EST un rectangle spécial !)",
+            "Oublier de vérifier les angles droits avec l'équerre",
+            "Mal mesurer les côtés"
+          ],
+          "exemples": [
+            {
+              "enonce": "Trace un carré de 4 cm de côté",
+              "solution_guidee": "1. Trace un segment de 4 cm. 2. À chaque bout, trace un angle droit avec l'équerre. 3. Mesure 4 cm sur chaque côté. 4. Relie pour fermer le carré."
+            }
+          ],
+          "astuces_foxie": [
+            "Le carré c'est comme une boîte parfaite, tout est égal !",
+            "L'équerre c'est ton meilleur ami pour les angles droits",
+            "Un cercle c'est comme quand tu tournes autour d'un point sans jamais t'en éloigner"
+          ],
+          "questions_socratiques": [
+            "Combien de côtés a cette figure ?",
+            "Est-ce que tous les côtés sont égaux ?",
+            "Comment tu peux vérifier si c'est un angle droit ?"
+          ],
+          "prerequis": ["Savoir utiliser une règle"],
+          "mots_cles": ["carré", "rectangle", "triangle", "cercle", "côté", "angle droit", "sommet"]
+        }
+      ],
+      
+      "francais": [
+        {
+          "id": "ce2-fr-001",
+          "niveau": "CE2",
+          "matiere": "français",
+          "chapitre": "Conjugaison",
+          "concept": "Le présent de l'indicatif (verbes du 1er groupe)",
+          "definition": "Le présent, c'est quand l'action se passe maintenant. Les verbes du 1er groupe finissent par -ER à l'infinitif (manger, chanter, danser...).",
+          "methode": [
+            "1. Trouve le verbe à l'infinitif (il finit par -ER)",
+            "2. Enlève le -ER pour trouver le radical (mang-, chant-, dans-)",
+            "3. Ajoute la terminaison selon le sujet:",
+            "   Je → -e",
+            "   Tu → -es",
+            "   Il/Elle/On → -e",
+            "   Nous → -ons",
+            "   Vous → -ez",
+            "   Ils/Elles → -ent"
+          ],
+          "erreurs_frequentes": [
+            "Oublier le -s à TU (tu mange ❌ → tu manges ✓)",
+            "Mettre -ent à l'oral alors qu'il est muet",
+            "Confondre -é (participe) et -er (infinitif) et -ez (vous)"
+          ],
+          "exemples": [
+            {
+              "enonce": "Conjuguer DANSER au présent",
+              "solution_guidee": "Radical: dans- | Je danse, tu danses, il danse, nous dansons, vous dansez, ils dansent"
+            },
+            {
+              "enonce": "Compléter: Les enfants (jouer) dans la cour.",
+              "solution_guidee": "Sujet: Les enfants = Ils → terminaison -ent → Les enfants jouent dans la cour."
+            }
+          ],
+          "astuces_foxie": [
+            "JE et IL ont la même terminaison: -e (sans s !)",
+            "NOUS → -ons (comme 'nous avons')",
+            "VOUS → -ez (c'est toujours -ez !)",
+            "ILS/ELLES → -ent (mais on ne prononce pas le -ent)"
+          ],
+          "questions_socratiques": [
+            "C'est quel groupe ce verbe ?",
+            "Quel est le radical si j'enlève -ER ?",
+            "Qui fait l'action ? C'est quel sujet ?"
+          ],
+          "prerequis": ["Identifier le verbe", "Identifier le sujet"],
+          "mots_cles": ["présent", "conjuguer", "terminaison", "radical", "1er groupe", "sujet"]
+        },
+        
+        {
+          "id": "ce2-fr-002",
+          "niveau": "CE2",
+          "matiere": "français",
+          "chapitre": "Grammaire",
+          "concept": "Le sujet et le verbe",
+          "definition": "Le sujet, c'est qui fait l'action. Le verbe, c'est l'action. Dans 'Le chat mange', le chat est le sujet et mange est le verbe.",
+          "methode": [
+            "1. Trouve le VERBE: c'est le mot qui change si tu changes le temps (mange → mangeait → mangera)",
+            "2. Trouve le SUJET: pose la question 'Qui est-ce qui + verbe ?'",
+            "3. Exemple: 'Le chat mange la souris' → Qui est-ce qui mange ? → Le chat = sujet"
+          ],
+          "erreurs_frequentes": [
+            "Confondre le sujet avec un autre nom de la phrase",
+            "Oublier que le sujet peut être un groupe de mots (Le petit chat gris)",
+            "Ne pas voir les sujets inversés (Dans le jardin court le lapin)"
+          ],
+          "exemples": [
+            {
+              "enonce": "Trouve le sujet et le verbe: Ma grande sœur prépare un gâteau.",
+              "solution_guidee": "Qui est-ce qui prépare ? → Ma grande sœur (sujet). Prépare = verbe."
+            }
+          ],
+          "astuces_foxie": [
+            "Le verbe change avec le temps, le sujet répond à 'qui est-ce qui ?'",
+            "Encadre le verbe avec 'ne...pas' pour le trouver (elle ne mange pas)"
+          ],
+          "questions_socratiques": [
+            "Quel mot changerait si on mettait la phrase au passé ?",
+            "Qui fait l'action ?",
+            "Peux-tu encadrer le verbe avec ne...pas ?"
+          ],
+          "prerequis": ["Lire une phrase"],
+          "mots_cles": ["sujet", "verbe", "action", "qui est-ce qui", "phrase"]
+        },
+        
+        {
+          "id": "ce2-fr-003",
+          "niveau": "CE2",
+          "matiere": "français",
+          "chapitre": "Orthographe",
+          "concept": "Les accords dans le groupe nominal (déterminant + nom + adjectif)",
+          "definition": "Dans un groupe nominal, tous les mots s'accordent ensemble en genre (masculin/féminin) et en nombre (singulier/pluriel).",
+          "methode": [
+            "1. Trouve le NOM (c'est lui le chef du groupe)",
+            "2. Le nom est masculin ou féminin ?",
+            "3. Le nom est singulier ou pluriel ?",
+            "4. Accorde le déterminant et l'adjectif avec le nom"
+          ],
+          "erreurs_frequentes": [
+            "Oublier le -s du pluriel sur l'adjectif",
+            "Oublier le -e du féminin sur l'adjectif",
+            "Ne pas voir que le nom est au pluriel"
+          ],
+          "exemples": [
+            {
+              "enonce": "Accorder: une (petit) fille (blond)",
+              "solution_guidee": "fille = féminin singulier → une petitE fille blondE"
+            },
+            {
+              "enonce": "Accorder: les (grand) arbres (vert)",
+              "solution_guidee": "arbres = masculin pluriel → les grandS arbres vertS"
+            }
+          ],
+          "astuces_foxie": [
+            "Masculin pluriel → +s",
+            "Féminin singulier → +e",
+            "Féminin pluriel → +e +s = +es"
+          ],
+          "questions_socratiques": [
+            "C'est quoi le nom principal ?",
+            "Il est masculin ou féminin ?",
+            "Singulier ou pluriel ? Comment tu le sais ?"
+          ],
+          "prerequis": ["Genre et nombre", "Identifier un nom"],
+          "mots_cles": ["accord", "masculin", "féminin", "singulier", "pluriel", "déterminant", "adjectif"]
+        },
+        
+        {
+          "id": "ce2-fr-004",
+          "niveau": "CE2",
+          "matiere": "français",
+          "chapitre": "Conjugaison",
+          "concept": "L'imparfait de l'indicatif",
+          "definition": "L'imparfait, c'est pour raconter des choses qui se passaient avant, dans le passé, qui duraient ou se répétaient.",
+          "methode": [
+            "1. Prends le radical du verbe (comme au présent)",
+            "2. Ajoute les terminaisons de l'imparfait:",
+            "   Je → -ais",
+            "   Tu → -ais",
+            "   Il/Elle/On → -ait",
+            "   Nous → -ions",
+            "   Vous → -iez",
+            "   Ils/Elles → -aient",
+            "3. Attention: tous les verbes ont les MÊMES terminaisons !"
+          ],
+          "erreurs_frequentes": [
+            "Oublier le -i- à nous et vous (nous mangions, pas nous mangons)",
+            "Confondre -ais (je/tu) et -ait (il/elle)",
+            "Oublier que -aient se prononce comme -ait"
+          ],
+          "exemples": [
+            {
+              "enonce": "Conjuguer JOUER à l'imparfait",
+              "solution_guidee": "Je jouais, tu jouais, il jouait, nous jouions, vous jouiez, ils jouaient"
+            }
+          ],
+          "astuces_foxie": [
+            "Je, tu, il, ils ont tous 'ai' dedans !",
+            "Nous et vous ont toujours le 'i' en plus: -ions, -iez",
+            "C'est le temps des histoires: 'Il était une fois...'"
+          ],
+          "questions_socratiques": [
+            "C'est une action passée qui a duré ou qui s'est répétée ?",
+            "Quelle est la terminaison pour 'nous' à l'imparfait ?",
+            "Comment tu écris 'ils jouaient' ?"
+          ],
+          "prerequis": ["Présent de l'indicatif", "Notion de passé"],
+          "mots_cles": ["imparfait", "passé", "autrefois", "conjugaison", "terminaisons"]
+        },
+        
+        {
+          "id": "ce2-fr-005",
+          "niveau": "CE2",
+          "matiere": "français",
+          "chapitre": "Orthographe",
+          "concept": "Les homophones a/à et on/ont",
+          "definition": "Les homophones sont des mots qui se prononcent pareil mais s'écrivent différemment. Il faut des astuces pour ne pas les confondre !",
+          "methode": [
+            "Pour a/à:",
+            "- a (sans accent) = verbe avoir → on peut le remplacer par 'avait'",
+            "- à (avec accent) = préposition → on ne peut PAS le remplacer par 'avait'",
+            "",
+            "Pour on/ont:",
+            "- on = pronom (= quelqu'un, nous) → remplace par 'il'",
+            "- ont = verbe avoir (ils ont) → remplace par 'avaient'"
+          ],
+          "erreurs_frequentes": [
+            "Ne pas tester le remplacement",
+            "Confondre le verbe et la préposition",
+            "Aller trop vite sans vérifier"
+          ],
+          "exemples": [
+            {
+              "enonce": "Il (a/à) mal (a/à) la tête.",
+              "solution_guidee": "Test: 'Il avait mal' ✓ → a. 'Avait la tête' ✗ → à. Réponse: Il a mal à la tête."
+            },
+            {
+              "enonce": "(On/Ont) mange ce qu'ils (on/ont) préparé.",
+              "solution_guidee": "Test: 'Il mange' ✓ → on. 'Ils avaient préparé' ✓ → ont. Réponse: On mange ce qu'ils ont préparé."
+            }
+          ],
+          "astuces_foxie": [
+            "a/avait = verbe, à/avait = bizarre donc préposition !",
+            "ON = il, ONT = avaient"
+          ],
+          "questions_socratiques": [
+            "Est-ce que tu peux remplacer par 'avait' ?",
+            "Si oui, c'est le verbe avoir !",
+            "Sinon, c'est la préposition à avec accent"
+          ],
+          "prerequis": ["Verbe avoir"],
+          "mots_cles": ["homophones", "a", "à", "on", "ont", "accent"]
+        }
+      ]
+    },
+    
+    "6ème": {
+      "level_info": {
+        "age": "10-11 ans",
+        "cycle": "Cycle 3",
+        "tone": "Encourageant mais exigeant, introduction du vocabulaire technique",
+        "child": "Charles"
+      },
+      
+      "maths": [
+        {
+          "id": "6eme-math-001",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les fractions : représentation et comparaison",
+          "definition": "Une fraction représente une partie d'un tout. Le numérateur (en haut) indique combien de parts on prend, le dénominateur (en bas) indique en combien de parts le tout est divisé.",
+          "methode": [
+            "1. Pour représenter: divise le tout en [dénominateur] parts égales, colorie [numérateur] parts",
+            "2. Pour comparer des fractions de même dénominateur: compare les numérateurs",
+            "3. Pour comparer des fractions de dénominateurs différents: trouve un dénominateur commun",
+            "4. Pour simplifier: divise numérateur et dénominateur par le même nombre"
+          ],
+          "erreurs_frequentes": [
+            "Confondre numérateur et dénominateur",
+            "Penser que 1/4 > 1/3 parce que 4 > 3 (c'est l'inverse !)",
+            "Additionner les dénominateurs entre eux"
+          ],
+          "exemples": [
+            {
+              "enonce": "Comparer 3/5 et 4/5",
+              "solution_guidee": "Même dénominateur → comparer numérateurs: 3 < 4 donc 3/5 < 4/5"
+            },
+            {
+              "enonce": "Comparer 2/3 et 3/4",
+              "solution_guidee": "Dénominateurs différents → dénominateur commun 12. 2/3 = 8/12, 3/4 = 9/12. 8 < 9 donc 2/3 < 3/4"
+            }
+          ],
+          "astuces_foxie": [
+            "Plus le dénominateur est grand, plus les parts sont petites !",
+            "1/2 = 2/4 = 3/6 = 4/8 (fractions équivalentes)",
+            "Pour comparer: même dénominateur = facile !"
+          ],
+          "questions_socratiques": [
+            "Le numérateur, il est où ? Il représente quoi ?",
+            "Si je coupe un gâteau en 8 ou en 4, quelle part est plus grande ?",
+            "Comment transformer ces fractions pour qu'elles aient le même dénominateur ?"
+          ],
+          "prerequis": ["Division", "Multiplication"],
+          "mots_cles": ["fraction", "numérateur", "dénominateur", "équivalent", "simplifier", "comparer"]
+        },
+        
+        {
+          "id": "6eme-math-002",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Additionner et soustraire des fractions",
+          "definition": "Pour additionner ou soustraire des fractions, il faut qu'elles aient le même dénominateur. Ensuite, on additionne ou soustrait uniquement les numérateurs.",
+          "methode": [
+            "1. Vérifie si les dénominateurs sont identiques",
+            "2. Si OUI: additionne/soustrais les numérateurs, garde le dénominateur",
+            "3. Si NON: trouve le dénominateur commun (souvent le PPCM)",
+            "4. Transforme chaque fraction en fraction équivalente avec ce dénominateur",
+            "5. Effectue le calcul sur les numérateurs",
+            "6. Simplifie le résultat si possible"
+          ],
+          "erreurs_frequentes": [
+            "Additionner les dénominateurs (NON !)",
+            "Oublier de mettre au même dénominateur avant de calculer",
+            "Oublier de simplifier le résultat"
+          ],
+          "exemples": [
+            {
+              "enonce": "2/5 + 1/5",
+              "solution_guidee": "Même dénominateur → (2+1)/5 = 3/5"
+            },
+            {
+              "enonce": "1/3 + 1/4",
+              "solution_guidee": "Dénominateur commun: 12. 1/3 = 4/12, 1/4 = 3/12. 4/12 + 3/12 = 7/12"
+            },
+            {
+              "enonce": "5/6 - 1/2",
+              "solution_guidee": "Dénominateur commun: 6. 1/2 = 3/6. 5/6 - 3/6 = 2/6 = 1/3"
+            }
+          ],
+          "astuces_foxie": [
+            "On ne touche JAMAIS aux dénominateurs pendant le calcul !",
+            "Dénominateur commun = multiple commun des deux dénominateurs",
+            "Toujours simplifier à la fin si possible"
+          ],
+          "questions_socratiques": [
+            "Est-ce que les dénominateurs sont les mêmes ?",
+            "Quel serait un dénominateur commun pour ces deux fractions ?",
+            "Comment tu transformes 1/3 en sixièmes ?"
+          ],
+          "prerequis": ["Fractions équivalentes", "Multiplication"],
+          "mots_cles": ["addition", "soustraction", "fraction", "dénominateur commun", "PPCM"]
+        },
+        
+        {
+          "id": "6eme-math-003",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les nombres décimaux",
+          "definition": "Un nombre décimal a une partie entière et une partie décimale séparées par une virgule. Exemple: 3,45 → 3 = partie entière, 45 = partie décimale (4 dixièmes et 5 centièmes).",
+          "methode": [
+            "Pour additionner/soustraire des décimaux:",
+            "1. Aligne les virgules",
+            "2. Complète avec des zéros si nécessaire",
+            "3. Calcule comme avec des entiers",
+            "4. Place la virgule dans le résultat (alignée)",
+            "",
+            "Pour multiplier des décimaux:",
+            "1. Ignore les virgules et multiplie",
+            "2. Compte le nombre total de chiffres après les virgules",
+            "3. Place la virgule dans le résultat"
+          ],
+          "erreurs_frequentes": [
+            "Mal aligner les virgules",
+            "Oublier les zéros de remplissage",
+            "Mal placer la virgule dans le résultat"
+          ],
+          "exemples": [
+            {
+              "enonce": "3,5 + 2,45",
+              "solution_guidee": "Aligner: 3,50 + 2,45 = 5,95"
+            },
+            {
+              "enonce": "1,2 × 0,5",
+              "solution_guidee": "12 × 5 = 60. Virgules: 1 + 1 = 2 chiffres. Résultat: 0,60 = 0,6"
+            }
+          ],
+          "astuces_foxie": [
+            "Virgule sous virgule, toujours !",
+            "3,5 = 3,50 = 3,500 (les zéros à droite ne changent rien)",
+            "Pour ×: total de chiffres après virgule = nb dans résultat"
+          ],
+          "questions_socratiques": [
+            "Est-ce que les virgules sont bien alignées ?",
+            "Combien de chiffres après la virgule au total ?",
+            "Où vas-tu placer la virgule dans le résultat ?"
+          ],
+          "prerequis": ["Opérations sur entiers", "Notion de dixième/centième"],
+          "mots_cles": ["décimal", "virgule", "dixième", "centième", "partie entière", "partie décimale"]
+        },
+        
+        {
+          "id": "6eme-math-004",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Proportionnalité",
+          "concept": "Reconnaître et utiliser la proportionnalité",
+          "definition": "Deux grandeurs sont proportionnelles si on passe de l'une à l'autre en multipliant toujours par le même nombre (le coefficient de proportionnalité).",
+          "methode": [
+            "Pour vérifier la proportionnalité:",
+            "1. Calcule les rapports (division) entre valeurs correspondantes",
+            "2. Si tous les rapports sont égaux → proportionnalité",
+            "",
+            "Pour compléter un tableau de proportionnalité:",
+            "1. Trouve le coefficient (÷ ou ×)",
+            "2. Applique ce coefficient aux autres valeurs",
+            "",
+            "Méthode du produit en croix:",
+            "a/b = c/d → a×d = b×c"
+          ],
+          "erreurs_frequentes": [
+            "Confondre addition et multiplication (proportionnalité = ×)",
+            "Mal identifier le coefficient",
+            "Se tromper dans le produit en croix"
+          ],
+          "exemples": [
+            {
+              "enonce": "3 kg de pommes coûtent 6 €. Combien coûtent 5 kg ?",
+              "solution_guidee": "Coefficient: 6÷3 = 2 €/kg. Donc 5 kg = 5×2 = 10 €"
+            },
+            {
+              "enonce": "Vérifier: 2→6, 3→9, 5→15",
+              "solution_guidee": "Rapports: 6/2=3, 9/3=3, 15/5=3. Tous égaux → proportionnel (coef = 3)"
+            }
+          ],
+          "astuces_foxie": [
+            "Proportionnel = même multiplication partout",
+            "Si ça double d'un côté, ça double de l'autre",
+            "Produit en croix: les diagonales sont égales"
+          ],
+          "questions_socratiques": [
+            "Par combien tu multiplies pour passer de 3 à 6 ?",
+            "Est-ce que ce coefficient marche pour les autres valeurs ?",
+            "Comment tu trouves la valeur manquante ?"
+          ],
+          "prerequis": ["Multiplication", "Division"],
+          "mots_cles": ["proportionnalité", "coefficient", "rapport", "produit en croix", "tableau"]
+        },
+        
+        {
+          "id": "6eme-math-005",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Périmètre et aire des figures usuelles",
+          "definition": "Le périmètre est la longueur du contour (on fait le tour). L'aire est la surface intérieure (on remplit). Attention aux unités !",
+          "methode": [
+            "PÉRIMÈTRES:",
+            "- Carré: P = 4 × côté",
+            "- Rectangle: P = 2 × (L + l)",
+            "- Triangle: P = côté1 + côté2 + côté3",
+            "- Cercle: P = 2 × π × R (ou π × D)",
+            "",
+            "AIRES:",
+            "- Carré: A = côté²",
+            "- Rectangle: A = L × l",
+            "- Triangle: A = (base × hauteur) ÷ 2",
+            "- Cercle: A = π × R²"
+          ],
+          "erreurs_frequentes": [
+            "Confondre périmètre et aire",
+            "Oublier de diviser par 2 pour le triangle",
+            "Se tromper d'unité (cm vs cm²)",
+            "Confondre rayon et diamètre"
+          ],
+          "exemples": [
+            {
+              "enonce": "Rectangle de 5 cm sur 3 cm: périmètre et aire",
+              "solution_guidee": "P = 2×(5+3) = 16 cm. A = 5×3 = 15 cm²"
+            },
+            {
+              "enonce": "Triangle de base 6 cm et hauteur 4 cm: aire",
+              "solution_guidee": "A = (6×4)÷2 = 12 cm²"
+            }
+          ],
+          "astuces_foxie": [
+            "Périmètre = je MARCHE autour (unité simple: cm, m)",
+            "Aire = je REMPLIS l'intérieur (unité carrée: cm², m²)",
+            "Triangle = la moitié d'un rectangle !"
+          ],
+          "questions_socratiques": [
+            "C'est le tour ou la surface qu'on te demande ?",
+            "Quelle formule correspond à cette figure ?",
+            "C'est quoi l'unité pour une aire ?"
+          ],
+          "prerequis": ["Figures géométriques", "Multiplication"],
+          "mots_cles": ["périmètre", "aire", "surface", "formule", "carré", "rectangle", "triangle", "cercle"]
+        }
+      ],
+      
+      "francais": [
+        {
+          "id": "6eme-fr-001",
+          "niveau": "6ème",
+          "matiere": "français",
+          "chapitre": "Conjugaison",
+          "concept": "Le passé simple de l'indicatif",
+          "definition": "Le passé simple est un temps du passé utilisé principalement à l'écrit, dans les récits, pour des actions brèves et terminées. 'Il mangea' (passé simple) vs 'Il mangeait' (imparfait = action qui dure).",
+          "methode": [
+            "1er groupe (-ER): radical + -ai, -as, -a, -âmes, -âtes, -èrent",
+            "2ème groupe (-IR): radical + -is, -is, -it, -îmes, -îtes, -irent",
+            "3ème groupe: irrégulier, souvent en -is/-us/-ins",
+            "",
+            "Exemples types:",
+            "- Chanter → je chantai, il chanta, ils chantèrent",
+            "- Finir → je finis, il finit, ils finirent",
+            "- Prendre → je pris, il prit, ils prirent",
+            "- Venir → je vins, il vint, ils vinrent"
+          ],
+          "erreurs_frequentes": [
+            "Confondre passé simple et imparfait à la 3ème personne (il chanta vs il chantait)",
+            "Oublier l'accent circonflexe à nous/vous (nous chantâmes)",
+            "Se tromper dans les verbes irréguliers du 3ème groupe"
+          ],
+          "exemples": [
+            {
+              "enonce": "Conjuguer REGARDER au passé simple",
+              "solution_guidee": "Je regardai, tu regardas, il/elle regarda, nous regardâmes, vous regardâtes, ils/elles regardèrent"
+            },
+            {
+              "enonce": "Mettre au passé simple: Il (prendre) son sac et (partir).",
+              "solution_guidee": "Il prit son sac et partit."
+            }
+          ],
+          "astuces_foxie": [
+            "1er groupe: pense à 'Il mangea' (le -a final)",
+            "Le passé simple c'est pour les histoires: 'Soudain, il aperçut un loup...'",
+            "À l'oral on utilise le passé composé, à l'écrit le passé simple"
+          ],
+          "questions_socratiques": [
+            "C'est quel groupe ce verbe ?",
+            "Quel est le radical ?",
+            "Quelle terminaison pour 'ils' au 1er groupe ?"
+          ],
+          "prerequis": ["Présent", "Imparfait", "Groupes verbaux"],
+          "mots_cles": ["passé simple", "récit", "terminaisons", "1er groupe", "2ème groupe", "3ème groupe"]
+        },
+        
+        {
+          "id": "6eme-fr-002",
+          "niveau": "6ème",
+          "matiere": "français",
+          "chapitre": "Grammaire",
+          "concept": "Les classes grammaticales (natures de mots)",
+          "definition": "La classe grammaticale (ou nature), c'est ce qu'EST le mot dans le dictionnaire, indépendamment de la phrase. Elle ne change jamais.",
+          "methode": [
+            "Les principales classes:",
+            "- NOM: désigne une chose, personne, idée (table, Marie, liberté)",
+            "- DÉTERMINANT: précède le nom (le, une, mon, ces)",
+            "- ADJECTIF: qualifie le nom (grand, bleu, gentil)",
+            "- VERBE: action ou état (manger, être, sembler)",
+            "- PRONOM: remplace un nom (je, tu, il, celui-ci, qui)",
+            "- ADVERBE: modifie verbe/adj/autre adverbe (vite, très, bien)",
+            "- PRÉPOSITION: introduit un complément (à, de, pour, dans)",
+            "- CONJONCTION: relie des éléments (et, mais, or, car, donc)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre nature et fonction",
+            "Confondre déterminant et pronom (le livre vs je le vois)",
+            "Oublier qu'un mot a toujours la même nature"
+          ],
+          "exemples": [
+            {
+              "enonce": "Quelle est la nature de chaque mot: Le petit chat dort.",
+              "solution_guidee": "Le = déterminant, petit = adjectif, chat = nom, dort = verbe"
+            }
+          ],
+          "astuces_foxie": [
+            "Nature = carte d'identité du mot (ne change jamais)",
+            "Fonction = métier du mot dans la phrase (peut changer)",
+            "Déterminant + nom = inséparables (le chat, mon livre)"
+          ],
+          "questions_socratiques": [
+            "Est-ce que ce mot désigne quelque chose ? C'est un nom",
+            "Est-ce qu'il accompagne un nom ? C'est un déterminant",
+            "Est-ce qu'il peut se conjuguer ? C'est un verbe"
+          ],
+          "prerequis": ["Lecture fluide"],
+          "mots_cles": ["classe grammaticale", "nature", "nom", "verbe", "adjectif", "déterminant", "pronom", "adverbe"]
+        },
+        
+        {
+          "id": "6eme-fr-003",
+          "niveau": "6ème",
+          "matiere": "français",
+          "chapitre": "Grammaire",
+          "concept": "Les fonctions dans la phrase (sujet, COD, COI, CC)",
+          "definition": "La fonction, c'est le RÔLE que joue un mot ou groupe de mots dans une phrase. Un même mot peut avoir différentes fonctions selon les phrases.",
+          "methode": [
+            "SUJET: répond à 'Qui est-ce qui + verbe ?'",
+            "COD (Complément d'objet direct): répond à 'quoi ?' ou 'qui ?' après le verbe, sans préposition",
+            "COI (Complément d'objet indirect): répond à 'à qui ?', 'à quoi ?', 'de qui ?', 'de quoi ?'",
+            "CC (Complément circonstanciel): répond à 'où ?', 'quand ?', 'comment ?', 'pourquoi ?' - peut se déplacer",
+            "",
+            "Test COD vs COI: si préposition (à, de) → COI, sinon → COD"
+          ],
+          "erreurs_frequentes": [
+            "Confondre COD et COI",
+            "Confondre COD et attribut du sujet",
+            "Oublier de poser la question pour vérifier"
+          ],
+          "exemples": [
+            {
+              "enonce": "Je mange une pomme dans la cuisine.",
+              "solution_guidee": "Je = sujet (qui mange ?). Une pomme = COD (je mange quoi ?). Dans la cuisine = CC de lieu (où ?)."
+            },
+            {
+              "enonce": "Il parle à son ami.",
+              "solution_guidee": "Il = sujet. À son ami = COI (il parle à qui ?). Présence de 'à' → COI pas COD."
+            }
+          ],
+          "astuces_foxie": [
+            "COD: pas de préposition entre verbe et complément",
+            "COI: toujours une préposition (à, de)",
+            "CC: on peut le déplacer ou le supprimer"
+          ],
+          "questions_socratiques": [
+            "Qui fait l'action ?",
+            "Le verbe est suivi directement du complément ou il y a une préposition ?",
+            "Est-ce que tu peux déplacer ce groupe dans la phrase ?"
+          ],
+          "prerequis": ["Classes grammaticales", "Sujet et verbe"],
+          "mots_cles": ["fonction", "sujet", "COD", "COI", "complément circonstanciel", "préposition"]
+        }
+      ]
+    },
+    
+    "4ème": {
+      "level_info": {
+        "age": "13-14 ans",
+        "cycle": "Cycle 4",
+        "tone": "Direct, exigeant, autonomie attendue, vocabulaire académique",
+        "child": "Gauthier"
+      },
+      
+      "maths": [
+        {
+          "id": "4eme-math-001",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Calcul littéral",
+          "concept": "Développer et factoriser une expression",
+          "definition": "Développer: transformer un produit en somme. Factoriser: transformer une somme en produit. Ce sont des opérations inverses.",
+          "methode": [
+            "DÉVELOPPER: k(a + b) = ka + kb",
+            "- Simple: 3(x + 2) = 3x + 6",
+            "- Double: (a + b)(c + d) = ac + ad + bc + bd",
+            "",
+            "FACTORISER: trouver le facteur commun",
+            "- 6x + 9 = 3(2x + 3) car 3 est facteur commun",
+            "- x² + 5x = x(x + 5) car x est facteur commun",
+            "",
+            "IDENTITÉS REMARQUABLES:",
+            "- (a + b)² = a² + 2ab + b²",
+            "- (a - b)² = a² - 2ab + b²",
+            "- (a + b)(a - b) = a² - b²"
+          ],
+          "erreurs_frequentes": [
+            "Oublier de multiplier tous les termes lors du développement",
+            "Ne pas voir le facteur commun",
+            "Se tromper dans les identités remarquables (signe du double produit)"
+          ],
+          "exemples": [
+            {
+              "enonce": "Développer (x + 3)(x - 2)",
+              "solution_guidee": "= x×x + x×(-2) + 3×x + 3×(-2) = x² - 2x + 3x - 6 = x² + x - 6"
+            },
+            {
+              "enonce": "Factoriser 4x² - 12x",
+              "solution_guidee": "Facteur commun: 4x. Donc 4x² - 12x = 4x(x - 3)"
+            },
+            {
+              "enonce": "Développer (2x + 3)²",
+              "solution_guidee": "Identité (a+b)²: = (2x)² + 2×(2x)×3 + 3² = 4x² + 12x + 9"
+            }
+          ],
+          "astuces_foxie": [
+            "Développer = distribuer, tout le monde reçoit",
+            "Factoriser = mettre en commun, chercher le PGCD",
+            "Identités remarquables: à CONNAÎTRE PAR CŒUR"
+          ],
+          "questions_socratiques": [
+            "Quel est le facteur commun à tous les termes ?",
+            "C'est quelle identité remarquable ?",
+            "As-tu bien multiplié chaque terme par chaque terme ?"
+          ],
+          "prerequis": ["Distributivité", "Puissances"],
+          "mots_cles": ["développer", "factoriser", "identité remarquable", "facteur commun", "distributivité"]
+        },
+        
+        {
+          "id": "4eme-math-002",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Équations",
+          "concept": "Résoudre une équation du premier degré à une inconnue",
+          "definition": "Une équation du 1er degré est de la forme ax + b = c. Résoudre = trouver la valeur de x qui vérifie l'égalité.",
+          "methode": [
+            "1. Développer et réduire chaque membre si nécessaire",
+            "2. Regrouper les termes en x d'un côté (généralement à gauche)",
+            "3. Regrouper les constantes de l'autre côté",
+            "4. Isoler x en divisant par son coefficient",
+            "5. VÉRIFIER en remplaçant x dans l'équation initiale",
+            "",
+            "Règle: ce qu'on fait à gauche, on le fait aussi à droite"
+          ],
+          "erreurs_frequentes": [
+            "Oublier de changer le signe en faisant passer un terme",
+            "Faire une opération d'un seul côté",
+            "Oublier de vérifier le résultat",
+            "Se tromper dans la réduction des termes semblables"
+          ],
+          "exemples": [
+            {
+              "enonce": "Résoudre 3x + 5 = 20",
+              "solution_guidee": "3x = 20 - 5 → 3x = 15 → x = 15/3 → x = 5. Vérif: 3×5+5 = 20 ✓"
+            },
+            {
+              "enonce": "Résoudre 2(x - 3) = 4x + 2",
+              "solution_guidee": "2x - 6 = 4x + 2 → 2x - 4x = 2 + 6 → -2x = 8 → x = -4. Vérif: 2(-7) = -14, 4(-4)+2 = -14 ✓"
+            },
+            {
+              "enonce": "Résoudre (x+1)/2 = 3",
+              "solution_guidee": "x + 1 = 6 → x = 5. Vérif: (5+1)/2 = 3 ✓"
+            }
+          ],
+          "astuces_foxie": [
+            "+5 à gauche → -5 à droite (change de signe en traversant)",
+            "×3 à gauche → ÷3 des deux côtés",
+            "TOUJOURS vérifier à la fin !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce que tu dois faire passer de l'autre côté en premier ?",
+            "Quand un terme change de côté, que devient son signe ?",
+            "Comment tu vérifies que ton résultat est correct ?"
+          ],
+          "prerequis": ["Calcul littéral", "Distributivité"],
+          "mots_cles": ["équation", "résoudre", "inconnue", "vérification", "premier degré"]
+        },
+        
+        {
+          "id": "4eme-math-003",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Théorème de Pythagore",
+          "definition": "Dans un triangle RECTANGLE, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés. Si ABC est rectangle en A: BC² = AB² + AC²",
+          "methode": [
+            "Pour CALCULER l'hypoténuse:",
+            "1. Identifier le triangle rectangle et l'angle droit",
+            "2. L'hypoténuse est FACE à l'angle droit (le plus grand côté)",
+            "3. Appliquer: hyp² = côté1² + côté2²",
+            "4. Prendre la racine carrée",
+            "",
+            "Pour CALCULER un côté de l'angle droit:",
+            "côté² = hyp² - autre côté²",
+            "",
+            "Pour PROUVER qu'un triangle est rectangle:",
+            "Vérifier si grand² = petit² + moyen²"
+          ],
+          "erreurs_frequentes": [
+            "Confondre hypoténuse et côtés de l'angle droit",
+            "Oublier la racine carrée à la fin",
+            "Additionner au lieu de soustraire pour trouver un côté",
+            "Ne pas identifier correctement l'angle droit"
+          ],
+          "exemples": [
+            {
+              "enonce": "Triangle rectangle avec côtés 3 et 4. Hypoténuse ?",
+              "solution_guidee": "h² = 3² + 4² = 9 + 16 = 25 → h = √25 = 5"
+            },
+            {
+              "enonce": "Triangle rectangle, hypoténuse 13, un côté 5. Autre côté ?",
+              "solution_guidee": "c² = 13² - 5² = 169 - 25 = 144 → c = √144 = 12"
+            },
+            {
+              "enonce": "ABC avec AB=6, BC=8, AC=10. Rectangle ?",
+              "solution_guidee": "10² = 100. 6² + 8² = 36 + 64 = 100. Égalité vérifiée → rectangle en B"
+            }
+          ],
+          "astuces_foxie": [
+            "Hypoténuse = le plus grand côté = face à l'angle droit",
+            "3-4-5, 5-12-13, 8-15-17 = triplets pythagoriciens classiques",
+            "Si on cherche l'hypoténuse: + ; si on cherche un petit côté: -"
+          ],
+          "questions_socratiques": [
+            "Où est l'angle droit ?",
+            "Quel côté est l'hypoténuse ?",
+            "Tu dois additionner ou soustraire les carrés ?"
+          ],
+          "prerequis": ["Carrés", "Racines carrées", "Triangles"],
+          "mots_cles": ["Pythagore", "triangle rectangle", "hypoténuse", "carré", "racine carrée"]
+        },
+        
+        {
+          "id": "4eme-math-004",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Théorème de Thalès",
+          "definition": "Si deux droites parallèles coupent deux sécantes, alors elles déterminent des triangles dont les côtés correspondants sont proportionnels.",
+          "methode": [
+            "Configuration de Thalès:",
+            "- Deux droites sécantes en un point",
+            "- Deux droites parallèles qui les coupent",
+            "",
+            "Formule: Si (BC) // (DE), alors AB/AD = AC/AE = BC/DE",
+            "",
+            "Pour calculer une longueur:",
+            "1. Vérifier que les droites sont parallèles",
+            "2. Identifier les rapports égaux",
+            "3. Poser le produit en croix",
+            "4. Résoudre"
+          ],
+          "erreurs_frequentes": [
+            "Mal identifier les segments correspondants",
+            "Oublier de vérifier le parallélisme",
+            "Se tromper dans les rapports (numérateur/dénominateur)"
+          ],
+          "exemples": [
+            {
+              "enonce": "(MN) // (BC), AM=3, AB=5, AN=4. Calculer AC.",
+              "solution_guidee": "AM/AB = AN/AC → 3/5 = 4/AC → AC = 5×4/3 = 20/3 ≈ 6,67"
+            }
+          ],
+          "astuces_foxie": [
+            "Toujours vérifier le parallélisme AVANT d'appliquer Thalès",
+            "Petits côtés ensemble, grands côtés ensemble",
+            "Produit en croix: les diagonales sont égales"
+          ],
+          "questions_socratiques": [
+            "Est-ce que les droites sont bien parallèles ?",
+            "Quels sont les côtés correspondants ?",
+            "Quel rapport tu vas utiliser pour trouver la longueur manquante ?"
+          ],
+          "prerequis": ["Proportionnalité", "Parallélisme"],
+          "mots_cles": ["Thalès", "parallèles", "proportionnalité", "sécantes", "rapport"]
+        },
+        
+        {
+          "id": "4eme-math-005",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Nombres relatifs",
+          "concept": "Opérations sur les nombres relatifs",
+          "definition": "Les nombres relatifs comprennent les positifs et les négatifs. Les règles de signes sont essentielles pour les opérations.",
+          "methode": [
+            "ADDITION/SOUSTRACTION:",
+            "- Même signe: on additionne et on garde le signe",
+            "- Signes différents: on soustrait et on prend le signe du plus grand (en valeur absolue)",
+            "- Soustraire = ajouter l'opposé: a - b = a + (-b)",
+            "",
+            "MULTIPLICATION/DIVISION:",
+            "- Même signe → résultat positif (+)",
+            "- Signes différents → résultat négatif (-)",
+            "",
+            "Règle: (+)(+) = +, (+)(-) = -, (-)(+) = -, (-)(-) = +"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les règles addition et multiplication",
+            "Oublier que (-)×(-) = (+)",
+            "Se tromper avec les soustractions de négatifs"
+          ],
+          "exemples": [
+            {
+              "enonce": "(-5) + (+3)",
+              "solution_guidee": "Signes différents: 5-3=2, signe du plus grand (5 est négatif) → -2"
+            },
+            {
+              "enonce": "(-4) × (-7)",
+              "solution_guidee": "Même signe (- et -) → positif. 4×7=28. Résultat: +28"
+            },
+            {
+              "enonce": "(-3) - (-8)",
+              "solution_guidee": "= (-3) + (+8) = +5"
+            }
+          ],
+          "astuces_foxie": [
+            "Soustraire un négatif = ajouter un positif",
+            "Multiplication: compte les signes - : pair = +, impair = -",
+            "(-a) c'est l'opposé de a"
+          ],
+          "questions_socratiques": [
+            "Les deux nombres ont le même signe ou des signes différents ?",
+            "Pour la multiplication, combien de signes moins tu as ?",
+            "C'est quoi l'opposé de ce nombre ?"
+          ],
+          "prerequis": ["Opérations de base", "Notion de négatif"],
+          "mots_cles": ["relatif", "positif", "négatif", "opposé", "valeur absolue", "règle des signes"]
+        }
+      ],
+      
+      "francais": [
+        {
+          "id": "4eme-fr-001",
+          "niveau": "4ème",
+          "matiere": "français",
+          "chapitre": "Conjugaison",
+          "concept": "Le subjonctif présent",
+          "definition": "Le subjonctif est un mode qui exprime le doute, le souhait, la nécessité, la possibilité. Il est souvent introduit par 'que'. 'Je veux que tu viennes' (subjonctif) vs 'Je sais que tu viens' (indicatif).",
+          "methode": [
+            "Formation: radical du 'ils' au présent + terminaisons",
+            "Terminaisons: -e, -es, -e, -ions, -iez, -ent",
+            "",
+            "Exemples:",
+            "- Chanter → ils chantent → que je chante",
+            "- Finir → ils finissent → que je finisse",
+            "",
+            "Verbes irréguliers courants:",
+            "- Être: que je sois, que tu sois, qu'il soit...",
+            "- Avoir: que j'aie, que tu aies, qu'il ait...",
+            "- Aller: que j'aille, que nous allions",
+            "- Faire: que je fasse",
+            "- Pouvoir: que je puisse",
+            "- Savoir: que je sache"
+          ],
+          "erreurs_frequentes": [
+            "Confondre indicatif et subjonctif",
+            "Oublier le subjonctif après certaines conjonctions (bien que, pour que...)",
+            "Se tromper sur les verbes irréguliers"
+          ],
+          "exemples": [
+            {
+              "enonce": "Il faut que tu (venir) demain.",
+              "solution_guidee": "Subjonctif après 'il faut que'. Venir → que je vienne. Donc: Il faut que tu viennes."
+            },
+            {
+              "enonce": "Je doute qu'il (pouvoir) réussir.",
+              "solution_guidee": "Subjonctif après 'douter que'. Pouvoir → puisse. Donc: Je doute qu'il puisse réussir."
+            }
+          ],
+          "declencheurs_subjonctif": [
+            "Volonté: vouloir que, souhaiter que, désirer que",
+            "Doute: douter que, ne pas croire que",
+            "Nécessité: il faut que, il est nécessaire que",
+            "Sentiment: avoir peur que, regretter que, être content que",
+            "Conjonctions: bien que, pour que, avant que, à moins que"
+          ],
+          "astuces_foxie": [
+            "Après 'que' + expression de doute/volonté/sentiment → subjonctif",
+            "Nous et vous au subjonctif = imparfait (-ions, -iez)",
+            "En cas de doute, regarde si c'est un fait (indicatif) ou une incertitude (subjonctif)"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qui déclenche le subjonctif ici ?",
+            "C'est un fait certain ou une possibilité/souhait ?",
+            "Quel est le radical pour ce verbe au subjonctif ?"
+          ],
+          "prerequis": ["Présent de l'indicatif", "Imparfait"],
+          "mots_cles": ["subjonctif", "mode", "que", "souhait", "doute", "nécessité"]
+        },
+        
+        {
+          "id": "4eme-fr-002",
+          "niveau": "4ème",
+          "matiere": "français",
+          "chapitre": "Analyse littéraire",
+          "concept": "Les figures de style",
+          "definition": "Les figures de style sont des procédés d'écriture qui permettent d'embellir le texte, de créer des effets, d'exprimer des idées de façon originale.",
+          "methode": [
+            "FIGURES DE RESSEMBLANCE:",
+            "- Comparaison: rapprochement avec 'comme', 'tel', 'semblable à'",
+            "- Métaphore: comparaison sans outil ('cet homme est un lion')",
+            "- Personnification: donner des traits humains à un objet/animal",
+            "",
+            "FIGURES D'OPPOSITION:",
+            "- Antithèse: opposer deux idées",
+            "- Oxymore: associer deux mots contradictoires ('obscure clarté')",
+            "",
+            "FIGURES D'AMPLIFICATION:",
+            "- Hyperbole: exagération ('mourir de faim')",
+            "- Anaphore: répétition en début de phrase",
+            "- Gradation: énumération croissante ou décroissante"
+          ],
+          "erreurs_frequentes": [
+            "Confondre comparaison et métaphore",
+            "Ne pas voir l'effet produit par la figure",
+            "Confondre oxymore et antithèse"
+          ],
+          "exemples": [
+            {
+              "enonce": "Identifier: 'Il est rusé comme un renard'",
+              "solution_guidee": "Comparaison (présence de 'comme'). Effet: souligne l'intelligence/ruse."
+            },
+            {
+              "enonce": "Identifier: 'Cette fille est un ange'",
+              "solution_guidee": "Métaphore (pas d'outil de comparaison). Effet: souligne la bonté/pureté."
+            },
+            {
+              "enonce": "Identifier: 'un silence assourdissant'",
+              "solution_guidee": "Oxymore (silence + assourdissant = contradiction). Effet: paradoxe, intensité."
+            }
+          ],
+          "astuces_foxie": [
+            "Comparaison = AVEC outil (comme, tel). Métaphore = SANS outil",
+            "Toujours analyser l'EFFET produit, pas juste identifier",
+            "Oxymore = 2 mots collés contradictoires. Antithèse = 2 idées opposées dans la phrase"
+          ],
+          "questions_socratiques": [
+            "Y a-t-il un mot de comparaison ?",
+            "Quel effet l'auteur cherche-t-il à produire ?",
+            "Ces deux termes sont-ils compatibles ou contradictoires ?"
+          ],
+          "prerequis": ["Lecture analytique"],
+          "mots_cles": ["figure de style", "comparaison", "métaphore", "personnification", "hyperbole", "oxymore", "antithèse"]
+        },
+        
+        {
+          "id": "4eme-fr-003",
+          "niveau": "4ème",
+          "matiere": "français",
+          "chapitre": "Argumentation",
+          "concept": "Construire une argumentation",
+          "definition": "Argumenter, c'est défendre une thèse (opinion) à l'aide d'arguments (raisons) et d'exemples (preuves concrètes).",
+          "methode": [
+            "Structure d'un paragraphe argumentatif:",
+            "1. ARGUMENT: idée qui soutient ta thèse",
+            "2. EXPLICATION: développe ton argument",
+            "3. EXEMPLE: cas concret qui illustre",
+            "4. CONCLUSION: lien avec la thèse",
+            "",
+            "Structure d'un texte argumentatif:",
+            "- Introduction: présente le sujet et ta thèse",
+            "- Développement: 2-3 arguments avec exemples",
+            "- Conclusion: résume et ouvre",
+            "",
+            "Connecteurs logiques:",
+            "- Ajout: de plus, en outre, par ailleurs",
+            "- Opposition: mais, cependant, toutefois",
+            "- Cause: car, parce que, en effet",
+            "- Conséquence: donc, ainsi, par conséquent"
+          ],
+          "erreurs_frequentes": [
+            "Confondre argument et exemple",
+            "Oublier d'illustrer les arguments",
+            "Manque de connecteurs logiques",
+            "Arguments qui ne soutiennent pas vraiment la thèse"
+          ],
+          "exemples": [
+            {
+              "enonce": "Thèse: 'Les réseaux sociaux sont dangereux pour les jeunes'",
+              "solution_guidee": "Argument 1: Ils créent une addiction. Explication: Les notifications constantes captent l'attention. Exemple: Selon une étude, un ado consulte son téléphone 150 fois/jour."
+            }
+          ],
+          "astuces_foxie": [
+            "Argument = POURQUOI tu penses ça. Exemple = PREUVE concrète.",
+            "1 paragraphe = 1 argument + 1 exemple minimum",
+            "Les connecteurs = la colle qui tient ton texte"
+          ],
+          "questions_socratiques": [
+            "Quelle est ta thèse exactement ?",
+            "Cet argument soutient-il vraiment ta thèse ?",
+            "As-tu un exemple concret pour illustrer ?"
+          ],
+          "prerequis": ["Rédaction", "Lecture de textes argumentatifs"],
+          "mots_cles": ["argumentation", "thèse", "argument", "exemple", "connecteur logique"]
+        }
+      ]
+    }
+  }
+}

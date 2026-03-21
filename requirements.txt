@@ -1,0 +1,25 @@
+# EduFamily Backend - Dépendances Python
+# =====================================
+
+# Framework web
+flask==3.0.0
+flask-cors==4.0.0
+
+# API Claude
+anthropic==0.39.0
+
+# Traitement d'images
+Pillow==10.1.0
+
+# Variables d'environnement
+python-dotenv==1.0.0
+
+# Sécurité (pour la production)
+bcrypt==4.1.1
+
+# Serveur de production
+gunicorn==21.2.0
+
+# Tests
+pytest==7.4.3
+pytest-flask==1.3.0

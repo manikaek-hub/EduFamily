@@ -24,7 +24,12 @@
       "WebFetch(domain:www.editions-bordas.fr)",
       "WebFetch(domain:www.calameo.com)",
       "WebFetch(domain:college.editions-bordas.fr)",
-      "Bash(git status:*)"
+      "Bash(git status:*)",
+      "Bash(brew install:*)",
+      "Bash(gh auth:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

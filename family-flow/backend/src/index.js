@@ -23,6 +23,19 @@ app.get('/api/health', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3002;
-app.listen(PORT, () => {
-  console.log(`Family Flow API running on http://localhost:${PORT}`);
+const HOST = process.env.HOST || '0.0.0.0'; // Listen on all interfaces for mobile access
+app.listen(PORT, HOST, () => {
+  console.log(`Family Flow API running on http://${HOST}:${PORT}`);
+  // Show local network URL for mobile access
+  try {
+    const os = require('os');
+    const nets = os.networkInterfaces();
+    for (const name of Object.keys(nets)) {
+      for (const net of nets[name]) {
+        if (net.family === 'IPv4' && !net.internal) {
+          console.log(`  Mobile: http://${net.address}:${PORT}`);
+        }
+      }
+    }
+  } catch {}
 });

@@ -21,10 +21,21 @@ router.get('/sessions', (req, res) => {
   let sessions;
   if (memberId) {
     sessions = db.prepare(
-      'SELECT * FROM homework_sessions WHERE member_id = ? ORDER BY started_at DESC'
+      `SELECT hs.*, COUNT(hm.id) as message_count
+       FROM homework_sessions hs
+       LEFT JOIN homework_messages hm ON hs.id = hm.session_id
+       WHERE hs.member_id = ?
+       GROUP BY hs.id
+       ORDER BY hs.started_at DESC`
     ).all(memberId);
   } else {
-    sessions = db.prepare('SELECT * FROM homework_sessions ORDER BY started_at DESC').all();
+    sessions = db.prepare(
+      `SELECT hs.*, COUNT(hm.id) as message_count
+       FROM homework_sessions hs
+       LEFT JOIN homework_messages hm ON hs.id = hm.session_id
+       GROUP BY hs.id
+       ORDER BY hs.started_at DESC`
+    ).all();
   }
   res.json({ success: true, sessions });
 });

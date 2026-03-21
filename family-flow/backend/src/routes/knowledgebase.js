@@ -92,6 +92,32 @@ router.get('/quiz-context', (req, res) => {
   res.json({ success: true, children: context });
 });
 
+// POST /api/kb/homework - Add manual homework entry (for Victoire + others not on EcoleDirecte)
+router.post('/homework', (req, res) => {
+  const { memberId, subject, description, due_date } = req.body;
+  if (!memberId || !subject || !description || !due_date) {
+    return res.status(400).json({ success: false, error: 'Champs requis manquants' });
+  }
+  try {
+    db.prepare(
+      'INSERT OR IGNORE INTO kb_homework (member_id, subject, description, due_date) VALUES (?, ?, ?, ?)'
+    ).run(memberId, subject, description, due_date);
+    res.json({ success: true });
+  } catch (e) {
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
+// DELETE /api/kb/homework/:id - Delete a manual homework entry
+router.delete('/homework/:id', (req, res) => {
+  try {
+    db.prepare('DELETE FROM kb_homework WHERE id = ?').run(req.params.id);
+    res.json({ success: true });
+  } catch (e) {
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
 // GET /api/kb/sync-status - Get sync log
 router.get('/sync-status', (req, res) => {
   const logs = db.prepare(

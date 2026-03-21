@@ -15,6 +15,7 @@ app.use('/api/quiz', require('./routes/quiz'));
 app.use('/api/ecoledirecte', require('./routes/ecoledirecte'));
 app.use('/api/kb', require('./routes/knowledgebase'));
 app.use('/api/revision', require('./routes/revision'));
+app.use('/api/notifications', require('./routes/notifications'));
 
 // Health check
 app.get('/api/health', (req, res) => {

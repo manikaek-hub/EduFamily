@@ -107,10 +107,8 @@ async function fetchGtk() {
 
 // Step 2: Login
 async function login(username, password, faData = null) {
-  // Only fetch fresh GTK if we don't have one or if this is not a re-login with faData
-  if (!gtkToken || !faData) {
-    await fetchGtk();
-  }
+  // Always fetch fresh GTK before login
+  await fetchGtk();
 
   const loginData = {
     identifiant: username,
@@ -276,7 +274,11 @@ async function submitDoubleAuthAnswer(username, password, rawAnswer) {
     // Clean up pending session
     delete sessions[`_pending_${username}`];
 
-    // Re-login with cn/cv
+    // Wait a moment then re-login with fresh GTK + cn/cv
+    await new Promise(r => setTimeout(r, 1000));
+    // Force fresh GTK for the re-login
+    gtkToken = null;
+    gtkCookies = null;
     return await login(username, password, faData);
   }
 

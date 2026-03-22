@@ -77,6 +77,14 @@ const migrations = [
     updated_at      TEXT DEFAULT (datetime('now')),
     UNIQUE(member_id, subject)
   )`,
+  // --- Agent 7: Coach Parent (bilans) ---
+  `CREATE TABLE IF NOT EXISTS parent_reports (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    member_id   INTEGER NOT NULL REFERENCES members(id),
+    report_data TEXT NOT NULL,
+    week_start  TEXT,
+    created_at  TEXT DEFAULT (datetime('now'))
+  )`,
 ];
 for (const sql of migrations) {
   try { db.exec(sql); } catch {}

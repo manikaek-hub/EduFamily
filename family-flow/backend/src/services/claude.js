@@ -6,7 +6,7 @@ const anthropic = new Anthropic({
 
 async function sendMessage(systemPrompt, messages, maxTokens = 1024) {
   const response = await anthropic.messages.create({
-    model: 'claude-sonnet-4-20250514',
+    model: 'claude-haiku-4-5-20251001',  // Haiku = 10x plus rapide pour le chat
     max_tokens: maxTokens,
     system: systemPrompt,
     messages,

@@ -24,6 +24,25 @@ app.use('/api/routine', require('./routes/routine'));
 app.use('/api/profile', require('./routes/profile'));
 app.use('/api/parent', require('./routes/parent'));
 app.use('/api/avatar', require('./routes/avatar'));
+app.use('/api/feedback', require('./routes/feedback'));
+
+// Agent d'amélioration continue — endpoint d'analyse
+const { runAnalysis, getTrends } = require('./agents/improvementAgent');
+app.post('/api/feedback/analyze', async (req, res) => {
+  try {
+    const result = await runAnalysis();
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+app.get('/api/feedback/trends', (req, res) => {
+  try {
+    res.json(getTrends());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 // Health check
 app.get('/api/health', (req, res) => {

@@ -29,7 +29,12 @@
       "Bash(gh auth:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(xargs ls:*)",
+      "Bash(timeout 5 node -e \"require\\(''./src/services/prompts''\\); require\\(''./src/routes/quiz''\\); console.log\\(''OK''\\);\")",
+      "Bash(node -e \"require\\(''./src/services/prompts''\\); require\\(''./src/routes/quiz''\\); console.log\\(''OK''\\);\")",
+      "Bash(ipconfig getifaddr:*)",
+      "Bash(curl -s http://localhost:3002/api/health)"
     ]
   }
 }

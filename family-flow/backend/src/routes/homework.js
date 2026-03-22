@@ -142,7 +142,7 @@ Ne pose PAS de question difficile maintenant — redonne-lui confiance d'abord.\
       const styleSection = styleInstruction ? `\n\n[STYLE D'APPRENTISSAGE]\n${styleInstruction}\n` : '';
       systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx) + styleSection + engagementHint + recentErrorsHint;
     }
-    const response = await sendMessage(systemPrompt, history);
+    const response = await sendMessage(systemPrompt, history, 350);
 
     // Auto-add topic to KB from this conversation
     if (detectedSubject && message.length > 10) {

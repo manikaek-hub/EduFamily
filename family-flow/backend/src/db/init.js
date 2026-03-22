@@ -85,6 +85,66 @@ const migrations = [
     week_start  TEXT,
     created_at  TEXT DEFAULT (datetime('now'))
   )`,
+  // === BOUCLE D'AMELIORATION CONTINUE ===
+
+  // Feedback terrain : ce que remontent les enfants après chaque exercice
+  `CREATE TABLE IF NOT EXISTS feedback (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    member_id   INTEGER NOT NULL REFERENCES members(id),
+    session_id  INTEGER REFERENCES homework_sessions(id),
+    type        TEXT NOT NULL CHECK(type IN ('difficulty','bug','idea','emotion','content')),
+    rating      INTEGER CHECK(rating BETWEEN 1 AND 5),
+    comment     TEXT,
+    context     TEXT,
+    subject     TEXT,
+    topic       TEXT,
+    processed   INTEGER DEFAULT 0,
+    created_at  TEXT DEFAULT (datetime('now'))
+  )`,
+
+  // Propositions d'amélioration générées par l'agent IA
+  `CREATE TABLE IF NOT EXISTS improvement_proposals (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    title       TEXT NOT NULL,
+    description TEXT NOT NULL,
+    category    TEXT NOT NULL CHECK(category IN ('content','difficulty','ux','engagement','new_feature','bug_fix')),
+    priority    TEXT NOT NULL CHECK(priority IN ('critical','high','medium','low')),
+    evidence    TEXT NOT NULL,
+    affected_members TEXT,
+    affected_subject TEXT,
+    proposed_action TEXT NOT NULL,
+    status      TEXT DEFAULT 'pending' CHECK(status IN ('pending','approved','rejected','deployed')),
+    feedback_ids TEXT,
+    creator_note TEXT,
+    created_at  TEXT DEFAULT (datetime('now')),
+    decided_at  TEXT,
+    deployed_at TEXT
+  )`,
+
+  // Récompenses pour les enfants qui donnent du feedback utile
+  `CREATE TABLE IF NOT EXISTS feedback_rewards (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    member_id   INTEGER NOT NULL REFERENCES members(id),
+    feedback_id INTEGER REFERENCES feedback(id),
+    reward_type TEXT NOT NULL CHECK(reward_type IN ('foxie_star','badge','credit','title')),
+    reward_value TEXT NOT NULL,
+    reason      TEXT,
+    created_at  TEXT DEFAULT (datetime('now'))
+  )`,
+
+  // Stats agrégées pour le dashboard créateur
+  `CREATE TABLE IF NOT EXISTS feedback_stats (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    period      TEXT NOT NULL,
+    total_feedback INTEGER DEFAULT 0,
+    avg_difficulty_rating REAL,
+    top_issues  TEXT,
+    top_subjects TEXT,
+    engagement_trend TEXT,
+    proposals_generated INTEGER DEFAULT 0,
+    proposals_approved INTEGER DEFAULT 0,
+    created_at  TEXT DEFAULT (datetime('now'))
+  )`,
 ];
 for (const sql of migrations) {
   try { db.exec(sql); } catch {}

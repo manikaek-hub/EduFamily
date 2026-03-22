@@ -177,6 +177,16 @@ async function syncAll(username, studentId, memberId) {
   return { success: true, homework: hwResult, timetable: ttResult, grades: grResult };
 }
 
+// Subjects that are quizzable (exclude arts plastiques, EPS, musique, etc.)
+const QUIZZABLE_SUBJECTS = /math|fran[cç]|hist|g[eé]o|scien|physi|chimi|svt|angl|espag|techno|latin|philo|ses|lv/i;
+const NON_QUIZZABLE = /musiq|sport|eps|arts\s*plast|vie\s*de\s*classe|permanence|étude|accompagnement/i;
+
+function isQuizzableSubject(subject) {
+  if (!subject) return false;
+  if (NON_QUIZZABLE.test(subject)) return false;
+  return true; // Keep most subjects, only exclude obvious non-quizzables
+}
+
 // Get what a child studied today (for quiz generation)
 function getTodayTopics(memberId) {
   const today = new Date();
@@ -185,17 +195,17 @@ function getTodayTopics(memberId) {
 
   const todayClasses = db.prepare(
     'SELECT DISTINCT subject, teacher FROM kb_timetable WHERE member_id = ? AND day_of_week = ? ORDER BY start_time'
-  ).all(memberId, dayOfWeek);
+  ).all(memberId, dayOfWeek).filter(c => isQuizzableSubject(c.subject));
 
   const recentHw = db.prepare(
-    'SELECT subject, description FROM kb_homework WHERE member_id = ? AND due_date >= ? ORDER BY due_date ASC LIMIT 10'
-  ).all(memberId, todayStr);
+    'SELECT subject, description FROM kb_homework WHERE member_id = ? AND due_date >= ? ORDER BY due_date ASC LIMIT 20'
+  ).all(memberId, todayStr).filter(hw => isQuizzableSubject(hw.subject));
 
   const recentTopics = db.prepare(
-    'SELECT subject, topic, description FROM kb_topics WHERE member_id = ? ORDER BY date_seen DESC LIMIT 15'
-  ).all(memberId);
+    'SELECT subject, topic, description FROM kb_topics WHERE member_id = ? ORDER BY date_seen DESC LIMIT 30'
+  ).all(memberId).filter(t => isQuizzableSubject(t.subject)).slice(0, 15);
 
-  return { todayClasses, recentHomework: recentHw, recentTopics };
+  return { todayClasses, recentHomework: recentHw.slice(0, 10), recentTopics };
 }
 
 // Get context for Foxie (homework helper) - what the child is currently working on

@@ -1,0 +1,5142 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "generated": "2026-03-22",
+    "source": "Programme officiel Éducation Nationale française - Eduscol / Bulletin Officiel",
+    "references": [
+      "BO n°31 du 30/07/2020 - Programmes Cycles 2, 3, 4",
+      "BO n°25 du 22/06/2023 - Programmes de français Cycle 2",
+      "BO n°16 du 17/04/2025 - Programmes de mathématiques",
+      "BO n°40 du 31/10/2024 - Enseignement moral et civique"
+    ],
+    "purpose": "Family Flow - Knowledge base pédagogique pour Foxie",
+    "levels": [
+      "CP",
+      "CE1",
+      "CE2",
+      "CM1",
+      "CM2",
+      "6ème",
+      "5ème",
+      "4ème",
+      "3ème"
+    ],
+    "total_fiches": 117
+  },
+  "curriculum": {
+    "CP": {
+      "level_info": {
+        "age": "6-7 ans",
+        "cycle": "Cycle 2",
+        "tone": "Très encourageant, vocabulaire simple, exemples concrets du quotidien"
+      },
+      "maths": [
+        {
+          "id": "cp-math-001",
+          "niveau": "CP",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Connaître les nombres jusqu'à 100",
+          "definition": "Au CP, tu apprends à compter, lire et écrire les nombres de 0 à 100. Tu découvres les dizaines et les unités.",
+          "methode": [
+            "1. Apprends à compter de 1 en 1 jusqu'à 100",
+            "2. Comprends que 10 unités = 1 dizaine",
+            "3. Décompose les nombres : 34 = 3 dizaines et 4 unités",
+            "4. Compare les nombres avec < > ="
+          ],
+          "erreurs_frequentes": [
+            "Confondre dizaines et unités",
+            "Inverser les chiffres (écrire 31 au lieu de 13)",
+            "Ne pas savoir compter de 10 en 10"
+          ],
+          "exemples": [
+            {
+              "enonce": "Combien y a-t-il de dizaines dans 45 ?",
+              "solution_guidee": "45 = 4 dizaines et 5 unités, donc 4 dizaines."
+            },
+            {
+              "enonce": "Range dans l'ordre : 23, 15, 31",
+              "solution_guidee": "15 < 23 < 31"
+            }
+          ],
+          "astuces_foxie": [
+            "Utilise tes doigts pour compter les unités !",
+            "Imagine des paquets de 10 bonbons pour les dizaines"
+          ],
+          "questions_socratiques": [
+            "Combien de dizaines dans ce nombre ?",
+            "Quel nombre vient juste après ?",
+            "Lequel est le plus grand ?"
+          ],
+          "prerequis": [
+            "Compter jusqu'à 10"
+          ],
+          "mots_cles": [
+            "nombre",
+            "dizaine",
+            "unité",
+            "compter",
+            "ranger",
+            "comparer"
+          ]
+        },
+        {
+          "id": "cp-math-002",
+          "niveau": "CP",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Addition de petits nombres",
+          "definition": "Additionner, c'est mettre ensemble deux quantités. Au CP, tu apprends à additionner des nombres dont le total ne dépasse pas 100.",
+          "methode": [
+            "1. Lis bien les deux nombres à additionner",
+            "2. Tu peux utiliser tes doigts, des cubes ou dessiner",
+            "3. Commence par le plus grand nombre et ajoute le petit",
+            "4. Vérifie ton résultat en recomptant"
+          ],
+          "erreurs_frequentes": [
+            "Compter deux fois le premier nombre",
+            "Oublier un nombre quand on surcompte",
+            "Se tromper dans les compléments à 10"
+          ],
+          "exemples": [
+            {
+              "enonce": "7 + 5",
+              "solution_guidee": "Je pars de 7 et j'ajoute 5 : 8, 9, 10, 11, 12. C'est 12 !"
+            },
+            {
+              "enonce": "12 + 6",
+              "solution_guidee": "Je pars de 12 et j'ajoute 6 : 13, 14, 15, 16, 17, 18. C'est 18 !"
+            }
+          ],
+          "astuces_foxie": [
+            "Apprends par cœur les compléments à 10 : 3+7, 4+6, 5+5...",
+            "Commence toujours par le plus grand nombre, c'est plus facile !"
+          ],
+          "questions_socratiques": [
+            "Par quel nombre tu vas commencer ?",
+            "Combien tu dois ajouter ?",
+            "Comment tu peux vérifier ?"
+          ],
+          "prerequis": [
+            "Compter jusqu'à 20"
+          ],
+          "mots_cles": [
+            "addition",
+            "ajouter",
+            "somme",
+            "plus",
+            "compléments à 10"
+          ]
+        },
+        {
+          "id": "cp-math-003",
+          "niveau": "CP",
+          "matiere": "maths",
+          "chapitre": "Grandeurs et mesures",
+          "concept": "Mesurer des longueurs",
+          "definition": "Mesurer une longueur, c'est trouver combien elle est grande en utilisant une règle ou un autre outil.",
+          "methode": [
+            "1. Place bien le 0 de la règle au début de l'objet",
+            "2. Lis le nombre au bout de l'objet",
+            "3. N'oublie pas l'unité (cm)"
+          ],
+          "erreurs_frequentes": [
+            "Ne pas placer le 0 au début",
+            "Lire le mauvais trait sur la règle",
+            "Oublier l'unité"
+          ],
+          "exemples": [
+            {
+              "enonce": "Mesure ton crayon",
+              "solution_guidee": "Je place le 0 au bout du crayon, je lis au bout : 15 cm"
+            }
+          ],
+          "astuces_foxie": [
+            "Le 0 de la règle, c'est le point de départ de ta mesure !"
+          ],
+          "questions_socratiques": [
+            "Où places-tu le début de ta règle ?",
+            "Quelle unité utilises-tu ?"
+          ],
+          "prerequis": [
+            "Comparer des longueurs"
+          ],
+          "mots_cles": [
+            "mesure",
+            "longueur",
+            "centimètre",
+            "règle",
+            "cm"
+          ]
+        },
+        {
+          "id": "cp-math-004",
+          "niveau": "CP",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Reconnaître des formes géométriques simples",
+          "definition": "Les formes de base sont le carré (4 côtés égaux), le rectangle (2 côtés longs et 2 côtés courts), le triangle (3 côtés) et le cercle (tout rond).",
+          "methode": [
+            "1. Compte les côtés de la forme",
+            "2. Regarde si les côtés sont tous pareils ou pas",
+            "3. Le carré a 4 côtés tous pareils",
+            "4. Le rectangle a les côtés qui vont par 2",
+            "5. Le triangle a 3 côtés",
+            "6. Le cercle est tout rond, pas de côté"
+          ],
+          "erreurs_frequentes": [
+            "Confondre carré et rectangle",
+            "Ne pas reconnaître une forme tournée"
+          ],
+          "exemples": [
+            {
+              "enonce": "Quelle forme a 3 côtés ?",
+              "solution_guidee": "C'est un triangle !"
+            }
+          ],
+          "astuces_foxie": [
+            "Un carré, c'est un rectangle spécial où TOUS les côtés sont pareils !"
+          ],
+          "questions_socratiques": [
+            "Combien de côtés tu comptes ?",
+            "Est-ce que tous les côtés sont pareils ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "carré",
+            "rectangle",
+            "triangle",
+            "cercle",
+            "forme",
+            "côté",
+            "géométrie"
+          ]
+        }
+      ],
+      "francais": [
+        {
+          "id": "cp-fr-001",
+          "niveau": "CP",
+          "matiere": "francais",
+          "chapitre": "Lecture - Identifier les mots",
+          "concept": "Correspondances graphèmes-phonèmes",
+          "definition": "Chaque lettre ou groupe de lettres fait un son. Apprendre à lire, c'est apprendre quel son fait chaque lettre.",
+          "methode": [
+            "1. Regarde la lettre ou le groupe de lettres",
+            "2. Dis le son que ça fait (pas le nom de la lettre)",
+            "3. Assemble les sons pour lire le mot : ch-a-t = chat",
+            "4. Lis le mot en entier"
+          ],
+          "erreurs_frequentes": [
+            "Confondre le nom de la lettre et son son (H ne fait pas 'ache')",
+            "Ne pas reconnaître les sons complexes (ou, an, on, in)",
+            "Confondre b/d, p/q"
+          ],
+          "exemples": [
+            {
+              "enonce": "Lis le mot : maman",
+              "solution_guidee": "m-a = ma, m-an = man → maman !"
+            }
+          ],
+          "astuces_foxie": [
+            "Quand tu vois 'ou', ça fait le son du loup : ouuuu !",
+            "Le 'ch' fait le son du train : ch-ch-ch !"
+          ],
+          "questions_socratiques": [
+            "Quel son fait cette lettre ?",
+            "Tu reconnais un son que tu connais déjà dans ce mot ?"
+          ],
+          "prerequis": [
+            "Connaître les lettres de l'alphabet"
+          ],
+          "mots_cles": [
+            "lettre",
+            "son",
+            "phonème",
+            "graphème",
+            "déchiffrer",
+            "syllabe",
+            "lire"
+          ]
+        },
+        {
+          "id": "cp-fr-002",
+          "niveau": "CP",
+          "matiere": "francais",
+          "chapitre": "Écriture",
+          "concept": "Écriture cursive",
+          "definition": "L'écriture cursive (attachée), c'est quand les lettres sont reliées entre elles. Au CP, tu apprends à écrire toutes les lettres en attaché.",
+          "methode": [
+            "1. Tiens bien ton crayon entre le pouce et l'index",
+            "2. Commence toujours par le point de départ de la lettre",
+            "3. Suis le modèle dans le bon sens",
+            "4. Les lettres doivent bien se poser sur la ligne"
+          ],
+          "erreurs_frequentes": [
+            "Mauvaise tenue du crayon",
+            "Lettres trop grandes ou trop petites",
+            "Ne pas lever le crayon pour les points et barres (i, t)"
+          ],
+          "exemples": [
+            {
+              "enonce": "Écris le mot 'chat' en cursive",
+              "solution_guidee": "Commence par le c, enchaîne avec h-a-t sans lever le crayon (sauf pour le t)"
+            }
+          ],
+          "astuces_foxie": [
+            "Imagine que ton crayon est un petit train qui roule sur les rails de la ligne !"
+          ],
+          "questions_socratiques": [
+            "Par où commence cette lettre ?",
+            "Est-ce que ta lettre touche bien la ligne ?"
+          ],
+          "prerequis": [
+            "Savoir tenir un crayon"
+          ],
+          "mots_cles": [
+            "écriture",
+            "cursive",
+            "attaché",
+            "lettre",
+            "crayon",
+            "majuscule",
+            "minuscule"
+          ]
+        },
+        {
+          "id": "cp-fr-003",
+          "niveau": "CP",
+          "matiere": "francais",
+          "chapitre": "Oral",
+          "concept": "Écouter pour comprendre",
+          "definition": "Bien écouter, c'est être attentif à ce que dit quelqu'un pour comprendre le message et pouvoir en parler après.",
+          "methode": [
+            "1. Regarde la personne qui parle",
+            "2. Écoute jusqu'au bout sans interrompre",
+            "3. Essaie de retenir les mots importants",
+            "4. Après, reformule ce que tu as compris"
+          ],
+          "erreurs_frequentes": [
+            "Couper la parole",
+            "Ne retenir que le début ou la fin",
+            "Se laisser distraire"
+          ],
+          "exemples": [
+            {
+              "enonce": "Après une histoire lue, dis ce qui s'est passé",
+              "solution_guidee": "Il y avait un personnage... il a fait... à la fin..."
+            }
+          ],
+          "astuces_foxie": [
+            "Imagine que tu enregistres l'histoire dans ta tête comme une petite vidéo !"
+          ],
+          "questions_socratiques": [
+            "De qui parle cette histoire ?",
+            "Qu'est-ce qui se passe au début ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "écouter",
+            "comprendre",
+            "oral",
+            "raconter",
+            "reformuler"
+          ]
+        }
+      ],
+      "questionner_le_monde": [
+        {
+          "id": "cp-qlm-001",
+          "niveau": "CP",
+          "matiere": "questionner_le_monde",
+          "chapitre": "Le temps",
+          "concept": "Se repérer dans le temps",
+          "definition": "Savoir se situer dans le temps, c'est connaître les jours de la semaine, les mois, les saisons, et comprendre hier/aujourd'hui/demain.",
+          "methode": [
+            "1. Apprends les 7 jours de la semaine dans l'ordre",
+            "2. Apprends les 12 mois de l'année",
+            "3. Connais les 4 saisons et ce qui les caractérise",
+            "4. Utilise un calendrier pour te repérer"
+          ],
+          "erreurs_frequentes": [
+            "Confondre l'ordre des jours",
+            "Ne pas savoir quel mois vient après",
+            "Confondre hier et demain"
+          ],
+          "exemples": [
+            {
+              "enonce": "Si on est mardi, quel jour était hier ?",
+              "solution_guidee": "Hier c'était lundi !"
+            }
+          ],
+          "astuces_foxie": [
+            "Chante la comptine des jours de la semaine !"
+          ],
+          "questions_socratiques": [
+            "Quel jour on est aujourd'hui ?",
+            "Et demain, ce sera quel jour ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "jour",
+            "semaine",
+            "mois",
+            "saison",
+            "calendrier",
+            "temps",
+            "hier",
+            "demain"
+          ]
+        },
+        {
+          "id": "cp-qlm-002",
+          "niveau": "CP",
+          "matiere": "questionner_le_monde",
+          "chapitre": "Le vivant",
+          "concept": "Les êtres vivants et leur milieu",
+          "definition": "Un être vivant naît, grandit, se reproduit et meurt. Les animaux et les plantes sont des êtres vivants. Les cailloux et les objets ne sont pas vivants.",
+          "methode": [
+            "1. Demande-toi : est-ce que ça grandit ?",
+            "2. Est-ce que ça a besoin de manger/boire ?",
+            "3. Est-ce que ça peut avoir des bébés ?",
+            "4. Si oui à ces 3 questions, c'est un être vivant !"
+          ],
+          "erreurs_frequentes": [
+            "Penser que le feu est vivant (il bouge mais ne naît pas)",
+            "Oublier que les plantes sont vivantes"
+          ],
+          "exemples": [
+            {
+              "enonce": "Le chat est-il un être vivant ?",
+              "solution_guidee": "Oui ! Il naît, grandit, mange, et peut avoir des chatons."
+            }
+          ],
+          "astuces_foxie": [
+            "Si ça grandit et ça mange, c'est vivant ! Comme moi, Foxie !"
+          ],
+          "questions_socratiques": [
+            "Est-ce que ça grandit ?",
+            "Est-ce que ça a besoin de nourriture ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "vivant",
+            "animal",
+            "plante",
+            "grandir",
+            "naître",
+            "milieu"
+          ]
+        }
+      ],
+      "emc": [
+        {
+          "id": "cp-emc-001",
+          "niveau": "CP",
+          "matiere": "emc",
+          "chapitre": "Respecter autrui",
+          "concept": "Les règles de vie en classe",
+          "definition": "Pour bien vivre ensemble, il faut respecter des règles : écouter les autres, lever la main, ne pas se moquer, être poli.",
+          "methode": [
+            "1. Écoute quand quelqu'un parle",
+            "2. Lève la main pour demander la parole",
+            "3. Respecte les affaires des autres",
+            "4. Dis 'merci', 'pardon', 's'il te plaît'"
+          ],
+          "erreurs_frequentes": [
+            "Couper la parole",
+            "Oublier de dire merci ou pardon"
+          ],
+          "exemples": [
+            {
+              "enonce": "Que fais-tu quand tu veux parler en classe ?",
+              "solution_guidee": "Je lève la main et j'attends que la maîtresse me donne la parole."
+            }
+          ],
+          "astuces_foxie": [
+            "Traite les autres comme tu aimerais qu'on te traite !"
+          ],
+          "questions_socratiques": [
+            "Comment te sentirais-tu si quelqu'un te coupait la parole ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "respect",
+            "règles",
+            "politesse",
+            "vivre ensemble",
+            "écouter"
+          ]
+        }
+      ]
+    },
+    "CE1": {
+      "level_info": {
+        "age": "7-8 ans",
+        "cycle": "Cycle 2",
+        "tone": "Très encourageant, vocabulaire simple, exemples concrets du quotidien"
+      },
+      "maths": [
+        {
+          "id": "ce1-math-001",
+          "niveau": "CE1",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les nombres jusqu'à 200",
+          "definition": "Au CE1, tu connais les nombres jusqu'à 200 et tu sais les décomposer en centaines, dizaines et unités.",
+          "methode": [
+            "1. 100 = 10 dizaines = 1 centaine",
+            "2. Décompose : 145 = 1 centaine + 4 dizaines + 5 unités",
+            "3. Compare avec < > = en regardant d'abord les centaines, puis les dizaines, puis les unités"
+          ],
+          "erreurs_frequentes": [
+            "Confondre 102 et 120",
+            "Oublier la centaine dans les décompositions"
+          ],
+          "exemples": [
+            {
+              "enonce": "Décompose 156",
+              "solution_guidee": "156 = 100 + 50 + 6 = 1c + 5d + 6u"
+            }
+          ],
+          "astuces_foxie": [
+            "Pense à des billets de 100€, des pièces de 10€ et des pièces de 1€ !"
+          ],
+          "questions_socratiques": [
+            "Combien de centaines ?",
+            "Combien de dizaines restantes ?"
+          ],
+          "prerequis": [
+            "Nombres jusqu'à 100"
+          ],
+          "mots_cles": [
+            "nombre",
+            "centaine",
+            "dizaine",
+            "unité",
+            "décomposer",
+            "comparer"
+          ]
+        },
+        {
+          "id": "ce1-math-002",
+          "niveau": "CE1",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Poser une addition sans retenue puis avec retenue",
+          "definition": "Poser une addition, c'est écrire les nombres en colonnes pour les additionner plus facilement.",
+          "methode": [
+            "1. Aligne bien les chiffres : unités sous unités",
+            "2. Additionne de droite à gauche",
+            "3. Si un total dépasse 9, écris l'unité et retiens la dizaine"
+          ],
+          "erreurs_frequentes": [
+            "Mal aligner les chiffres",
+            "Oublier la retenue"
+          ],
+          "exemples": [
+            {
+              "enonce": "34 + 28",
+              "solution_guidee": "4+8=12, j'écris 2 retenue 1. 3+2+1=6. Résultat : 62"
+            }
+          ],
+          "astuces_foxie": [
+            "La retenue, c'est un petit cadeau pour la colonne voisine !"
+          ],
+          "questions_socratiques": [
+            "Par quelle colonne tu commences ?",
+            "Que fais-tu si ça dépasse 9 ?"
+          ],
+          "prerequis": [
+            "Compter jusqu'à 100",
+            "Additionner mentalement"
+          ],
+          "mots_cles": [
+            "addition",
+            "poser",
+            "retenue",
+            "colonnes",
+            "somme"
+          ]
+        },
+        {
+          "id": "ce1-math-003",
+          "niveau": "CE1",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "La soustraction",
+          "definition": "Soustraire, c'est enlever une quantité d'une autre. Au CE1, tu apprends à poser des soustractions simples.",
+          "methode": [
+            "1. Écris le plus grand nombre en haut",
+            "2. Aligne les unités sous les unités",
+            "3. Soustrais de droite à gauche",
+            "4. Si le chiffre du haut est trop petit, emprunte à la colonne de gauche"
+          ],
+          "erreurs_frequentes": [
+            "Inverser le sens (soustraire le grand du petit)",
+            "Oublier l'emprunt"
+          ],
+          "exemples": [
+            {
+              "enonce": "47 - 23",
+              "solution_guidee": "7-3=4, 4-2=2. Résultat : 24"
+            }
+          ],
+          "astuces_foxie": [
+            "La soustraction, c'est le contraire de l'addition. Tu retires au lieu d'ajouter !"
+          ],
+          "questions_socratiques": [
+            "Quel nombre est le plus grand ?",
+            "Par quelle colonne commences-tu ?"
+          ],
+          "prerequis": [
+            "Addition"
+          ],
+          "mots_cles": [
+            "soustraction",
+            "enlever",
+            "différence",
+            "retirer",
+            "emprunt"
+          ]
+        },
+        {
+          "id": "ce1-math-004",
+          "niveau": "CE1",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Utiliser la règle pour tracer et mesurer",
+          "definition": "La règle sert à tracer des lignes droites et à mesurer des longueurs en centimètres.",
+          "methode": [
+            "1. Pour tracer : tiens bien ta règle, trace le long du bord",
+            "2. Pour mesurer : place le 0 au début, lis au bout"
+          ],
+          "erreurs_frequentes": [
+            "La règle bouge en traçant",
+            "Ne pas partir du 0"
+          ],
+          "exemples": [
+            {
+              "enonce": "Trace un segment de 8 cm",
+              "solution_guidee": "Place un point, mets le 0 dessus, trace jusqu'à 8 cm, mets un point."
+            }
+          ],
+          "astuces_foxie": [
+            "Appuie bien sur ta règle avec l'autre main pour qu'elle ne bouge pas !"
+          ],
+          "questions_socratiques": [
+            "Où places-tu le 0 ?",
+            "Quelle unité utilises-tu ?"
+          ],
+          "prerequis": [
+            "Connaître les nombres"
+          ],
+          "mots_cles": [
+            "règle",
+            "tracer",
+            "mesurer",
+            "segment",
+            "centimètre",
+            "droit"
+          ]
+        }
+      ],
+      "francais": [
+        {
+          "id": "ce1-fr-001",
+          "niveau": "CE1",
+          "matiere": "francais",
+          "chapitre": "Lecture - Comprendre un texte",
+          "concept": "Lire et comprendre un texte court",
+          "definition": "Comprendre un texte, c'est savoir de qui on parle, ce qui se passe, et dans quel ordre.",
+          "methode": [
+            "1. Lis le titre pour deviner le sujet",
+            "2. Lis le texte en entier une première fois",
+            "3. Relis si tu n'as pas tout compris",
+            "4. Cherche qui sont les personnages et ce qu'ils font",
+            "5. Essaie de raconter l'histoire avec tes mots"
+          ],
+          "erreurs_frequentes": [
+            "Lire trop vite sans comprendre",
+            "Ne pas relire les passages difficiles"
+          ],
+          "exemples": [
+            {
+              "enonce": "Après avoir lu un texte, réponds : Qui est le personnage principal ?",
+              "solution_guidee": "Je relis le début, le personnage principal est celui dont on parle le plus."
+            }
+          ],
+          "astuces_foxie": [
+            "Imagine l'histoire comme un petit film dans ta tête !"
+          ],
+          "questions_socratiques": [
+            "De qui parle le texte ?",
+            "Que se passe-t-il au début ?",
+            "Comment ça finit ?"
+          ],
+          "prerequis": [
+            "Déchiffrer les mots"
+          ],
+          "mots_cles": [
+            "lire",
+            "comprendre",
+            "texte",
+            "personnage",
+            "histoire",
+            "lecture"
+          ]
+        },
+        {
+          "id": "ce1-fr-002",
+          "niveau": "CE1",
+          "matiere": "francais",
+          "chapitre": "Grammaire",
+          "concept": "La phrase et le verbe",
+          "definition": "Une phrase commence par une majuscule et finit par un point. Le verbe, c'est le mot qui dit ce qu'on fait.",
+          "methode": [
+            "1. Une phrase = Majuscule + mots qui ont un sens + Point",
+            "2. Pour trouver le verbe, cherche le mot qui change quand tu changes le temps",
+            "3. Le verbe dit l'action (manger, courir) ou l'état (être, avoir)"
+          ],
+          "erreurs_frequentes": [
+            "Oublier la majuscule ou le point",
+            "Confondre le verbe avec un nom d'action"
+          ],
+          "exemples": [
+            {
+              "enonce": "Trouve le verbe : Le chat mange sa pâtée.",
+              "solution_guidee": "Le verbe est 'mange' car c'est l'action que fait le chat."
+            }
+          ],
+          "astuces_foxie": [
+            "Le verbe, c'est le mot d'action ! C'est le mot qui dit ce qu'on fait."
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce que fait le personnage ?",
+            "Quel mot change si tu parles d'hier ?"
+          ],
+          "prerequis": [
+            "Savoir lire"
+          ],
+          "mots_cles": [
+            "phrase",
+            "verbe",
+            "majuscule",
+            "point",
+            "grammaire",
+            "action"
+          ]
+        },
+        {
+          "id": "ce1-fr-003",
+          "niveau": "CE1",
+          "matiere": "francais",
+          "chapitre": "Orthographe",
+          "concept": "Les sons et leur écriture",
+          "definition": "Un même son peut s'écrire de plusieurs façons. Par exemple, le son [o] peut s'écrire o, au, eau.",
+          "methode": [
+            "1. Écoute bien le son dans le mot",
+            "2. Rappelle-toi les différentes façons de l'écrire",
+            "3. Vérifie avec un mot que tu connais"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les écritures du même son",
+            "Oublier les lettres muettes"
+          ],
+          "exemples": [
+            {
+              "enonce": "Le son [o] dans 'bateau'",
+              "solution_guidee": "Dans bateau, le son [o] s'écrit 'eau'."
+            }
+          ],
+          "astuces_foxie": [
+            "Le son [o] a 3 costumes : o, au, eau. Comme un déguisement !"
+          ],
+          "questions_socratiques": [
+            "Quel son tu entends ?",
+            "Tu connais un autre mot avec le même son ?"
+          ],
+          "prerequis": [
+            "Correspondances graphèmes-phonèmes"
+          ],
+          "mots_cles": [
+            "son",
+            "orthographe",
+            "écrire",
+            "phonème",
+            "graphème",
+            "dictée"
+          ]
+        }
+      ],
+      "questionner_le_monde": [
+        {
+          "id": "ce1-qlm-001",
+          "niveau": "CE1",
+          "matiere": "questionner_le_monde",
+          "chapitre": "L'espace",
+          "concept": "Se repérer dans l'espace proche",
+          "definition": "Se repérer dans l'espace, c'est savoir utiliser les mots comme devant/derrière, gauche/droite, dessus/dessous, et lire un plan simple.",
+          "methode": [
+            "1. Apprends les mots de position : devant, derrière, gauche, droite",
+            "2. Observe ton environnement : qu'est-ce qui est à côté de quoi ?",
+            "3. Essaie de dessiner un plan de ta classe ou ta chambre"
+          ],
+          "erreurs_frequentes": [
+            "Confondre gauche et droite",
+            "Difficulté avec le plan vu de dessus"
+          ],
+          "exemples": [
+            {
+              "enonce": "Décris où est la porte dans ta classe",
+              "solution_guidee": "La porte est à gauche du tableau, au fond de la classe."
+            }
+          ],
+          "astuces_foxie": [
+            "Ta main gauche fait un L quand tu tends le pouce !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qui est à ta droite ?",
+            "Si tu te retournes, où est la fenêtre ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "espace",
+            "gauche",
+            "droite",
+            "plan",
+            "devant",
+            "derrière",
+            "repérer"
+          ]
+        }
+      ],
+      "emc": [
+        {
+          "id": "ce1-emc-001",
+          "niveau": "CE1",
+          "matiere": "emc",
+          "chapitre": "Respecter autrui",
+          "concept": "L'égalité filles-garçons",
+          "definition": "Les filles et les garçons ont les mêmes droits et peuvent faire les mêmes choses : jouer aux mêmes jeux, faire les mêmes métiers.",
+          "methode": [
+            "1. Tous les enfants ont les mêmes droits",
+            "2. Il n'y a pas de jeux 'pour les filles' ou 'pour les garçons'",
+            "3. Chacun peut choisir ce qu'il aime"
+          ],
+          "erreurs_frequentes": [
+            "Croire que certains métiers sont réservés aux garçons ou aux filles"
+          ],
+          "exemples": [
+            {
+              "enonce": "Est-ce qu'un garçon peut danser ?",
+              "solution_guidee": "Bien sûr ! La danse est pour tout le monde."
+            }
+          ],
+          "astuces_foxie": [
+            "Chacun est libre de choisir ce qu'il aime, garçon ou fille !"
+          ],
+          "questions_socratiques": [
+            "Est-ce que les filles ont les mêmes droits ?",
+            "Un garçon peut-il aimer le rose ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "égalité",
+            "filles",
+            "garçons",
+            "droits",
+            "respect",
+            "différence"
+          ]
+        }
+      ]
+    },
+    "CE2": {
+      "level_info": {
+        "age": "8-9 ans",
+        "cycle": "Cycle 2",
+        "tone": "Très encourageant, vocabulaire simple, exemples concrets du quotidien",
+        "child": "Victoire"
+      },
+      "maths": [
+        {
+          "id": "ce2-math-001",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Addition et soustraction",
+          "concept": "Poser et calculer une addition avec retenue",
+          "definition": "L'addition, c'est quand on met ensemble deux nombres pour en faire un plus grand. La retenue, c'est quand la somme d'une colonne dépasse 9.",
+          "methode": [
+            "1. Écris les deux nombres l'un sous l'autre, en alignant bien les unités, les dizaines, les centaines",
+            "2. Commence TOUJOURS par la colonne de droite (les unités)",
+            "3. Additionne les chiffres de la colonne",
+            "4. Si le résultat est 10 ou plus, écris le chiffre des unités et retiens la dizaine",
+            "5. Passe à la colonne suivante et n'oublie pas d'ajouter la retenue !",
+            "6. Continue jusqu'à la dernière colonne"
+          ],
+          "erreurs_frequentes": [
+            "Oublier la retenue",
+            "Mal aligner les chiffres",
+            "Commencer par la gauche"
+          ],
+          "exemples": [
+            {
+              "enonce": "45 + 38",
+              "solution_guidee": "Unités: 5+8=13, j'écris 3 et retenue 1. Dizaines: 4+3+1=8. Résultat: 83"
+            },
+            {
+              "enonce": "156 + 87",
+              "solution_guidee": "Unités: 6+7=13, retenue 1. Dizaines: 5+8+1=14, retenue 1. Centaines: 1+0+1=2. Résultat: 243"
+            }
+          ],
+          "astuces_foxie": [
+            "Les retenues sont des petits cadeaux pour la colonne d'à côté !"
+          ],
+          "questions_socratiques": [
+            "Par quelle colonne tu commences ?",
+            "Qu'est-ce que tu fais quand ça dépasse 9 ?"
+          ],
+          "prerequis": [
+            "Compter jusqu'à 100",
+            "Notion d'unités et dizaines"
+          ],
+          "mots_cles": [
+            "addition",
+            "retenue",
+            "poser",
+            "calculer",
+            "somme",
+            "total"
+          ]
+        },
+        {
+          "id": "ce2-math-002",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Addition et soustraction",
+          "concept": "Poser et calculer une soustraction avec retenue",
+          "definition": "La soustraction, c'est quand on enlève un nombre d'un autre. La retenue (ou emprunt), c'est quand le chiffre du haut est plus petit que celui du bas.",
+          "methode": [
+            "1. Écris le plus grand nombre en haut",
+            "2. Aligne les unités sous les unités",
+            "3. Commence par la droite",
+            "4. Si le chiffre du haut est plus petit, emprunte 1 à la colonne de gauche",
+            "5. N'oublie pas de barrer et réduire de 1 le chiffre emprunté"
+          ],
+          "erreurs_frequentes": [
+            "Soustraire le petit du grand dans une colonne",
+            "Oublier de barrer après l'emprunt"
+          ],
+          "exemples": [
+            {
+              "enonce": "83 - 45",
+              "solution_guidee": "3<5, j'emprunte : 13-5=8. 7-4=3. Résultat: 38"
+            }
+          ],
+          "astuces_foxie": [
+            "L'emprunt, c'est comme demander 10 à ton voisin de gauche !"
+          ],
+          "questions_socratiques": [
+            "Est-ce que le chiffre du haut est assez grand ?",
+            "Que fais-tu quand il est trop petit ?"
+          ],
+          "prerequis": [
+            "Addition avec retenue"
+          ],
+          "mots_cles": [
+            "soustraction",
+            "retenue",
+            "emprunt",
+            "enlever",
+            "différence"
+          ]
+        },
+        {
+          "id": "ce2-math-003",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Multiplication",
+          "concept": "Tables de multiplication (2, 3, 4, 5)",
+          "definition": "La multiplication, c'est une addition répétée. 3 × 4 veut dire 3 + 3 + 3 + 3 (3 répété 4 fois).",
+          "methode": [
+            "1. Comprends que multiplier c'est additionner plusieurs fois",
+            "2. Apprends les tables par cœur petit à petit",
+            "3. Utilise les propriétés : 3×4 = 4×3",
+            "4. Vérifie en additionnant"
+          ],
+          "erreurs_frequentes": [
+            "Confondre × et +",
+            "Ne pas connaître les tables par cœur"
+          ],
+          "exemples": [
+            {
+              "enonce": "4 × 6",
+              "solution_guidee": "4×6 = 4+4+4+4+4+4 = 24, ou bien 6+6+6+6 = 24"
+            }
+          ],
+          "astuces_foxie": [
+            "Pour la table de 5, ça finit toujours par 0 ou 5 !"
+          ],
+          "questions_socratiques": [
+            "Combien de fois tu additionnes ?",
+            "Tu connais un truc pour cette table ?"
+          ],
+          "prerequis": [
+            "Addition"
+          ],
+          "mots_cles": [
+            "multiplication",
+            "table",
+            "fois",
+            "produit",
+            "multiplier"
+          ]
+        },
+        {
+          "id": "ce2-math-004",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les nombres jusqu'à 1 000",
+          "definition": "Au CE2, tu connais les nombres jusqu'à 1 000. Tu sais les lire, les écrire, les comparer et les ranger.",
+          "methode": [
+            "1. 1 000 = 10 centaines",
+            "2. Décompose : 456 = 4 centaines + 5 dizaines + 6 unités",
+            "3. Pour comparer, regarde d'abord les centaines, puis les dizaines, puis les unités"
+          ],
+          "erreurs_frequentes": [
+            "Confondre 305 et 350",
+            "Mal lire les grands nombres"
+          ],
+          "exemples": [
+            {
+              "enonce": "Compare 456 et 465",
+              "solution_guidee": "Centaines : 4=4. Dizaines : 5<6. Donc 456 < 465"
+            }
+          ],
+          "astuces_foxie": [
+            "Comme comparer des scores de jeu : regarde d'abord le plus gros chiffre !"
+          ],
+          "questions_socratiques": [
+            "Quel chiffre regardes-tu en premier ?",
+            "Combien de centaines ?"
+          ],
+          "prerequis": [
+            "Nombres jusqu'à 200"
+          ],
+          "mots_cles": [
+            "nombre",
+            "mille",
+            "centaine",
+            "comparer",
+            "ranger",
+            "décomposer"
+          ]
+        },
+        {
+          "id": "ce2-math-005",
+          "niveau": "CE2",
+          "matiere": "maths",
+          "chapitre": "Résolution de problèmes",
+          "concept": "Résoudre des problèmes additifs et soustractifs",
+          "definition": "Un problème de maths raconte une histoire. Il faut trouver l'opération à faire (addition ou soustraction) pour trouver la réponse.",
+          "methode": [
+            "1. Lis le problème en entier",
+            "2. Cherche ce qu'on te demande de trouver",
+            "3. Si on ajoute/réunit → addition. Si on enlève/perd → soustraction",
+            "4. Pose l'opération et calcule",
+            "5. Écris une phrase-réponse avec l'unité"
+          ],
+          "erreurs_frequentes": [
+            "Se précipiter sans lire tout l'énoncé",
+            "Choisir la mauvaise opération",
+            "Oublier la phrase-réponse"
+          ],
+          "exemples": [
+            {
+              "enonce": "Emma a 45 billes. Elle en perd 18. Combien lui en reste-t-il ?",
+              "solution_guidee": "Elle en perd → soustraction. 45 - 18 = 27. Il reste 27 billes à Emma."
+            }
+          ],
+          "astuces_foxie": [
+            "Lis 2 fois le problème et souligne les nombres et le mot-clé (ajoute, enlève, reste...) !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qu'on te demande ?",
+            "Est-ce qu'on ajoute ou on enlève ?"
+          ],
+          "prerequis": [
+            "Addition",
+            "Soustraction"
+          ],
+          "mots_cles": [
+            "problème",
+            "résoudre",
+            "opération",
+            "énoncé",
+            "phrase-réponse"
+          ]
+        }
+      ],
+      "francais": [
+        {
+          "id": "ce2-fr-001",
+          "niveau": "CE2",
+          "matiere": "francais",
+          "chapitre": "Grammaire",
+          "concept": "Le nom, le déterminant et l'adjectif",
+          "definition": "Le nom désigne une personne, un animal ou une chose. Le déterminant est le petit mot devant le nom (le, la, un, des...). L'adjectif décrit le nom.",
+          "methode": [
+            "1. Le nom : c'est ce dont on parle (chat, table, Marie)",
+            "2. Le déterminant : le petit mot devant (le, la, un, une, des, les)",
+            "3. L'adjectif : il dit comment est le nom (grand, bleu, joli)",
+            "4. L'adjectif s'accorde avec le nom : un chat noir / une chatte noire"
+          ],
+          "erreurs_frequentes": [
+            "Oublier l'accord de l'adjectif",
+            "Confondre nom et verbe"
+          ],
+          "exemples": [
+            {
+              "enonce": "Le petit chat noir",
+              "solution_guidee": "le = déterminant, petit = adjectif, chat = nom, noir = adjectif"
+            }
+          ],
+          "astuces_foxie": [
+            "Le déterminant, c'est le chapeau du nom. Le nom ne sort jamais sans son chapeau !"
+          ],
+          "questions_socratiques": [
+            "C'est quoi le petit mot devant ?",
+            "Ce mot, il décrit quoi ?"
+          ],
+          "prerequis": [
+            "La phrase"
+          ],
+          "mots_cles": [
+            "nom",
+            "déterminant",
+            "adjectif",
+            "groupe nominal",
+            "accord",
+            "genre",
+            "nombre"
+          ]
+        },
+        {
+          "id": "ce2-fr-002",
+          "niveau": "CE2",
+          "matiere": "francais",
+          "chapitre": "Conjugaison",
+          "concept": "Le présent de l'indicatif",
+          "definition": "Le présent, c'est quand l'action se passe maintenant. Les terminaisons changent selon le sujet (je, tu, il, nous, vous, ils).",
+          "methode": [
+            "1. Trouve le sujet (qui fait l'action ?)",
+            "2. Trouve le verbe à l'infinitif",
+            "3. Les verbes en -er : e, es, e, ons, ez, ent",
+            "4. Être et avoir sont spéciaux, apprends-les par cœur"
+          ],
+          "erreurs_frequentes": [
+            "Oublier le -s avec 'tu'",
+            "Confondre 'il mange' et 'ils mangent'"
+          ],
+          "exemples": [
+            {
+              "enonce": "Conjugue manger au présent",
+              "solution_guidee": "je mange, tu manges, il mange, nous mangeons, vous mangez, ils mangent"
+            }
+          ],
+          "astuces_foxie": [
+            "Avec 'tu', il y a TOUJOURS un -s à la fin ! Tu mangeS, tu joueS, tu eS..."
+          ],
+          "questions_socratiques": [
+            "Qui fait l'action ?",
+            "Le verbe finit en quoi à l'infinitif ?"
+          ],
+          "prerequis": [
+            "Reconnaître le verbe"
+          ],
+          "mots_cles": [
+            "conjugaison",
+            "présent",
+            "verbe",
+            "terminaison",
+            "sujet",
+            "indicatif"
+          ]
+        },
+        {
+          "id": "ce2-fr-003",
+          "niveau": "CE2",
+          "matiere": "francais",
+          "chapitre": "Orthographe",
+          "concept": "Les accords dans le groupe nominal",
+          "definition": "Dans le groupe nominal, le déterminant, le nom et l'adjectif doivent s'accorder en genre (masculin/féminin) et en nombre (singulier/pluriel).",
+          "methode": [
+            "1. Regarde le déterminant : singulier ou pluriel ?",
+            "2. Le nom prend un -s au pluriel",
+            "3. L'adjectif aussi prend un -s au pluriel",
+            "4. Au féminin, on ajoute souvent un -e"
+          ],
+          "erreurs_frequentes": [
+            "Oublier le -s au pluriel sur l'adjectif",
+            "Ne pas accorder au féminin"
+          ],
+          "exemples": [
+            {
+              "enonce": "les petit_ chat_ noir_",
+              "solution_guidee": "'les' = pluriel → les petits chats noirs (tout prend un -s)"
+            }
+          ],
+          "astuces_foxie": [
+            "Au pluriel, tout le groupe prend un -s. C'est comme une équipe, tout le monde porte le même maillot !"
+          ],
+          "questions_socratiques": [
+            "C'est singulier ou pluriel ?",
+            "Qu'est-ce que tu ajoutes au pluriel ?"
+          ],
+          "prerequis": [
+            "Nom, déterminant, adjectif"
+          ],
+          "mots_cles": [
+            "accord",
+            "pluriel",
+            "singulier",
+            "féminin",
+            "masculin",
+            "groupe nominal",
+            "orthographe"
+          ]
+        },
+        {
+          "id": "ce2-fr-004",
+          "niveau": "CE2",
+          "matiere": "francais",
+          "chapitre": "Vocabulaire",
+          "concept": "Les familles de mots",
+          "definition": "Une famille de mots, c'est un groupe de mots qui se ressemblent et qui ont un sens proche car ils viennent du même mot de base (le radical).",
+          "methode": [
+            "1. Trouve le radical (la partie commune)",
+            "2. Regarde ce qu'on a ajouté devant (préfixe) ou derrière (suffixe)",
+            "3. Vérifie que le sens est lié"
+          ],
+          "erreurs_frequentes": [
+            "Confondre des mots qui se ressemblent mais n'ont pas le même radical",
+            "Oublier que le sens doit être lié"
+          ],
+          "exemples": [
+            {
+              "enonce": "Famille du mot 'terre'",
+              "solution_guidee": "terre, terrain, terrasse, enterrer, territoire - tous ont le radical 'terr'"
+            }
+          ],
+          "astuces_foxie": [
+            "C'est comme une vraie famille : ils se ressemblent et ils ont quelque chose en commun !"
+          ],
+          "questions_socratiques": [
+            "Quel est le mot de base ?",
+            "Tu vois d'autres mots qui se ressemblent ?"
+          ],
+          "prerequis": [
+            "Vocabulaire de base"
+          ],
+          "mots_cles": [
+            "famille",
+            "radical",
+            "préfixe",
+            "suffixe",
+            "mot",
+            "vocabulaire"
+          ]
+        },
+        {
+          "id": "ce2-fr-005",
+          "niveau": "CE2",
+          "matiere": "francais",
+          "chapitre": "Production d'écrits",
+          "concept": "Écrire un petit texte",
+          "definition": "Au CE2, tu sais écrire un petit texte de 5 à 10 phrases en respectant la ponctuation et en organisant tes idées.",
+          "methode": [
+            "1. Réfléchis à ce que tu veux raconter",
+            "2. Écris un brouillon avec tes idées",
+            "3. Organise tes phrases dans l'ordre",
+            "4. Vérifie la ponctuation (majuscule, point)",
+            "5. Relis pour corriger les erreurs"
+          ],
+          "erreurs_frequentes": [
+            "Écrire sans plan",
+            "Oublier la ponctuation",
+            "Phrases trop longues"
+          ],
+          "exemples": [
+            {
+              "enonce": "Raconte ta journée",
+              "solution_guidee": "Ce matin, je me suis levé(e) à 7h. Ensuite, j'ai pris mon petit-déjeuner..."
+            }
+          ],
+          "astuces_foxie": [
+            "Avant d'écrire, fais une liste de tes idées sur un brouillon !"
+          ],
+          "questions_socratiques": [
+            "De quoi tu veux parler ?",
+            "Qu'est-ce qui se passe d'abord ?"
+          ],
+          "prerequis": [
+            "Écriture cursive",
+            "Grammaire de base"
+          ],
+          "mots_cles": [
+            "écrire",
+            "texte",
+            "production",
+            "rédaction",
+            "phrases",
+            "brouillon"
+          ]
+        }
+      ],
+      "questionner_le_monde": [
+        {
+          "id": "ce2-qlm-001",
+          "niveau": "CE2",
+          "matiere": "questionner_le_monde",
+          "chapitre": "La matière",
+          "concept": "Les états de l'eau",
+          "definition": "L'eau existe sous 3 états : liquide (dans un verre), solide (glace) et gazeux (vapeur). Elle peut passer d'un état à l'autre.",
+          "methode": [
+            "1. Solide → Liquide = fusion (la glace fond)",
+            "2. Liquide → Gaz = évaporation (l'eau s'évapore)",
+            "3. Gaz → Liquide = condensation (buée sur la vitre)",
+            "4. Liquide → Solide = solidification (l'eau gèle)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre évaporation et ébullition",
+            "Croire que la vapeur disparaît"
+          ],
+          "exemples": [
+            {
+              "enonce": "Que se passe-t-il quand on met de l'eau au congélateur ?",
+              "solution_guidee": "L'eau se solidifie : elle passe de l'état liquide à l'état solide (glace)."
+            }
+          ],
+          "astuces_foxie": [
+            "L'eau est une super magicienne : elle se déguise en liquide, en glace ou en vapeur !"
+          ],
+          "questions_socratiques": [
+            "Dans quel état est l'eau quand elle est froide ?",
+            "Que se passe-t-il quand on chauffe ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "eau",
+            "solide",
+            "liquide",
+            "gaz",
+            "fusion",
+            "évaporation",
+            "solidification",
+            "état"
+          ]
+        },
+        {
+          "id": "ce2-qlm-002",
+          "niveau": "CE2",
+          "matiere": "questionner_le_monde",
+          "chapitre": "Le vivant",
+          "concept": "Le cycle de vie des êtres vivants",
+          "definition": "Tous les êtres vivants naissent, grandissent, se reproduisent et meurent. C'est le cycle de vie.",
+          "methode": [
+            "1. Naissance : l'être vivant naît (œuf, bébé, graine)",
+            "2. Croissance : il grandit et change",
+            "3. Reproduction : il peut avoir des petits",
+            "4. Mort : la vie se termine"
+          ],
+          "erreurs_frequentes": [
+            "Oublier l'étape de reproduction",
+            "Penser que les plantes ne sont pas vivantes"
+          ],
+          "exemples": [
+            {
+              "enonce": "Cycle de vie d'un papillon",
+              "solution_guidee": "Œuf → chenille → chrysalide → papillon → ponte d'œufs"
+            }
+          ],
+          "astuces_foxie": [
+            "C'est comme les saisons de la vie : naître au printemps, grandir en été, se reproduire en automne..."
+          ],
+          "questions_socratiques": [
+            "Par quoi commence la vie ?",
+            "Que se passe-t-il après la naissance ?"
+          ],
+          "prerequis": [
+            "Êtres vivants"
+          ],
+          "mots_cles": [
+            "cycle",
+            "vie",
+            "naissance",
+            "croissance",
+            "reproduction",
+            "vivant"
+          ]
+        }
+      ],
+      "emc": [
+        {
+          "id": "ce2-emc-001",
+          "niveau": "CE2",
+          "matiere": "emc",
+          "chapitre": "Acquérir les valeurs de la République",
+          "concept": "Les symboles de la République",
+          "definition": "La France a des symboles importants : le drapeau tricolore (bleu, blanc, rouge), la Marseillaise (hymne), Marianne, et la devise 'Liberté, Égalité, Fraternité'.",
+          "methode": [
+            "1. Drapeau : bleu (à gauche), blanc (au milieu), rouge (à droite)",
+            "2. Devise : Liberté, Égalité, Fraternité",
+            "3. Hymne : La Marseillaise",
+            "4. Marianne : symbole féminin de la République"
+          ],
+          "erreurs_frequentes": [
+            "Inverser l'ordre des couleurs du drapeau",
+            "Ne pas connaître les mots de la devise"
+          ],
+          "exemples": [
+            {
+              "enonce": "Quels sont les 3 mots de la devise ?",
+              "solution_guidee": "Liberté, Égalité, Fraternité"
+            }
+          ],
+          "astuces_foxie": [
+            "Le drapeau, c'est B-B-R comme Bleu-Blanc-Rouge !"
+          ],
+          "questions_socratiques": [
+            "Quelles sont les couleurs du drapeau ?",
+            "Que veut dire Fraternité ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "République",
+            "drapeau",
+            "Marseillaise",
+            "devise",
+            "Marianne",
+            "symbole",
+            "citoyen"
+          ]
+        }
+      ]
+    },
+    "CM1": {
+      "level_info": {
+        "age": "9-10 ans",
+        "cycle": "Cycle 3",
+        "tone": "Encourageant mais plus exigeant, vocabulaire riche, appel au raisonnement"
+      },
+      "maths": [
+        {
+          "id": "cm1-math-001",
+          "niveau": "CM1",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les nombres jusqu'à 999 999",
+          "definition": "Au CM1, tu travailles avec des grands nombres. Tu apprends les classes : unités simples, milliers, et tu sais lire et écrire les nombres jusqu'à 999 999.",
+          "methode": [
+            "1. Les classes de nombres : unités | milliers",
+            "2. Chaque classe a 3 chiffres : centaines, dizaines, unités",
+            "3. Pour lire : on met un espace entre les classes",
+            "4. 456 789 se lit 'quatre cent cinquante-six mille sept cent quatre-vingt-neuf'"
+          ],
+          "erreurs_frequentes": [
+            "Mal placer les espaces",
+            "Confondre les classes",
+            "Erreurs en écriture littérale"
+          ],
+          "exemples": [
+            {
+              "enonce": "Écris en chiffres : deux cent trente-quatre mille cinq cent soixante-sept",
+              "solution_guidee": "234 567"
+            }
+          ],
+          "astuces_foxie": [
+            "Mets un espace tous les 3 chiffres en partant de la droite !"
+          ],
+          "questions_socratiques": [
+            "Combien de milliers dans ce nombre ?",
+            "Quel chiffre est aux centaines de mille ?"
+          ],
+          "prerequis": [
+            "Nombres jusqu'à 1 000"
+          ],
+          "mots_cles": [
+            "grand nombre",
+            "millier",
+            "classe",
+            "lire",
+            "écrire",
+            "décomposer"
+          ]
+        },
+        {
+          "id": "cm1-math-002",
+          "niveau": "CM1",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les fractions simples",
+          "definition": "Une fraction représente une partie d'un tout. 1/4 veut dire qu'on a coupé en 4 parts égales et qu'on en prend 1.",
+          "methode": [
+            "1. Le numérateur (en haut) = combien de parts on prend",
+            "2. Le dénominateur (en bas) = en combien de parts on a coupé",
+            "3. 3/4 = on a coupé en 4, on prend 3 parts",
+            "4. Si numérateur = dénominateur → c'est 1 entier"
+          ],
+          "erreurs_frequentes": [
+            "Confondre numérateur et dénominateur",
+            "Croire que 1/3 > 1/2"
+          ],
+          "exemples": [
+            {
+              "enonce": "Colorie 3/4 d'un rectangle",
+              "solution_guidee": "Je coupe le rectangle en 4 parts égales, je colorie 3 parts."
+            }
+          ],
+          "astuces_foxie": [
+            "La fraction c'est comme une pizza ! Le dénominateur dit en combien de parts tu coupes, le numérateur dit combien tu manges."
+          ],
+          "questions_socratiques": [
+            "En combien de parts tu as coupé ?",
+            "Combien de parts tu prends ?"
+          ],
+          "prerequis": [
+            "Division",
+            "Partage équitable"
+          ],
+          "mots_cles": [
+            "fraction",
+            "numérateur",
+            "dénominateur",
+            "part",
+            "demi",
+            "quart",
+            "tiers"
+          ]
+        },
+        {
+          "id": "cm1-math-003",
+          "niveau": "CM1",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "La division euclidienne",
+          "definition": "Diviser, c'est partager en parts égales. La division euclidienne donne un quotient (résultat) et parfois un reste.",
+          "methode": [
+            "1. Pose la division : dividende ÷ diviseur",
+            "2. Cherche combien de fois le diviseur 'entre' dans le dividende",
+            "3. Multiplie pour vérifier",
+            "4. Calcule le reste (dividende - quotient × diviseur)",
+            "5. Le reste doit toujours être plus petit que le diviseur"
+          ],
+          "erreurs_frequentes": [
+            "Reste plus grand que le diviseur",
+            "Oublier de vérifier",
+            "Se tromper dans les tables"
+          ],
+          "exemples": [
+            {
+              "enonce": "45 ÷ 7",
+              "solution_guidee": "7×6=42 (le plus proche de 45 sans dépasser). Quotient=6, reste=45-42=3. 45=7×6+3"
+            }
+          ],
+          "astuces_foxie": [
+            "La division, c'est un partage équitable. Imagine que tu partages des bonbons entre amis !"
+          ],
+          "questions_socratiques": [
+            "Combien de fois 7 entre dans 45 ?",
+            "Que fais-tu du reste ?"
+          ],
+          "prerequis": [
+            "Tables de multiplication"
+          ],
+          "mots_cles": [
+            "division",
+            "partager",
+            "quotient",
+            "reste",
+            "diviseur",
+            "dividende",
+            "euclidienne"
+          ]
+        },
+        {
+          "id": "cm1-math-004",
+          "niveau": "CM1",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Droites perpendiculaires et parallèles",
+          "definition": "Deux droites perpendiculaires se croisent en formant un angle droit (90°). Deux droites parallèles ne se croisent jamais, elles restent toujours à la même distance.",
+          "methode": [
+            "1. Perpendiculaires : utilise l'équerre pour vérifier l'angle droit",
+            "2. Parallèles : vérifie que la distance entre elles est toujours la même",
+            "3. Pour tracer des perpendiculaires : place l'équerre et trace",
+            "4. Pour tracer des parallèles : utilise la règle et l'équerre"
+          ],
+          "erreurs_frequentes": [
+            "Confondre perpendiculaire et parallèle",
+            "Ne pas tracer droit"
+          ],
+          "exemples": [
+            {
+              "enonce": "Les rails du train sont-ils parallèles ou perpendiculaires ?",
+              "solution_guidee": "Parallèles ! Ils ne se croisent jamais."
+            }
+          ],
+          "astuces_foxie": [
+            "Perpendiculaire = ça fait un +. Parallèle = ça fait un ="
+          ],
+          "questions_socratiques": [
+            "Est-ce que ces droites se croisent ?",
+            "Y a-t-il un angle droit ?"
+          ],
+          "prerequis": [
+            "Droite, segment"
+          ],
+          "mots_cles": [
+            "perpendiculaire",
+            "parallèle",
+            "angle droit",
+            "droite",
+            "équerre",
+            "géométrie"
+          ]
+        }
+      ],
+      "francais": [
+        {
+          "id": "cm1-fr-001",
+          "niveau": "CM1",
+          "matiere": "francais",
+          "chapitre": "Grammaire",
+          "concept": "Les compléments du verbe (COD, COI)",
+          "definition": "Le COD (Complément d'Objet Direct) répond à la question 'quoi ?' après le verbe. Le COI (Complément d'Objet Indirect) répond à 'à qui ?', 'de quoi ?'.",
+          "methode": [
+            "1. Trouve le verbe conjugué",
+            "2. Pose la question 'sujet + verbe + quoi/qui ?' → COD",
+            "3. Pose la question 'sujet + verbe + à qui/de quoi ?' → COI",
+            "4. Le COD se rattache directement au verbe, le COI avec une préposition (à, de)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre COD et COI",
+            "Confondre complément du verbe et complément de phrase"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pierre mange une pomme.",
+              "solution_guidee": "Pierre mange quoi ? → une pomme = COD"
+            }
+          ],
+          "astuces_foxie": [
+            "COD = pas de petit mot entre le verbe et le complément. COI = il y a à ou de."
+          ],
+          "questions_socratiques": [
+            "Le sujet fait quoi ?",
+            "Il y a un petit mot (à, de) avant le complément ?"
+          ],
+          "prerequis": [
+            "Sujet, verbe"
+          ],
+          "mots_cles": [
+            "COD",
+            "COI",
+            "complément",
+            "verbe",
+            "direct",
+            "indirect",
+            "grammaire"
+          ]
+        },
+        {
+          "id": "cm1-fr-002",
+          "niveau": "CM1",
+          "matiere": "francais",
+          "chapitre": "Conjugaison",
+          "concept": "L'imparfait de l'indicatif",
+          "definition": "L'imparfait sert à raconter des actions passées qui duraient ou qui se répétaient. Les terminaisons sont toujours : -ais, -ais, -ait, -ions, -iez, -aient.",
+          "methode": [
+            "1. Prends le radical du verbe (verbe sans sa terminaison)",
+            "2. Ajoute les terminaisons : -ais, -ais, -ait, -ions, -iez, -aient",
+            "3. Attention aux verbes en -ger (on garde le e devant a) et -cer (ç devant a)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre -ais et -ait",
+            "Oublier le e dans mangeais",
+            "Confondre imparfait et passé composé"
+          ],
+          "exemples": [
+            {
+              "enonce": "Conjugue 'chanter' à l'imparfait",
+              "solution_guidee": "je chantais, tu chantais, il chantait, nous chantions, vous chantiez, ils chantaient"
+            }
+          ],
+          "astuces_foxie": [
+            "L'imparfait, c'est les souvenirs ! 'Quand j'étais petit, je chantais tous les jours'"
+          ],
+          "questions_socratiques": [
+            "C'est une action passée qui durait ?",
+            "Quelles sont les terminaisons ?"
+          ],
+          "prerequis": [
+            "Présent de l'indicatif"
+          ],
+          "mots_cles": [
+            "imparfait",
+            "conjugaison",
+            "passé",
+            "terminaison",
+            "durée",
+            "habitude"
+          ]
+        },
+        {
+          "id": "cm1-fr-003",
+          "niveau": "CM1",
+          "matiere": "francais",
+          "chapitre": "Lecture et compréhension",
+          "concept": "Les inférences en lecture",
+          "definition": "Faire une inférence, c'est comprendre quelque chose qui n'est pas écrit directement dans le texte, en utilisant les indices du texte et ce que tu sais déjà.",
+          "methode": [
+            "1. Lis attentivement le passage",
+            "2. Cherche les indices dans le texte",
+            "3. Utilise ce que tu sais déjà sur le sujet",
+            "4. Déduis l'information manquante"
+          ],
+          "erreurs_frequentes": [
+            "Ne lire que littéralement",
+            "Inventer au lieu de déduire"
+          ],
+          "exemples": [
+            {
+              "enonce": "'Il enfila son manteau et prit son parapluie.' Quel temps fait-il ?",
+              "solution_guidee": "Il pleut (ou il va pleuvoir) - on le déduit du parapluie."
+            }
+          ],
+          "astuces_foxie": [
+            "C'est comme être un détective : tu cherches les indices !"
+          ],
+          "questions_socratiques": [
+            "Quels indices tu trouves dans le texte ?",
+            "Qu'est-ce que ça te fait penser ?"
+          ],
+          "prerequis": [
+            "Compréhension littérale"
+          ],
+          "mots_cles": [
+            "inférence",
+            "déduire",
+            "indices",
+            "comprendre",
+            "implicite",
+            "lecture"
+          ]
+        }
+      ],
+      "histoire": [
+        {
+          "id": "cm1-hist-001",
+          "niveau": "CM1",
+          "matiere": "histoire",
+          "chapitre": "Thème 1 - Et avant la France ?",
+          "concept": "Les premiers hommes et la Préhistoire",
+          "definition": "La Préhistoire est la longue période avant l'invention de l'écriture. Les premiers hommes vivaient de la chasse et de la cueillette avant de devenir sédentaires avec l'agriculture.",
+          "methode": [
+            "1. Paléolithique : nomades, chasseurs-cueilleurs, outils en pierre",
+            "2. Néolithique : sédentaires, agriculture, élevage, premiers villages",
+            "3. Les Gaulois : peuple celte qui vit en Gaule avant les Romains",
+            "4. La romanisation : les Romains conquièrent la Gaule (Jules César, 52 av. J.-C.)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre Paléolithique et Néolithique",
+            "Croire que les Gaulois étaient des barbares"
+          ],
+          "exemples": [
+            {
+              "enonce": "Qu'est-ce qui change au Néolithique ?",
+              "solution_guidee": "Les hommes deviennent sédentaires grâce à l'agriculture et l'élevage."
+            }
+          ],
+          "astuces_foxie": [
+            "Paléolithique = pierre ancienne (vieille), Néolithique = pierre nouvelle !"
+          ],
+          "questions_socratiques": [
+            "Comment vivaient les premiers hommes ?",
+            "Qu'est-ce qui a changé leur vie ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "Préhistoire",
+            "Paléolithique",
+            "Néolithique",
+            "Gaulois",
+            "Romains",
+            "agriculture",
+            "sédentaire"
+          ]
+        },
+        {
+          "id": "cm1-hist-002",
+          "niveau": "CM1",
+          "matiere": "histoire",
+          "chapitre": "Thème 2 - Le temps des rois",
+          "concept": "Clovis, Charlemagne et les grands rois",
+          "definition": "Après les Romains, des rois ont construit la France. Clovis unit les Francs, Charlemagne crée un grand empire, puis les rois capétiens renforcent le pouvoir royal.",
+          "methode": [
+            "1. Clovis (496) : roi des Francs, se convertit au christianisme",
+            "2. Charlemagne (800) : couronné empereur, école pour tous",
+            "3. Louis IX (Saint Louis, XIIIe) : justice royale",
+            "4. François Ier (XVIe) : Renaissance, châteaux de la Loire"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les époques",
+            "Mélanger les dynasties"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi Charlemagne est-il important ?",
+              "solution_guidee": "Il a créé un grand empire et développé l'enseignement (les écoles)."
+            }
+          ],
+          "astuces_foxie": [
+            "Charlemagne = Charles le Grand ! Il a inventé l'école (enfin... presque !)"
+          ],
+          "questions_socratiques": [
+            "Qui était le premier roi des Francs ?",
+            "Qu'a fait Charlemagne pour l'éducation ?"
+          ],
+          "prerequis": [
+            "La frise chronologique"
+          ],
+          "mots_cles": [
+            "roi",
+            "Clovis",
+            "Charlemagne",
+            "Moyen Âge",
+            "Francs",
+            "dynastie",
+            "Empire"
+          ]
+        },
+        {
+          "id": "cm1-hist-003",
+          "niveau": "CM1",
+          "matiere": "histoire",
+          "chapitre": "Thème 3 - Le temps de la Révolution et de l'Empire",
+          "concept": "La Révolution française",
+          "definition": "En 1789, le peuple français se révolte contre le roi Louis XVI. C'est la fin de la monarchie absolue et le début des droits de l'homme.",
+          "methode": [
+            "1. Causes : inégalités, misère du peuple, pouvoir absolu du roi",
+            "2. 14 juillet 1789 : prise de la Bastille",
+            "3. 26 août 1789 : Déclaration des Droits de l'Homme",
+            "4. 1792 : la République est proclamée"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les dates",
+            "Ne pas comprendre pourquoi le peuple se révolte"
+          ],
+          "exemples": [
+            {
+              "enonce": "Que se passe-t-il le 14 juillet 1789 ?",
+              "solution_guidee": "Le peuple prend la Bastille, une prison qui symbolise le pouvoir royal."
+            }
+          ],
+          "astuces_foxie": [
+            "Le 14 juillet, c'est notre fête nationale ! Elle célèbre la Révolution."
+          ],
+          "questions_socratiques": [
+            "Pourquoi le peuple était-il en colère ?",
+            "Que déclare-t-on le 26 août ?"
+          ],
+          "prerequis": [
+            "La monarchie"
+          ],
+          "mots_cles": [
+            "Révolution",
+            "1789",
+            "Bastille",
+            "Droits de l'Homme",
+            "République",
+            "Louis XVI"
+          ]
+        }
+      ],
+      "geographie": [
+        {
+          "id": "cm1-geo-001",
+          "niveau": "CM1",
+          "matiere": "geographie",
+          "chapitre": "Thème 1 - Découvrir les lieux où j'habite",
+          "concept": "Mon lieu de vie",
+          "definition": "Étudier son lieu de vie, c'est observer et comprendre le paysage, les activités humaines, et les caractéristiques de l'endroit où l'on habite (ville, campagne, montagne, littoral).",
+          "methode": [
+            "1. Observer le paysage : relief, végétation, bâtiments",
+            "2. Identifier le type d'espace : urbain, rural, périurbain",
+            "3. Repérer les activités : commerces, industries, agriculture",
+            "4. Localiser sur une carte"
+          ],
+          "erreurs_frequentes": [
+            "Confondre urbain et rural",
+            "Ne pas savoir se repérer sur une carte"
+          ],
+          "exemples": [
+            {
+              "enonce": "Décris ton quartier",
+              "solution_guidee": "J'habite en ville. Il y a des immeubles, des commerces, un parc, et une école."
+            }
+          ],
+          "astuces_foxie": [
+            "Regarde par ta fenêtre ! C'est déjà de la géographie !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce que tu vois autour de chez toi ?",
+            "C'est plutôt la ville ou la campagne ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "lieu de vie",
+            "paysage",
+            "ville",
+            "campagne",
+            "urbain",
+            "rural",
+            "carte"
+          ]
+        },
+        {
+          "id": "cm1-geo-002",
+          "niveau": "CM1",
+          "matiere": "geographie",
+          "chapitre": "Thème 2 - Se loger, travailler, se cultiver, avoir des loisirs",
+          "concept": "Habiter en France",
+          "definition": "En France, les gens vivent dans différents types d'espaces : ville dense, banlieue, campagne. Chaque espace a ses avantages et ses inconvénients.",
+          "methode": [
+            "1. Centre-ville : beaucoup de services, transports, mais parfois bruyant",
+            "2. Banlieue : maisons avec jardin, mais plus loin du centre",
+            "3. Campagne : calme, nature, mais moins de services",
+            "4. Compare les modes de vie selon l'espace"
+          ],
+          "erreurs_frequentes": [
+            "Généraliser (toutes les villes sont pareilles)"
+          ],
+          "exemples": [
+            {
+              "enonce": "Quels sont les avantages de vivre en ville ?",
+              "solution_guidee": "Transports en commun, commerces proches, activités culturelles, services de santé."
+            }
+          ],
+          "astuces_foxie": [
+            "Chaque endroit a ses super-pouvoirs et ses faiblesses !"
+          ],
+          "questions_socratiques": [
+            "Où préfères-tu vivre ? Pourquoi ?",
+            "Quels services sont importants ?"
+          ],
+          "prerequis": [
+            "Lecture de carte"
+          ],
+          "mots_cles": [
+            "habiter",
+            "ville",
+            "banlieue",
+            "campagne",
+            "services",
+            "logement",
+            "transports"
+          ]
+        }
+      ],
+      "sciences": [
+        {
+          "id": "cm1-sci-001",
+          "niveau": "CM1",
+          "matiere": "sciences",
+          "chapitre": "Matière, mouvement, énergie, information",
+          "concept": "Les états de la matière et les changements d'état",
+          "definition": "La matière existe sous 3 états : solide (forme fixe), liquide (prend la forme du récipient), gaz (se répand partout). La température provoque les changements d'état.",
+          "methode": [
+            "1. Solide : a une forme propre (glaçon, bois)",
+            "2. Liquide : prend la forme du récipient (eau, lait)",
+            "3. Gaz : remplit tout l'espace (air, vapeur)",
+            "4. Chauffer = solide→liquide→gaz. Refroidir = gaz→liquide→solide"
+          ],
+          "erreurs_frequentes": [
+            "Croire que les gaz n'existent pas car on ne les voit pas",
+            "Confondre vapeur et fumée"
+          ],
+          "exemples": [
+            {
+              "enonce": "Que se passe-t-il quand on chauffe du chocolat ?",
+              "solution_guidee": "Le chocolat solide fond et devient liquide. C'est la fusion."
+            }
+          ],
+          "astuces_foxie": [
+            "Pense au cycle de l'eau : neige (solide) → eau (liquide) → nuage (gaz) !"
+          ],
+          "questions_socratiques": [
+            "Est-ce que ça a une forme propre ?",
+            "Que se passe-t-il si on chauffe ?"
+          ],
+          "prerequis": [
+            "Les états de l'eau (CE2)"
+          ],
+          "mots_cles": [
+            "matière",
+            "solide",
+            "liquide",
+            "gaz",
+            "fusion",
+            "solidification",
+            "ébullition",
+            "état"
+          ]
+        },
+        {
+          "id": "cm1-sci-002",
+          "niveau": "CM1",
+          "matiere": "sciences",
+          "chapitre": "Le vivant, sa diversité et les fonctions qui le caractérisent",
+          "concept": "La classification du vivant",
+          "definition": "Les scientifiques classent les êtres vivants en groupes selon leurs caractéristiques communes : vertébrés/invertébrés, mammifères/oiseaux/reptiles/poissons/amphibiens.",
+          "methode": [
+            "1. Observe les caractéristiques : a-t-il des poils ? des plumes ? des écailles ?",
+            "2. A-t-il un squelette interne (vertébré) ou non (invertébré) ?",
+            "3. Comment se reproduit-il ? Allaite-t-il ses petits ?",
+            "4. Classe-le dans le bon groupe"
+          ],
+          "erreurs_frequentes": [
+            "Croire que la baleine est un poisson",
+            "Confondre reptiles et amphibiens"
+          ],
+          "exemples": [
+            {
+              "enonce": "Le dauphin est-il un poisson ?",
+              "solution_guidee": "Non ! C'est un mammifère : il a des poumons, allaite ses petits et a le sang chaud."
+            }
+          ],
+          "astuces_foxie": [
+            "Si ça allaite ses bébés, c'est un mammifère. Même dans l'eau !"
+          ],
+          "questions_socratiques": [
+            "A-t-il des poils ou des plumes ?",
+            "Comment respire-t-il ?"
+          ],
+          "prerequis": [
+            "Êtres vivants"
+          ],
+          "mots_cles": [
+            "classification",
+            "vertébré",
+            "mammifère",
+            "oiseau",
+            "reptile",
+            "poisson",
+            "vivant"
+          ]
+        }
+      ],
+      "emc": [
+        {
+          "id": "cm1-emc-001",
+          "niveau": "CM1",
+          "matiere": "emc",
+          "chapitre": "Construire une culture civique",
+          "concept": "Les droits et les devoirs à l'école",
+          "definition": "À l'école, tu as des droits (apprendre, être respecté, jouer) mais aussi des devoirs (respecter les autres, travailler, respecter le règlement).",
+          "methode": [
+            "1. Droits : éducation, protection, expression, jeu",
+            "2. Devoirs : respect, travail, obéissance aux règles",
+            "3. Les droits des uns s'arrêtent où commencent ceux des autres"
+          ],
+          "erreurs_frequentes": [
+            "Oublier que les droits s'accompagnent de devoirs"
+          ],
+          "exemples": [
+            {
+              "enonce": "Tu as le droit de t'exprimer. Quel est le devoir associé ?",
+              "solution_guidee": "Le devoir d'écouter les autres quand ils s'expriment aussi."
+            }
+          ],
+          "astuces_foxie": [
+            "Droits et devoirs, c'est comme recto et verso d'une même médaille !"
+          ],
+          "questions_socratiques": [
+            "Quels sont tes droits à l'école ?",
+            "Et quels sont tes devoirs ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "droits",
+            "devoirs",
+            "école",
+            "respect",
+            "règlement",
+            "citoyen",
+            "responsabilité"
+          ]
+        }
+      ]
+    },
+    "CM2": {
+      "level_info": {
+        "age": "10-11 ans",
+        "cycle": "Cycle 3",
+        "tone": "Encourageant mais plus exigeant, vocabulaire riche, appel au raisonnement"
+      },
+      "maths": [
+        {
+          "id": "cm2-math-001",
+          "niveau": "CM2",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les nombres décimaux",
+          "definition": "Un nombre décimal a une partie entière et une partie décimale séparées par une virgule. Par exemple : 3,45 → 3 est la partie entière, 45 est la partie décimale.",
+          "methode": [
+            "1. La virgule sépare la partie entière de la partie décimale",
+            "2. Après la virgule : dixièmes, centièmes, millièmes",
+            "3. 3,45 = 3 + 4 dixièmes + 5 centièmes = 3 + 4/10 + 5/100",
+            "4. Pour comparer, regarde d'abord la partie entière, puis les dixièmes, etc."
+          ],
+          "erreurs_frequentes": [
+            "Croire que 3,45 > 3,5 (car 45 > 5)",
+            "Mal placer la virgule",
+            "Confondre dixièmes et centièmes"
+          ],
+          "exemples": [
+            {
+              "enonce": "Compare 3,45 et 3,5",
+              "solution_guidee": "3,45 = 3,45 et 3,5 = 3,50. Comme 50 > 45 → 3,5 > 3,45"
+            }
+          ],
+          "astuces_foxie": [
+            "Ajoute des zéros après la virgule pour comparer : 3,5 = 3,50 !"
+          ],
+          "questions_socratiques": [
+            "Quelle est la partie entière ?",
+            "Combien de dixièmes ?"
+          ],
+          "prerequis": [
+            "Fractions décimales"
+          ],
+          "mots_cles": [
+            "décimal",
+            "virgule",
+            "dixième",
+            "centième",
+            "partie entière",
+            "comparer"
+          ]
+        },
+        {
+          "id": "cm2-math-002",
+          "niveau": "CM2",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les opérations avec les nombres décimaux",
+          "definition": "On peut additionner, soustraire et multiplier des nombres décimaux. La règle principale : bien aligner les virgules !",
+          "methode": [
+            "1. Addition/Soustraction : aligne les virgules l'une sous l'autre",
+            "2. Calcule comme d'habitude, colonne par colonne",
+            "3. La virgule du résultat est alignée avec les autres",
+            "4. Multiplication : ignore la virgule, calcule, puis replace-la"
+          ],
+          "erreurs_frequentes": [
+            "Ne pas aligner les virgules",
+            "Oublier la virgule dans le résultat"
+          ],
+          "exemples": [
+            {
+              "enonce": "3,45 + 2,3",
+              "solution_guidee": "Aligne : 3,45 + 2,30 = 5,75"
+            }
+          ],
+          "astuces_foxie": [
+            "La virgule descend tout droit, comme un ascenseur !"
+          ],
+          "questions_socratiques": [
+            "Les virgules sont-elles alignées ?",
+            "Où mets-tu la virgule dans le résultat ?"
+          ],
+          "prerequis": [
+            "Nombres décimaux",
+            "Opérations sur les entiers"
+          ],
+          "mots_cles": [
+            "addition",
+            "soustraction",
+            "multiplication",
+            "décimaux",
+            "virgule",
+            "opération"
+          ]
+        },
+        {
+          "id": "cm2-math-003",
+          "niveau": "CM2",
+          "matiere": "maths",
+          "chapitre": "Grandeurs et mesures",
+          "concept": "Les aires et les périmètres",
+          "definition": "Le périmètre est la longueur du tour d'une figure. L'aire est la mesure de sa surface (l'intérieur).",
+          "methode": [
+            "1. Périmètre du rectangle = (L + l) × 2",
+            "2. Périmètre du carré = c × 4",
+            "3. Aire du rectangle = L × l",
+            "4. Aire du carré = c × c",
+            "5. Attention aux unités : cm pour le périmètre, cm² pour l'aire"
+          ],
+          "erreurs_frequentes": [
+            "Confondre aire et périmètre",
+            "Oublier l'unité au carré pour l'aire"
+          ],
+          "exemples": [
+            {
+              "enonce": "Rectangle de 5 cm par 3 cm",
+              "solution_guidee": "Périmètre = (5+3)×2 = 16 cm. Aire = 5×3 = 15 cm²"
+            }
+          ],
+          "astuces_foxie": [
+            "Périmètre = le tour (comme faire le tour du terrain). Aire = l'intérieur (comme peindre le sol)."
+          ],
+          "questions_socratiques": [
+            "Tu cherches le tour ou l'intérieur ?",
+            "Quelle formule utilises-tu ?"
+          ],
+          "prerequis": [
+            "Multiplication",
+            "Mesures de longueur"
+          ],
+          "mots_cles": [
+            "aire",
+            "périmètre",
+            "surface",
+            "rectangle",
+            "carré",
+            "formule",
+            "mesure"
+          ]
+        },
+        {
+          "id": "cm2-math-004",
+          "niveau": "CM2",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "La symétrie axiale",
+          "definition": "La symétrie axiale, c'est comme un miroir. L'image d'une figure par rapport à un axe est son reflet. Les deux parties sont identiques mais inversées.",
+          "methode": [
+            "1. L'axe de symétrie est la ligne miroir",
+            "2. Chaque point et son symétrique sont à la même distance de l'axe",
+            "3. Pour tracer : mesure la distance à l'axe, reporte-la de l'autre côté",
+            "4. Vérifie en pliant le long de l'axe"
+          ],
+          "erreurs_frequentes": [
+            "Ne pas mesurer perpendiculairement à l'axe",
+            "Se tromper de distance"
+          ],
+          "exemples": [
+            {
+              "enonce": "Trace le symétrique d'un triangle par rapport à l'axe",
+              "solution_guidee": "Pour chaque sommet : mesure la distance à l'axe, reporte de l'autre côté, relie les nouveaux points."
+            }
+          ],
+          "astuces_foxie": [
+            "Plie ta feuille sur l'axe : si les deux figures se superposent, c'est bon !"
+          ],
+          "questions_socratiques": [
+            "Où est l'axe de symétrie ?",
+            "À quelle distance est ce point de l'axe ?"
+          ],
+          "prerequis": [
+            "Droites perpendiculaires",
+            "Mesures"
+          ],
+          "mots_cles": [
+            "symétrie",
+            "axe",
+            "miroir",
+            "reflet",
+            "distance",
+            "figure"
+          ]
+        }
+      ],
+      "francais": [
+        {
+          "id": "cm2-fr-001",
+          "niveau": "CM2",
+          "matiere": "francais",
+          "chapitre": "Conjugaison",
+          "concept": "Le passé simple",
+          "definition": "Le passé simple s'utilise à l'écrit pour raconter des actions passées courtes et terminées, souvent dans les récits et les contes.",
+          "methode": [
+            "1. Verbes en -er : -ai, -as, -a, -âmes, -âtes, -èrent",
+            "2. Verbes en -ir : -is, -is, -it, -îmes, -îtes, -irent",
+            "3. Verbes en -oir/-re : souvent -us, -us, -ut, -ûmes, -ûtes, -urent",
+            "4. Surtout utilisé à la 3e personne (il/elle/ils/elles)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre avec l'imparfait",
+            "Oublier les accents sur les 1re/2e personnes du pluriel"
+          ],
+          "exemples": [
+            {
+              "enonce": "Conjugue 'manger' au passé simple, 3e personne",
+              "solution_guidee": "il mangea, ils mangèrent"
+            }
+          ],
+          "astuces_foxie": [
+            "Le passé simple, c'est le temps des contes : 'Il était une fois... il mangea la pomme'"
+          ],
+          "questions_socratiques": [
+            "C'est un verbe en -er, -ir ou autre ?",
+            "À quelle personne est-il ?"
+          ],
+          "prerequis": [
+            "Imparfait",
+            "Passé composé"
+          ],
+          "mots_cles": [
+            "passé simple",
+            "conjugaison",
+            "récit",
+            "conte",
+            "terminaison",
+            "temps du passé"
+          ]
+        },
+        {
+          "id": "cm2-fr-002",
+          "niveau": "CM2",
+          "matiere": "francais",
+          "chapitre": "Grammaire",
+          "concept": "Les pronoms personnels compléments",
+          "definition": "Les pronoms personnels compléments (le, la, les, lui, leur, en, y) remplacent un nom pour éviter les répétitions.",
+          "methode": [
+            "1. COD → le, la, les (Je mange la pomme → Je la mange)",
+            "2. COI → lui, leur (Je parle à Pierre → Je lui parle)",
+            "3. Le pronom se place AVANT le verbe",
+            "4. Retrouve ce que le pronom remplace pour vérifier"
+          ],
+          "erreurs_frequentes": [
+            "Confondre leur (pronom) et leur (déterminant)",
+            "Mal placer le pronom"
+          ],
+          "exemples": [
+            {
+              "enonce": "Remplace : Je donne le livre à Marie.",
+              "solution_guidee": "Je le lui donne. (le = le livre, lui = à Marie)"
+            }
+          ],
+          "astuces_foxie": [
+            "Le pronom, c'est un remplaçant, comme au foot : il remplace un joueur fatigué !"
+          ],
+          "questions_socratiques": [
+            "Quel nom tu veux remplacer ?",
+            "C'est un COD ou un COI ?"
+          ],
+          "prerequis": [
+            "COD, COI",
+            "Pronoms personnels sujets"
+          ],
+          "mots_cles": [
+            "pronom",
+            "complément",
+            "remplacer",
+            "COD",
+            "COI",
+            "le",
+            "la",
+            "lui",
+            "leur"
+          ]
+        },
+        {
+          "id": "cm2-fr-003",
+          "niveau": "CM2",
+          "matiere": "francais",
+          "chapitre": "Production d'écrits",
+          "concept": "Rédiger un récit structuré",
+          "definition": "Un récit bien écrit comprend une situation initiale, un élément perturbateur, des péripéties, et un dénouement.",
+          "methode": [
+            "1. Situation initiale : présente les personnages et le cadre",
+            "2. Élément perturbateur : quelque chose change (un problème survient)",
+            "3. Péripéties : les événements qui en découlent",
+            "4. Dénouement : résolution du problème",
+            "5. Utilise des connecteurs (d'abord, ensuite, soudain, finalement)"
+          ],
+          "erreurs_frequentes": [
+            "Oublier l'élément perturbateur",
+            "Fin bâclée",
+            "Manque de connecteurs"
+          ],
+          "exemples": [
+            {
+              "enonce": "Structure d'un conte",
+              "solution_guidee": "Un roi vivait heureux (SI). Un dragon apparut (EP). Le chevalier combattit (P). Le dragon fut vaincu (D)."
+            }
+          ],
+          "astuces_foxie": [
+            "Pense à ton histoire comme un sandwich : l'introduction et la fin sont les pains, les aventures sont la garniture !"
+          ],
+          "questions_socratiques": [
+            "Quel est le problème de ton personnage ?",
+            "Comment va-t-il le résoudre ?"
+          ],
+          "prerequis": [
+            "Écrire un texte court"
+          ],
+          "mots_cles": [
+            "récit",
+            "structure",
+            "situation initiale",
+            "perturbateur",
+            "péripéties",
+            "dénouement"
+          ]
+        }
+      ],
+      "histoire": [
+        {
+          "id": "cm2-hist-001",
+          "niveau": "CM2",
+          "matiere": "histoire",
+          "chapitre": "Thème 1 - Le temps de la République",
+          "concept": "L'installation de la République",
+          "definition": "Après 1870, la Troisième République s'installe en France avec des valeurs fortes : l'école laïque obligatoire (lois Jules Ferry 1882), la liberté de la presse, les droits des citoyens.",
+          "methode": [
+            "1. 1870 : chute de Napoléon III, début de la IIIe République",
+            "2. 1882 : lois Jules Ferry - école gratuite, laïque et obligatoire",
+            "3. 1905 : loi de séparation de l'Église et de l'État",
+            "4. Les symboles républicains se diffusent"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les Républiques (IIIe, IVe, Ve)",
+            "Oublier la laïcité"
+          ],
+          "exemples": [
+            {
+              "enonce": "Que font les lois Jules Ferry ?",
+              "solution_guidee": "Elles rendent l'école gratuite, obligatoire et laïque pour tous les enfants."
+            }
+          ],
+          "astuces_foxie": [
+            "Jules Ferry, c'est le monsieur qui a voulu que TOUS les enfants aillent à l'école !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce que la laïcité ?",
+            "Pourquoi l'école pour tous est-elle importante ?"
+          ],
+          "prerequis": [
+            "La Révolution française"
+          ],
+          "mots_cles": [
+            "République",
+            "Jules Ferry",
+            "école",
+            "laïcité",
+            "1882",
+            "citoyens",
+            "droits"
+          ]
+        },
+        {
+          "id": "cm2-hist-002",
+          "niveau": "CM2",
+          "matiere": "histoire",
+          "chapitre": "Thème 2 - L'âge industriel en France",
+          "concept": "La révolution industrielle",
+          "definition": "Au XIXe siècle, les machines à vapeur transforment la France : usines, chemins de fer, exode rural. Les conditions de travail sont difficiles, y compris pour les enfants.",
+          "methode": [
+            "1. Machines à vapeur → usines → production en masse",
+            "2. Chemins de fer → voyages plus rapides, commerce",
+            "3. Exode rural : les gens quittent la campagne pour la ville",
+            "4. Conditions difficiles : travail des enfants, journées longues"
+          ],
+          "erreurs_frequentes": [
+            "Confondre XIXe et XXe siècle"
+          ],
+          "exemples": [
+            {
+              "enonce": "Comment la machine à vapeur change-t-elle la vie ?",
+              "solution_guidee": "Elle permet de créer des usines et des trains, transformant le travail et les transports."
+            }
+          ],
+          "astuces_foxie": [
+            "La machine à vapeur, c'est le smartphone du XIXe siècle : elle a tout changé !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qui a changé avec les machines ?",
+            "Pourquoi les gens quittent la campagne ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "industrie",
+            "machine à vapeur",
+            "usine",
+            "chemin de fer",
+            "exode rural",
+            "XIXe siècle"
+          ]
+        },
+        {
+          "id": "cm2-hist-003",
+          "niveau": "CM2",
+          "matiere": "histoire",
+          "chapitre": "Thème 3 - La France, des guerres mondiales à l'Union européenne",
+          "concept": "Les deux guerres mondiales",
+          "definition": "Le XXe siècle est marqué par deux guerres terribles. La Première Guerre mondiale (1914-1918) et la Seconde (1939-1945) ont causé des millions de morts et changé le monde.",
+          "methode": [
+            "1. 1914-1918 : guerre des tranchées, 10 millions de morts",
+            "2. 1939-1945 : Hitler, nazisme, Shoah, résistance",
+            "3. 1945 : création de l'ONU pour la paix",
+            "4. Construction européenne pour éviter de nouvelles guerres"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les deux guerres",
+            "Ne pas retenir les dates"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi construit-on l'Europe après 1945 ?",
+              "solution_guidee": "Pour éviter de nouvelles guerres entre les pays européens, en coopérant au lieu de se battre."
+            }
+          ],
+          "astuces_foxie": [
+            "14-18 = Première, 39-45 = Deuxième. Retiens : 1-4 / 3-9 !"
+          ],
+          "questions_socratiques": [
+            "Combien de temps a duré la Première Guerre ?",
+            "Qu'est-ce qui a changé après ?"
+          ],
+          "prerequis": [
+            "La République"
+          ],
+          "mots_cles": [
+            "guerre mondiale",
+            "1914",
+            "1939",
+            "tranchées",
+            "Shoah",
+            "paix",
+            "Europe"
+          ]
+        }
+      ],
+      "geographie": [
+        {
+          "id": "cm2-geo-001",
+          "niveau": "CM2",
+          "matiere": "geographie",
+          "chapitre": "Thème 1 - Se déplacer",
+          "concept": "Se déplacer en France et dans le monde",
+          "definition": "Les déplacements au quotidien (voiture, bus, vélo, train) et les déplacements longue distance (avion, TGV) répondent à des besoins différents.",
+          "methode": [
+            "1. Déplacements quotidiens : domicile-travail, domicile-école",
+            "2. Moyens de transport : avantages/inconvénients de chacun",
+            "3. Impact sur l'environnement : pollution, alternatives vertes",
+            "4. Comparer avec d'autres pays"
+          ],
+          "erreurs_frequentes": [
+            "Oublier l'impact environnemental"
+          ],
+          "exemples": [
+            {
+              "enonce": "Quel transport est le plus écologique pour aller à l'école ?",
+              "solution_guidee": "La marche ou le vélo (0 pollution), puis le bus (partagé), puis la voiture."
+            }
+          ],
+          "astuces_foxie": [
+            "Le transport le plus vert, c'est tes pieds ! Ou le vélo si c'est trop loin."
+          ],
+          "questions_socratiques": [
+            "Comment te déplaces-tu chaque jour ?",
+            "Quel impact sur la planète ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "déplacer",
+            "transport",
+            "mobilité",
+            "écologie",
+            "trajet",
+            "quotidien"
+          ]
+        },
+        {
+          "id": "cm2-geo-002",
+          "niveau": "CM2",
+          "matiere": "geographie",
+          "chapitre": "Thème 3 - Mieux habiter",
+          "concept": "Développement durable et habitat",
+          "definition": "Mieux habiter, c'est aménager notre environnement de façon durable : recycler, économiser l'énergie, créer des espaces verts, réduire la pollution.",
+          "methode": [
+            "1. Réduire les déchets : trier, recycler, composter",
+            "2. Économiser l'énergie : isolation, ampoules LED, transports doux",
+            "3. Espaces verts : parcs, jardins, nature en ville",
+            "4. Exemples d'écoquartiers"
+          ],
+          "erreurs_frequentes": [
+            "Penser que ça ne sert à rien à notre échelle"
+          ],
+          "exemples": [
+            {
+              "enonce": "Comment rendre ton école plus écologique ?",
+              "solution_guidee": "Trier les déchets, éteindre les lumières, planter un jardin, venir à vélo."
+            }
+          ],
+          "astuces_foxie": [
+            "Chaque petit geste compte ! Tu es un super-héros de la planète."
+          ],
+          "questions_socratiques": [
+            "Que peux-tu faire au quotidien ?",
+            "Comment économiser l'énergie ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "développement durable",
+            "écologie",
+            "recycler",
+            "énergie",
+            "habitat",
+            "environnement"
+          ]
+        }
+      ],
+      "sciences": [
+        {
+          "id": "cm2-sci-001",
+          "niveau": "CM2",
+          "matiere": "sciences",
+          "chapitre": "Le vivant, sa diversité et les fonctions qui le caractérisent",
+          "concept": "La digestion et la nutrition",
+          "definition": "La digestion transforme les aliments en nutriments que le corps peut utiliser. Le tube digestif va de la bouche à l'intestin.",
+          "methode": [
+            "1. Bouche : mastication + salive",
+            "2. Œsophage : transporte vers l'estomac",
+            "3. Estomac : brasse et transforme avec les sucs gastriques",
+            "4. Intestin grêle : absorption des nutriments",
+            "5. Gros intestin : absorption de l'eau, formation des selles"
+          ],
+          "erreurs_frequentes": [
+            "Confondre l'ordre des organes",
+            "Oublier l'intestin grêle"
+          ],
+          "exemples": [
+            {
+              "enonce": "Que se passe-t-il quand tu manges une pomme ?",
+              "solution_guidee": "Tu mâches → l'œsophage l'envoie à l'estomac → les sucs la transforment → l'intestin absorbe les vitamines."
+            }
+          ],
+          "astuces_foxie": [
+            "Ton corps est une usine : il transforme la nourriture en énergie !"
+          ],
+          "questions_socratiques": [
+            "Par où commencent les aliments ?",
+            "Où sont absorbés les nutriments ?"
+          ],
+          "prerequis": [
+            "Besoins des êtres vivants"
+          ],
+          "mots_cles": [
+            "digestion",
+            "nutriment",
+            "estomac",
+            "intestin",
+            "aliment",
+            "nutrition"
+          ]
+        },
+        {
+          "id": "cm2-sci-002",
+          "niveau": "CM2",
+          "matiere": "sciences",
+          "chapitre": "La Terre, les êtres vivants et l'environnement",
+          "concept": "Le système solaire",
+          "definition": "Le système solaire est composé du Soleil (une étoile) et de 8 planètes qui tournent autour. La Terre est la 3e planète en partant du Soleil.",
+          "methode": [
+            "1. Ordre des planètes : Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune",
+            "2. Planètes rocheuses (proches du Soleil) vs gazeuses (éloignées)",
+            "3. La Terre tourne sur elle-même (jour/nuit) et autour du Soleil (saisons)",
+            "4. La Lune tourne autour de la Terre"
+          ],
+          "erreurs_frequentes": [
+            "Confondre étoile et planète",
+            "Se tromper dans l'ordre des planètes"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi a-t-on le jour et la nuit ?",
+              "solution_guidee": "La Terre tourne sur elle-même en 24h. La moitié face au Soleil = jour, l'autre = nuit."
+            }
+          ],
+          "astuces_foxie": [
+            "Pour retenir l'ordre : Me Voici Tout Mouillé, J'ai Suivi Un Nuage !"
+          ],
+          "questions_socratiques": [
+            "Quelle est l'étoile de notre système ?",
+            "Pourquoi fait-il nuit ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "système solaire",
+            "planète",
+            "Soleil",
+            "Terre",
+            "Lune",
+            "étoile",
+            "rotation"
+          ]
+        }
+      ],
+      "emc": [
+        {
+          "id": "cm2-emc-001",
+          "niveau": "CM2",
+          "matiere": "emc",
+          "chapitre": "Respecter autrui",
+          "concept": "La lutte contre le harcèlement",
+          "definition": "Le harcèlement, c'est quand quelqu'un est victime de violences répétées (moqueries, coups, exclusion). C'est interdit et il faut en parler.",
+          "methode": [
+            "1. Reconnaître : c'est répété, intentionnel, avec un déséquilibre de pouvoir",
+            "2. Ne pas rester seul : en parler à un adulte de confiance",
+            "3. Aider les victimes : ne pas être spectateur passif",
+            "4. Numéro d'aide : 3020"
+          ],
+          "erreurs_frequentes": [
+            "Confondre dispute ponctuelle et harcèlement",
+            "Avoir peur de parler"
+          ],
+          "exemples": [
+            {
+              "enonce": "Un élève est moqué tous les jours par les mêmes personnes. Que faire ?",
+              "solution_guidee": "C'est du harcèlement. Il faut en parler à un adulte (prof, parent, surveillant) tout de suite."
+            }
+          ],
+          "astuces_foxie": [
+            "En parler, ce n'est pas 'rapporter', c'est protéger quelqu'un. C'est courageux !"
+          ],
+          "questions_socratiques": [
+            "Est-ce que ça se répète ?",
+            "À qui peux-tu en parler ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "harcèlement",
+            "violence",
+            "respect",
+            "aide",
+            "adulte",
+            "3020",
+            "victime"
+          ]
+        }
+      ]
+    },
+    "6ème": {
+      "level_info": {
+        "age": "11-12 ans",
+        "cycle": "Cycle 3",
+        "tone": "Encourageant mais plus exigeant, vocabulaire riche, appel au raisonnement"
+      },
+      "maths": [
+        {
+          "id": "6e-math-001",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les fractions",
+          "definition": "Une fraction représente une partie d'un tout ou un quotient. Elle se note a/b où a est le numérateur et b le dénominateur.",
+          "methode": [
+            "1. Numérateur/Dénominateur : combien de parts / en combien de parts",
+            "2. Fractions égales : 1/2 = 2/4 = 3/6 (on multiplie haut et bas par le même nombre)",
+            "3. Comparer des fractions de même dénominateur : compare les numérateurs",
+            "4. Addition de fractions de même dénominateur : additionne les numérateurs"
+          ],
+          "erreurs_frequentes": [
+            "Additionner les dénominateurs",
+            "Ne pas simplifier",
+            "Confondre 1/3 et 1/4"
+          ],
+          "exemples": [
+            {
+              "enonce": "2/5 + 1/5",
+              "solution_guidee": "Même dénominateur → 2/5 + 1/5 = 3/5"
+            }
+          ],
+          "astuces_foxie": [
+            "Les fractions de même dénominateur, c'est facile : tu additionnes juste le haut !"
+          ],
+          "questions_socratiques": [
+            "Les dénominateurs sont-ils les mêmes ?",
+            "Comment simplifier cette fraction ?"
+          ],
+          "prerequis": [
+            "Fractions simples CM1-CM2"
+          ],
+          "mots_cles": [
+            "fraction",
+            "numérateur",
+            "dénominateur",
+            "simplifier",
+            "comparer",
+            "addition"
+          ]
+        },
+        {
+          "id": "6e-math-002",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les nombres relatifs - introduction",
+          "definition": "Les nombres relatifs comprennent les nombres positifs (+) et négatifs (-). Ils servent à mesurer des températures, des altitudes, des profondeurs.",
+          "methode": [
+            "1. Les nombres positifs sont à droite de 0 sur la droite graduée",
+            "2. Les nombres négatifs sont à gauche de 0",
+            "3. Plus un nombre négatif est 'grand' en valeur, plus il est petit (-5 < -2)",
+            "4. 0 n'est ni positif ni négatif"
+          ],
+          "erreurs_frequentes": [
+            "Croire que -5 > -2",
+            "Confondre l'ordre des négatifs"
+          ],
+          "exemples": [
+            {
+              "enonce": "Classe : -3, 5, -1, 0, 2",
+              "solution_guidee": "-3 < -1 < 0 < 2 < 5"
+            }
+          ],
+          "astuces_foxie": [
+            "Pense au thermomètre : -10°C c'est très froid, bien en dessous de -2°C !"
+          ],
+          "questions_socratiques": [
+            "Où se place ce nombre sur la droite ?",
+            "Lequel est le plus proche de 0 ?"
+          ],
+          "prerequis": [
+            "Nombres décimaux"
+          ],
+          "mots_cles": [
+            "relatif",
+            "positif",
+            "négatif",
+            "droite graduée",
+            "opposé",
+            "signe"
+          ]
+        },
+        {
+          "id": "6e-math-003",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Les angles",
+          "definition": "Un angle est formé par deux demi-droites de même origine. On le mesure en degrés (°) avec un rapporteur.",
+          "methode": [
+            "1. Place le centre du rapporteur sur le sommet de l'angle",
+            "2. Aligne le 0° sur un des côtés",
+            "3. Lis la mesure sur l'autre côté",
+            "4. Angle aigu < 90° < angle obtus < 180° < angle plat"
+          ],
+          "erreurs_frequentes": [
+            "Lire la mauvaise graduation sur le rapporteur",
+            "Confondre aigu et obtus"
+          ],
+          "exemples": [
+            {
+              "enonce": "Un angle mesure 45°. Est-il aigu ou obtus ?",
+              "solution_guidee": "45° < 90° donc c'est un angle aigu."
+            }
+          ],
+          "astuces_foxie": [
+            "Aigu = petit et pointu comme une aiguille. Obtus = grand et ouvert."
+          ],
+          "questions_socratiques": [
+            "L'angle est-il plus petit ou plus grand qu'un angle droit ?"
+          ],
+          "prerequis": [
+            "Droites perpendiculaires"
+          ],
+          "mots_cles": [
+            "angle",
+            "degré",
+            "rapporteur",
+            "aigu",
+            "obtus",
+            "droit",
+            "plat",
+            "mesurer"
+          ]
+        },
+        {
+          "id": "6e-math-004",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Grandeurs et mesures",
+          "concept": "Volumes et contenances",
+          "definition": "Le volume mesure l'espace occupé par un objet en 3D. On utilise les cm³, dm³ ou m³. La contenance mesure ce qu'un récipient peut contenir (L, cL, mL).",
+          "methode": [
+            "1. Volume du pavé droit = Longueur × largeur × hauteur",
+            "2. Volume du cube = côté × côté × côté = côté³",
+            "3. 1 dm³ = 1 L = 1000 cm³ = 1000 mL",
+            "4. Conversion : 1 m³ = 1000 L"
+          ],
+          "erreurs_frequentes": [
+            "Confondre aire et volume",
+            "Erreurs de conversion"
+          ],
+          "exemples": [
+            {
+              "enonce": "Volume d'un pavé de 5cm × 3cm × 2cm",
+              "solution_guidee": "V = 5 × 3 × 2 = 30 cm³"
+            }
+          ],
+          "astuces_foxie": [
+            "Le volume c'est en 3D, l'aire c'est en 2D, la longueur c'est en 1D !"
+          ],
+          "questions_socratiques": [
+            "Quelles sont les 3 dimensions ?",
+            "Quelle unité utilises-tu ?"
+          ],
+          "prerequis": [
+            "Aires et périmètres"
+          ],
+          "mots_cles": [
+            "volume",
+            "pavé",
+            "cube",
+            "litre",
+            "contenance",
+            "cm³",
+            "dm³"
+          ]
+        },
+        {
+          "id": "6e-math-005",
+          "niveau": "6ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "La proportionnalité",
+          "definition": "Deux grandeurs sont proportionnelles quand on passe de l'une à l'autre en multipliant toujours par le même nombre (le coefficient de proportionnalité).",
+          "methode": [
+            "1. Vérifie que le rapport est constant",
+            "2. Utilise le tableau de proportionnalité",
+            "3. Règle de trois : produit en croix",
+            "4. Applications : pourcentages, échelles, vitesses"
+          ],
+          "erreurs_frequentes": [
+            "Confondre proportionnel et non-proportionnel",
+            "Se tromper dans le produit en croix"
+          ],
+          "exemples": [
+            {
+              "enonce": "3 kg de pommes coûtent 6€. Combien coûtent 5 kg ?",
+              "solution_guidee": "Coefficient = 6/3 = 2€/kg. 5 × 2 = 10€"
+            }
+          ],
+          "astuces_foxie": [
+            "Si le prix double quand la quantité double, c'est proportionnel !"
+          ],
+          "questions_socratiques": [
+            "Le rapport est-il toujours le même ?",
+            "Quel est le coefficient ?"
+          ],
+          "prerequis": [
+            "Multiplication",
+            "Division"
+          ],
+          "mots_cles": [
+            "proportionnalité",
+            "coefficient",
+            "tableau",
+            "produit en croix",
+            "pourcentage"
+          ]
+        }
+      ],
+      "francais": [
+        {
+          "id": "6e-fr-001",
+          "niveau": "6ème",
+          "matiere": "francais",
+          "chapitre": "Grammaire",
+          "concept": "Les classes grammaticales",
+          "definition": "Chaque mot appartient à une classe grammaticale (sa nature). Les principales : nom, verbe, adjectif, déterminant, pronom, adverbe, préposition, conjonction.",
+          "methode": [
+            "1. Nom : désigne une chose/personne (chat, bonheur)",
+            "2. Verbe : exprime une action ou un état (courir, être)",
+            "3. Adjectif : qualifie le nom (grand, bleu)",
+            "4. Adverbe : modifie le verbe/l'adjectif (vite, très)",
+            "5. Préposition : relie deux mots (à, de, pour, dans)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre nature et fonction",
+            "Confondre adverbe et adjectif"
+          ],
+          "exemples": [
+            {
+              "enonce": "Donne la nature de chaque mot : Le chat noir dort paisiblement.",
+              "solution_guidee": "Le=déterminant, chat=nom, noir=adjectif, dort=verbe, paisiblement=adverbe"
+            }
+          ],
+          "astuces_foxie": [
+            "La nature d'un mot ne change jamais. 'Chat' est toujours un nom, même dans 'le petit chat dort' !"
+          ],
+          "questions_socratiques": [
+            "Ce mot désigne-t-il quelque chose ?",
+            "Ce mot dit-il comment on fait l'action ?"
+          ],
+          "prerequis": [
+            "Nom, déterminant, adjectif, verbe"
+          ],
+          "mots_cles": [
+            "classe grammaticale",
+            "nature",
+            "nom",
+            "verbe",
+            "adjectif",
+            "adverbe",
+            "préposition"
+          ]
+        },
+        {
+          "id": "6e-fr-002",
+          "niveau": "6ème",
+          "matiere": "francais",
+          "chapitre": "Littérature",
+          "concept": "Les récits de création et les textes fondateurs",
+          "definition": "Les textes fondateurs sont les grands récits qui ont marqué notre culture : la Bible, l'Odyssée d'Homère, les Métamorphoses d'Ovide, et d'autres mythes du monde.",
+          "methode": [
+            "1. Identifie le type de récit : mythe, conte, légende, épopée",
+            "2. Repère les personnages importants (héros, dieux)",
+            "3. Comprends le message ou la morale",
+            "4. Fais des liens entre les différents récits"
+          ],
+          "erreurs_frequentes": [
+            "Confondre mythe et histoire réelle",
+            "Ne pas voir la morale"
+          ],
+          "exemples": [
+            {
+              "enonce": "L'Odyssée d'Homère",
+              "solution_guidee": "Ulysse, héros grec, met 10 ans à rentrer de la guerre de Troie. Chaque épreuve montre ses qualités (ruse, courage)."
+            }
+          ],
+          "astuces_foxie": [
+            "Les mythes sont les super-héros de l'Antiquité !"
+          ],
+          "questions_socratiques": [
+            "Qui est le héros ?",
+            "Quel message veut transmettre ce récit ?"
+          ],
+          "prerequis": [
+            "Lecture de récits"
+          ],
+          "mots_cles": [
+            "mythe",
+            "légende",
+            "épopée",
+            "Odyssée",
+            "Bible",
+            "création",
+            "fondateur"
+          ]
+        },
+        {
+          "id": "6e-fr-003",
+          "niveau": "6ème",
+          "matiere": "francais",
+          "chapitre": "Conjugaison",
+          "concept": "Le futur simple et le conditionnel présent",
+          "definition": "Le futur simple exprime une action à venir. Le conditionnel exprime une condition, un souhait ou une politesse.",
+          "methode": [
+            "1. Futur : infinitif + -ai, -as, -a, -ons, -ez, -ont",
+            "2. Conditionnel : infinitif + -ais, -ais, -ait, -ions, -iez, -aient",
+            "3. Le conditionnel = futur + terminaisons de l'imparfait",
+            "4. Si + imparfait → conditionnel (Si j'avais..., je ferais...)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre futur et conditionnel",
+            "Oublier le r avant les terminaisons"
+          ],
+          "exemples": [
+            {
+              "enonce": "Futur vs Conditionnel de 'manger'",
+              "solution_guidee": "Futur : je mangerai. Conditionnel : je mangerais."
+            }
+          ],
+          "astuces_foxie": [
+            "Futur = c'est sûr, ça va arriver. Conditionnel = c'est un rêve, un souhait."
+          ],
+          "questions_socratiques": [
+            "C'est certain ou c'est un souhait ?",
+            "Quel est l'infinitif du verbe ?"
+          ],
+          "prerequis": [
+            "Présent",
+            "Imparfait"
+          ],
+          "mots_cles": [
+            "futur",
+            "conditionnel",
+            "conjugaison",
+            "infinitif",
+            "terminaison",
+            "souhait"
+          ]
+        }
+      ],
+      "histoire": [
+        {
+          "id": "6e-hist-001",
+          "niveau": "6ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 1 - La longue histoire de l'humanité et des migrations",
+          "concept": "Les débuts de l'humanité",
+          "definition": "L'humanité est née en Afrique il y a environ 2,5 millions d'années. L'Homo sapiens (nous) apparaît vers -300 000 ans et migre progressivement vers tous les continents.",
+          "methode": [
+            "1. Origines africaines de l'humanité",
+            "2. Évolution : Homo habilis → Homo erectus → Homo sapiens",
+            "3. Migrations : Out of Africa, peuplement progressif de la planète",
+            "4. Révolution néolithique : agriculture, sédentarisation"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les différentes espèces d'Homo",
+            "Croire que l'homme descend du singe"
+          ],
+          "exemples": [
+            {
+              "enonce": "D'où viennent les premiers humains ?",
+              "solution_guidee": "D'Afrique ! Tous les humains ont des ancêtres africains."
+            }
+          ],
+          "astuces_foxie": [
+            "L'Afrique est le berceau de l'humanité. On est tous des cousins !"
+          ],
+          "questions_socratiques": [
+            "Où sont apparus les premiers humains ?",
+            "Comment se sont-ils déplacés ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "humanité",
+            "Homo sapiens",
+            "Afrique",
+            "migration",
+            "néolithique",
+            "préhistoire"
+          ]
+        },
+        {
+          "id": "6e-hist-002",
+          "niveau": "6ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 2 - Récits fondateurs, croyances et citoyenneté dans la Méditerranée antique",
+          "concept": "Le monde des cités grecques",
+          "definition": "Les Grecs vivaient dans des cités-États indépendantes (Athènes, Sparte). Athènes a inventé la démocratie, un système où les citoyens votent les lois.",
+          "methode": [
+            "1. La cité grecque : ville + campagne autour, indépendante",
+            "2. Athènes : démocratie (pouvoir du peuple), Agora, Ecclésia",
+            "3. Mais citoyens limités : pas les femmes, les esclaves ni les étrangers",
+            "4. Mythologie grecque : Zeus, Athéna, Odyssée..."
+          ],
+          "erreurs_frequentes": [
+            "Croire que tous les habitants d'Athènes étaient citoyens"
+          ],
+          "exemples": [
+            {
+              "enonce": "Qu'est-ce que la démocratie athénienne ?",
+              "solution_guidee": "Les citoyens (hommes athéniens libres) votent les lois à l'Ecclésia (assemblée)."
+            }
+          ],
+          "astuces_foxie": [
+            "Démos = peuple, kratos = pouvoir → démocratie = pouvoir du peuple !"
+          ],
+          "questions_socratiques": [
+            "Qui pouvait voter à Athènes ?",
+            "En quoi c'est différent d'aujourd'hui ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "Grèce",
+            "Athènes",
+            "démocratie",
+            "cité",
+            "citoyen",
+            "mythologie",
+            "Antiquité"
+          ]
+        },
+        {
+          "id": "6e-hist-003",
+          "niveau": "6ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 3 - L'Empire romain dans le monde antique",
+          "concept": "Rome, de la République à l'Empire",
+          "definition": "Rome est d'abord une République (les citoyens élisent leurs dirigeants) puis devient un Empire (un seul homme, l'empereur, gouverne). L'Empire romain est immense et unifié par le droit, les routes et la langue latine.",
+          "methode": [
+            "1. Fondation légendaire de Rome : 753 av. J.-C.",
+            "2. République romaine : Sénat, consuls élus",
+            "3. Empire : à partir d'Auguste (27 av. J.-C.)",
+            "4. Romanisation : routes, aqueducs, droit romain, latin"
+          ],
+          "erreurs_frequentes": [
+            "Confondre République et Empire romains"
+          ],
+          "exemples": [
+            {
+              "enonce": "Qu'est-ce que la romanisation ?",
+              "solution_guidee": "C'est la diffusion de la culture romaine dans les territoires conquis : langue, droit, architecture."
+            }
+          ],
+          "astuces_foxie": [
+            "Les Romains ont construit des routes si solides qu'on les utilise encore !"
+          ],
+          "questions_socratiques": [
+            "Quelle est la différence entre République et Empire ?",
+            "Qu'ont apporté les Romains ?"
+          ],
+          "prerequis": [
+            "Grèce antique"
+          ],
+          "mots_cles": [
+            "Rome",
+            "Empire",
+            "République",
+            "empereur",
+            "romanisation",
+            "latin",
+            "Antiquité"
+          ]
+        }
+      ],
+      "geographie": [
+        {
+          "id": "6e-geo-001",
+          "niveau": "6ème",
+          "matiere": "geographie",
+          "chapitre": "Thème 1 - Habiter une métropole",
+          "concept": "Les métropoles mondiales",
+          "definition": "Une métropole est une très grande ville qui concentre population, emplois, richesses et pouvoir de décision. Tokyo, Paris, New York sont des métropoles mondiales.",
+          "methode": [
+            "1. Définir : grande ville + fonctions de commandement",
+            "2. Observer : centre / périphérie / banlieue",
+            "3. Comparer : métropoles de pays développés vs en développement",
+            "4. Problèmes : pollution, embouteillages, inégalités"
+          ],
+          "erreurs_frequentes": [
+            "Confondre ville et métropole"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi Paris est-elle une métropole mondiale ?",
+              "solution_guidee": "Capitale politique, centre économique, culturel (musées, mode), hub de transports, siège d'organisations internationales."
+            }
+          ],
+          "astuces_foxie": [
+            "Une métropole, c'est comme le cerveau d'un pays : tout est décidé là-bas !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qui fait qu'une ville est une métropole ?",
+            "Quels sont les avantages et les inconvénients ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "métropole",
+            "urbanisation",
+            "ville",
+            "centre",
+            "périphérie",
+            "population"
+          ]
+        }
+      ],
+      "sciences": [
+        {
+          "id": "6e-sci-001",
+          "niveau": "6ème",
+          "matiere": "sciences",
+          "chapitre": "Matière, mouvement, énergie, information",
+          "concept": "L'énergie et ses formes",
+          "definition": "L'énergie existe sous différentes formes : cinétique (mouvement), thermique (chaleur), lumineuse, chimique, électrique, nucléaire. Elle peut se transformer d'une forme à une autre.",
+          "methode": [
+            "1. Identifie la source d'énergie (soleil, nourriture, pile...)",
+            "2. Identifie la forme d'énergie (lumineuse, thermique...)",
+            "3. Les transformations : la lampe transforme l'énergie électrique en lumineuse",
+            "4. L'énergie se conserve mais se transforme"
+          ],
+          "erreurs_frequentes": [
+            "Croire que l'énergie disparaît",
+            "Confondre source et forme"
+          ],
+          "exemples": [
+            {
+              "enonce": "Quelles transformations dans une voiture ?",
+              "solution_guidee": "Essence (chimique) → moteur → mouvement (cinétique) + chaleur (thermique)"
+            }
+          ],
+          "astuces_foxie": [
+            "L'énergie est comme l'eau : elle change de forme mais ne disparaît jamais !"
+          ],
+          "questions_socratiques": [
+            "D'où vient l'énergie ?",
+            "En quoi se transforme-t-elle ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "énergie",
+            "cinétique",
+            "thermique",
+            "électrique",
+            "transformation",
+            "source"
+          ]
+        },
+        {
+          "id": "6e-sci-002",
+          "niveau": "6ème",
+          "matiere": "sciences",
+          "chapitre": "Le vivant, sa diversité et les fonctions qui le caractérisent",
+          "concept": "La cellule, unité du vivant",
+          "definition": "Tous les êtres vivants sont constitués de cellules. La cellule est la plus petite unité vivante. Elle possède une membrane, un cytoplasme et un noyau.",
+          "methode": [
+            "1. Membrane : enveloppe qui protège la cellule",
+            "2. Cytoplasme : liquide à l'intérieur",
+            "3. Noyau : contient l'ADN (le programme génétique)",
+            "4. Unicellulaire (1 cellule : bactérie) vs Pluricellulaire (beaucoup : humain)"
+          ],
+          "erreurs_frequentes": [
+            "Oublier la membrane",
+            "Confondre noyau et cellule"
+          ],
+          "exemples": [
+            {
+              "enonce": "Quels sont les 3 éléments d'une cellule ?",
+              "solution_guidee": "Membrane, cytoplasme, noyau."
+            }
+          ],
+          "astuces_foxie": [
+            "La cellule c'est comme un œuf : la coquille = membrane, le blanc = cytoplasme, le jaune = noyau !"
+          ],
+          "questions_socratiques": [
+            "Quel est le rôle du noyau ?",
+            "Quelle est la différence avec une bactérie ?"
+          ],
+          "prerequis": [
+            "Classification du vivant"
+          ],
+          "mots_cles": [
+            "cellule",
+            "membrane",
+            "noyau",
+            "cytoplasme",
+            "ADN",
+            "unicellulaire",
+            "pluricellulaire"
+          ]
+        }
+      ],
+      "emc": [
+        {
+          "id": "6e-emc-001",
+          "niveau": "6ème",
+          "matiere": "emc",
+          "chapitre": "Respecter autrui",
+          "concept": "Identité et diversité",
+          "definition": "Chaque personne a une identité unique : nom, nationalité, culture, religion, goûts. Respecter les autres, c'est accepter les différences et lutter contre les discriminations.",
+          "methode": [
+            "1. Identité légale : nom, prénom, nationalité",
+            "2. Identité personnelle : goûts, caractère, culture",
+            "3. Respecter les différences : religion, origine, apparence",
+            "4. Discrimination = traiter quelqu'un différemment à cause de ce qu'il est → c'est interdit par la loi"
+          ],
+          "erreurs_frequentes": [
+            "Confondre préjugé et fait",
+            "Ne pas reconnaître les discriminations"
+          ],
+          "exemples": [
+            {
+              "enonce": "Un élève se moque de la religion d'un camarade. Est-ce normal ?",
+              "solution_guidee": "Non, c'est une discrimination. La laïcité garantit le respect de toutes les croyances."
+            }
+          ],
+          "astuces_foxie": [
+            "Nos différences sont notre richesse. Imagine un monde où tout le monde serait pareil... quel ennui !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qu'une discrimination ?",
+            "Comment réagir face à une injustice ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "identité",
+            "diversité",
+            "discrimination",
+            "respect",
+            "laïcité",
+            "tolérance"
+          ]
+        }
+      ]
+    },
+    "5ème": {
+      "level_info": {
+        "age": "12-13 ans",
+        "cycle": "Cycle 4",
+        "tone": "Exigeant et structuré, favorise l'autonomie et l'esprit critique"
+      },
+      "maths": [
+        {
+          "id": "5e-math-001",
+          "niveau": "5ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les nombres relatifs - opérations",
+          "definition": "Les nombres relatifs incluent les positifs et les négatifs. En 5ème, on apprend à les additionner, soustraire, et les utiliser dans des situations concrètes.",
+          "methode": [
+            "1. Addition de même signe : on additionne et on garde le signe",
+            "2. Addition de signes différents : on soustrait et on garde le signe du plus grand",
+            "3. Soustraire = ajouter l'opposé : a - b = a + (-b)",
+            "4. Règle des signes : (+)(+) = +, (+)(-) = -, (-)(+) = -, (-)(-) = +"
+          ],
+          "erreurs_frequentes": [
+            "Se tromper dans la règle des signes",
+            "Confondre addition et soustraction de relatifs"
+          ],
+          "exemples": [
+            {
+              "enonce": "(-3) + (+5)",
+              "solution_guidee": "Signes différents : 5-3 = 2, on garde le signe du plus grand (+) → +2"
+            }
+          ],
+          "astuces_foxie": [
+            "Pense à un ascenseur : +5 tu montes de 5, -3 tu descends de 3."
+          ],
+          "questions_socratiques": [
+            "Les signes sont-ils les mêmes ?",
+            "Quel est le plus grand en valeur absolue ?"
+          ],
+          "prerequis": [
+            "Nombres relatifs introduction"
+          ],
+          "mots_cles": [
+            "relatif",
+            "négatif",
+            "positif",
+            "opposé",
+            "signe",
+            "valeur absolue"
+          ]
+        },
+        {
+          "id": "5e-math-002",
+          "niveau": "5ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les fractions - opérations",
+          "definition": "En 5ème, on additionne et soustrait des fractions avec des dénominateurs différents, et on multiplie des fractions.",
+          "methode": [
+            "1. Pour additionner/soustraire : mettre au même dénominateur",
+            "2. Trouver le PPCM des dénominateurs",
+            "3. Multiplier : numérateur × numérateur / dénominateur × dénominateur",
+            "4. Simplifier le résultat"
+          ],
+          "erreurs_frequentes": [
+            "Additionner les dénominateurs",
+            "Ne pas simplifier"
+          ],
+          "exemples": [
+            {
+              "enonce": "1/3 + 1/4",
+              "solution_guidee": "Dénominateur commun = 12. 4/12 + 3/12 = 7/12"
+            }
+          ],
+          "astuces_foxie": [
+            "Pour mettre au même dénominateur, multiplie en croix !"
+          ],
+          "questions_socratiques": [
+            "Les dénominateurs sont-ils les mêmes ?",
+            "Peux-tu simplifier ?"
+          ],
+          "prerequis": [
+            "Fractions (6ème)"
+          ],
+          "mots_cles": [
+            "fraction",
+            "dénominateur commun",
+            "PPCM",
+            "multiplication",
+            "simplifier"
+          ]
+        },
+        {
+          "id": "5e-math-003",
+          "niveau": "5ème",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Les triangles et leurs propriétés",
+          "definition": "Un triangle a 3 côtés et 3 angles dont la somme fait toujours 180°. Il existe des triangles isocèles, équilatéraux, rectangles.",
+          "methode": [
+            "1. Somme des angles = 180°",
+            "2. Inégalité triangulaire : chaque côté < somme des 2 autres",
+            "3. Triangle isocèle : 2 côtés égaux",
+            "4. Triangle équilatéral : 3 côtés égaux (3 angles de 60°)",
+            "5. Triangle rectangle : un angle de 90°"
+          ],
+          "erreurs_frequentes": [
+            "Oublier que la somme des angles = 180°",
+            "Confondre les types de triangles"
+          ],
+          "exemples": [
+            {
+              "enonce": "Un triangle a 2 angles de 50° et 70°. Combien mesure le 3ème ?",
+              "solution_guidee": "180 - 50 - 70 = 60°"
+            }
+          ],
+          "astuces_foxie": [
+            "180° dans un triangle, toujours ! C'est la règle d'or de la géométrie."
+          ],
+          "questions_socratiques": [
+            "Quelle est la somme des angles ?",
+            "Ce triangle est-il particulier ?"
+          ],
+          "prerequis": [
+            "Angles",
+            "Droites"
+          ],
+          "mots_cles": [
+            "triangle",
+            "angle",
+            "isocèle",
+            "équilatéral",
+            "rectangle",
+            "180 degrés"
+          ]
+        }
+      ],
+      "francais": [
+        {
+          "id": "5e-fr-001",
+          "niveau": "5ème",
+          "matiere": "francais",
+          "chapitre": "Littérature",
+          "concept": "Le récit d'aventures et le voyage",
+          "definition": "En 5ème, on étudie les récits de voyage et d'aventures : Robinson Crusoé, Le Tour du monde en 80 jours, Marco Polo... Ces textes interrogent la découverte de l'autre.",
+          "methode": [
+            "1. Identifie le héros et son voyage (physique et intérieur)",
+            "2. Repère les épreuves et ce qu'elles apportent au personnage",
+            "3. Analyse la rencontre avec l'autre (altérité)",
+            "4. Fais le lien avec les Grandes Découvertes"
+          ],
+          "erreurs_frequentes": [
+            "Résumer sans analyser",
+            "Ne pas voir l'évolution du personnage"
+          ],
+          "exemples": [
+            {
+              "enonce": "Robinson Crusoé de Defoe",
+              "solution_guidee": "Robinson survit seul sur une île, apprend l'autonomie, rencontre Vendredi → réflexion sur la civilisation."
+            }
+          ],
+          "astuces_foxie": [
+            "Le vrai voyage, ce n'est pas juste le déplacement : c'est ce que le héros apprend sur lui-même !"
+          ],
+          "questions_socratiques": [
+            "Qu'apprend le héros pendant son voyage ?",
+            "Comment voit-il l'étranger ?"
+          ],
+          "prerequis": [
+            "Lecture de récits"
+          ],
+          "mots_cles": [
+            "aventure",
+            "voyage",
+            "découverte",
+            "altérité",
+            "héros",
+            "épreuve"
+          ]
+        },
+        {
+          "id": "5e-fr-002",
+          "niveau": "5ème",
+          "matiere": "francais",
+          "chapitre": "Grammaire",
+          "concept": "Les propositions subordonnées",
+          "definition": "Une phrase complexe contient plusieurs propositions. La proposition subordonnée dépend de la proposition principale et est introduite par un mot subordonnant (que, qui, quand, si...).",
+          "methode": [
+            "1. Proposition principale : a un sens seul",
+            "2. Proposition subordonnée : dépend de la principale",
+            "3. Types : relative (qui, que, dont), conjonctive (que, quand, si, parce que), interrogative indirecte",
+            "4. La relative complète un nom, la conjonctive complète un verbe"
+          ],
+          "erreurs_frequentes": [
+            "Confondre principale et subordonnée",
+            "Ne pas repérer le mot subordonnant"
+          ],
+          "exemples": [
+            {
+              "enonce": "'Je pense [que tu as raison].'",
+              "solution_guidee": "'Je pense' = principale. 'que tu as raison' = subordonnée conjonctive, introduite par 'que'."
+            }
+          ],
+          "astuces_foxie": [
+            "La subordonnée, c'est la proposition 'dépendante' : elle ne peut pas vivre seule !"
+          ],
+          "questions_socratiques": [
+            "Quel est le mot qui introduit la subordonnée ?",
+            "La subordonnée a-t-elle un sens toute seule ?"
+          ],
+          "prerequis": [
+            "Phrase simple vs phrase complexe"
+          ],
+          "mots_cles": [
+            "proposition",
+            "subordonnée",
+            "principale",
+            "relative",
+            "conjonctive",
+            "complexe"
+          ]
+        }
+      ],
+      "histoire": [
+        {
+          "id": "5e-hist-001",
+          "niveau": "5ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 1 - Chrétientés et islam (VIe-XIIIe siècles)",
+          "concept": "Byzance et l'islam médiéval",
+          "definition": "Après la chute de Rome, deux grandes civilisations dominent : l'Empire byzantin (chrétien orthodoxe) à l'est et le monde musulman qui se développe à partir du VIIe siècle.",
+          "methode": [
+            "1. Empire byzantin : Constantinople, orthodoxie, Justinien",
+            "2. Naissance de l'islam : Mahomet, Hégire (622), Coran",
+            "3. Expansion musulmane : de l'Arabie à l'Espagne",
+            "4. Échanges et conflits : croisades, commerce méditerranéen"
+          ],
+          "erreurs_frequentes": [
+            "Confondre byzantin et romain",
+            "Simplifier les relations entre chrétiens et musulmans"
+          ],
+          "exemples": [
+            {
+              "enonce": "Qu'est-ce que l'Hégire ?",
+              "solution_guidee": "Le départ de Mahomet de La Mecque vers Médine en 622. C'est le début du calendrier musulman."
+            }
+          ],
+          "astuces_foxie": [
+            "622, c'est pour l'islam ce que 0 est pour le calendrier chrétien !"
+          ],
+          "questions_socratiques": [
+            "Quels sont les points communs entre ces civilisations ?",
+            "Quels étaient les échanges ?"
+          ],
+          "prerequis": [
+            "Empire romain"
+          ],
+          "mots_cles": [
+            "Byzance",
+            "islam",
+            "Moyen Âge",
+            "chrétienté",
+            "croisades",
+            "Mahomet",
+            "Constantinople"
+          ]
+        },
+        {
+          "id": "5e-hist-002",
+          "niveau": "5ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 2 - Société, Église et pouvoir politique dans l'Occident féodal",
+          "concept": "La société féodale",
+          "definition": "Au Moyen Âge, la société est organisée en trois ordres : ceux qui prient (clergé), ceux qui combattent (nobles) et ceux qui travaillent (paysans). Le système féodal repose sur des liens de vassalité.",
+          "methode": [
+            "1. Les 3 ordres : clergé, noblesse, tiers-état (paysans)",
+            "2. Seigneur et vassal : protection contre service",
+            "3. Le fief : terre donnée au vassal",
+            "4. L'Église : pouvoir spirituel, construction des cathédrales"
+          ],
+          "erreurs_frequentes": [
+            "Croire que les serfs étaient des esclaves",
+            "Simplifier la féodalité"
+          ],
+          "exemples": [
+            {
+              "enonce": "Qu'est-ce qu'un vassal ?",
+              "solution_guidee": "Un vassal est un seigneur qui prête serment à un autre seigneur (suzerain) en échange d'un fief (terre)."
+            }
+          ],
+          "astuces_foxie": [
+            "La féodalité, c'est comme un contrat : je te protège, tu me sers !"
+          ],
+          "questions_socratiques": [
+            "Quels sont les droits et devoirs du vassal ?",
+            "Et du seigneur ?"
+          ],
+          "prerequis": [
+            "Charlemagne"
+          ],
+          "mots_cles": [
+            "féodalité",
+            "vassal",
+            "seigneur",
+            "fief",
+            "clergé",
+            "noblesse",
+            "Moyen Âge"
+          ]
+        }
+      ],
+      "geographie": [
+        {
+          "id": "5e-geo-001",
+          "niveau": "5ème",
+          "matiere": "geographie",
+          "chapitre": "Thème 1 - La question démographique et l'inégal développement",
+          "concept": "La croissance démographique et ses effets",
+          "definition": "La population mondiale dépasse 8 milliards. La croissance est inégale : forte en Afrique, faible en Europe. Cela crée des défis : alimentation, éducation, emploi, urbanisation.",
+          "methode": [
+            "1. Croissance démographique : natalité - mortalité",
+            "2. Transition démographique : passage d'une forte à une faible natalité/mortalité",
+            "3. Inégalités de développement : IDH, espérance de vie",
+            "4. Conséquences : migration, urbanisation, pression sur les ressources"
+          ],
+          "erreurs_frequentes": [
+            "Confondre surpopulation et densité"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi la population augmente en Afrique ?",
+              "solution_guidee": "Forte natalité + mortalité en baisse (meilleure santé) = croissance rapide. La transition démographique n'est pas achevée."
+            }
+          ],
+          "astuces_foxie": [
+            "8 milliards de personnes sur Terre ! C'est comme si chaque habitant de la France était multiplié par 120."
+          ],
+          "questions_socratiques": [
+            "Pourquoi la population augmente-t-elle ?",
+            "Quelles conséquences cela a-t-il ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "démographie",
+            "population",
+            "natalité",
+            "mortalité",
+            "IDH",
+            "développement"
+          ]
+        }
+      ],
+      "sciences": [
+        {
+          "id": "5e-sci-001",
+          "niveau": "5ème",
+          "matiere": "sciences",
+          "chapitre": "Physique-Chimie",
+          "concept": "Les mélanges et solutions",
+          "definition": "Un mélange est l'association de plusieurs substances. Un mélange homogène (solution) ne montre qu'une seule phase. Un mélange hétérogène montre plusieurs phases visibles.",
+          "methode": [
+            "1. Mélange homogène : on ne voit pas les composants (eau + sel)",
+            "2. Mélange hétérogène : on voit les composants (eau + huile)",
+            "3. Solvant : ce qui dissout (eau). Soluté : ce qui est dissous (sel)",
+            "4. Techniques de séparation : filtration, décantation, évaporation"
+          ],
+          "erreurs_frequentes": [
+            "Confondre homogène et hétérogène",
+            "Oublier le vocabulaire"
+          ],
+          "exemples": [
+            {
+              "enonce": "L'eau salée est-elle un mélange homogène ou hétérogène ?",
+              "solution_guidee": "Homogène : on ne voit pas le sel, il est dissous dans l'eau. C'est une solution."
+            }
+          ],
+          "astuces_foxie": [
+            "Homogène = on ne voit rien (HO = Hyper Observable... NON !). Hétérogène = on voit tout."
+          ],
+          "questions_socratiques": [
+            "Peut-on distinguer les composants à l'œil nu ?",
+            "Comment séparer ce mélange ?"
+          ],
+          "prerequis": [
+            "États de la matière"
+          ],
+          "mots_cles": [
+            "mélange",
+            "solution",
+            "homogène",
+            "hétérogène",
+            "solvant",
+            "soluté",
+            "filtration"
+          ]
+        }
+      ],
+      "emc": [
+        {
+          "id": "5e-emc-001",
+          "niveau": "5ème",
+          "matiere": "emc",
+          "chapitre": "Respecter autrui",
+          "concept": "La lutte contre les discriminations",
+          "definition": "La discrimination est le fait de traiter différemment une personne en raison de son origine, sexe, handicap, religion, orientation sexuelle, etc. La loi française interdit toutes les discriminations.",
+          "methode": [
+            "1. Identifier les critères de discrimination (24 critères en droit français)",
+            "2. Connaître les recours : Défenseur des droits, plainte",
+            "3. Distinguer préjugé, stéréotype et discrimination",
+            "4. Agir : ne pas être spectateur passif"
+          ],
+          "erreurs_frequentes": [
+            "Confondre opinion et discrimination",
+            "Accepter les discriminations comme normales"
+          ],
+          "exemples": [
+            {
+              "enonce": "Refuser un logement à quelqu'un à cause de son nom. Discrimination ?",
+              "solution_guidee": "Oui, discrimination liée à l'origine. C'est illégal et puni par la loi."
+            }
+          ],
+          "astuces_foxie": [
+            "La loi protège tout le monde. Personne ne mérite d'être traité différemment pour ce qu'il est."
+          ],
+          "questions_socratiques": [
+            "Pourquoi cette personne est-elle traitée différemment ?",
+            "Est-ce juste ?"
+          ],
+          "prerequis": [
+            "Identité et diversité"
+          ],
+          "mots_cles": [
+            "discrimination",
+            "égalité",
+            "droits",
+            "préjugé",
+            "stéréotype",
+            "loi"
+          ]
+        }
+      ]
+    },
+    "4ème": {
+      "level_info": {
+        "age": "13-14 ans",
+        "cycle": "Cycle 4",
+        "tone": "Exigeant et structuré, favorise l'autonomie et l'esprit critique"
+      },
+      "maths": [
+        {
+          "id": "4e-math-001",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Le calcul littéral et la distributivité",
+          "definition": "Le calcul littéral utilise des lettres pour représenter des nombres. La distributivité permet de développer : k(a+b) = ka + kb, et de factoriser : ka + kb = k(a+b).",
+          "methode": [
+            "1. Développer : k(a+b) = ka + kb (on distribue)",
+            "2. Factoriser : ka + kb = k(a+b) (on met en facteur)",
+            "3. Double distributivité : (a+b)(c+d) = ac + ad + bc + bd",
+            "4. Réduire : regrouper les termes semblables"
+          ],
+          "erreurs_frequentes": [
+            "Oublier un terme dans la distributivité",
+            "Erreurs de signes",
+            "Ne pas réduire"
+          ],
+          "exemples": [
+            {
+              "enonce": "Développer 3(x + 5)",
+              "solution_guidee": "3 × x + 3 × 5 = 3x + 15"
+            }
+          ],
+          "astuces_foxie": [
+            "Distribuer, c'est comme donner un bonbon à chacun : le facteur 'donne' à chaque terme dans la parenthèse !"
+          ],
+          "questions_socratiques": [
+            "Que faut-il distribuer ?",
+            "Y a-t-il des termes semblables à regrouper ?"
+          ],
+          "prerequis": [
+            "Opérations sur les relatifs"
+          ],
+          "mots_cles": [
+            "calcul littéral",
+            "développer",
+            "factoriser",
+            "distributivité",
+            "expression",
+            "variable"
+          ]
+        },
+        {
+          "id": "4e-math-002",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les équations du premier degré",
+          "definition": "Une équation est une égalité avec une inconnue (souvent x). Résoudre, c'est trouver la valeur de x qui rend l'égalité vraie.",
+          "methode": [
+            "1. Isole les termes en x d'un côté, les nombres de l'autre",
+            "2. Quand un terme change de côté, il change de signe",
+            "3. Divise par le coefficient de x",
+            "4. Vérifie en remplaçant x par la solution"
+          ],
+          "erreurs_frequentes": [
+            "Oublier de changer le signe en changeant de côté",
+            "Ne pas vérifier"
+          ],
+          "exemples": [
+            {
+              "enonce": "Résous 3x + 5 = 20",
+              "solution_guidee": "3x = 20 - 5 → 3x = 15 → x = 15/3 → x = 5. Vérif : 3(5)+5 = 20 ✓"
+            }
+          ],
+          "astuces_foxie": [
+            "L'équation c'est une balance : ce que tu fais d'un côté, fais-le de l'autre !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qu'on cherche ?",
+            "Comment isoler x ?"
+          ],
+          "prerequis": [
+            "Calcul littéral"
+          ],
+          "mots_cles": [
+            "équation",
+            "inconnue",
+            "résoudre",
+            "solution",
+            "premier degré",
+            "vérifier"
+          ]
+        },
+        {
+          "id": "4e-math-003",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les puissances",
+          "definition": "a^n signifie qu'on multiplie a par lui-même n fois. Par exemple : 2³ = 2 × 2 × 2 = 8.",
+          "methode": [
+            "1. a^n = a × a × ... × a (n fois)",
+            "2. a^0 = 1 (toujours !)",
+            "3. a^1 = a",
+            "4. Règles : a^m × a^n = a^(m+n), (a^m)^n = a^(m×n)",
+            "5. Puissances de 10 : 10³ = 1000, 10^(-2) = 0,01"
+          ],
+          "erreurs_frequentes": [
+            "Confondre 2³ et 2×3",
+            "Oublier que a^0 = 1",
+            "Erreurs sur les puissances négatives"
+          ],
+          "exemples": [
+            {
+              "enonce": "Calcule 3⁴",
+              "solution_guidee": "3⁴ = 3×3×3×3 = 81"
+            }
+          ],
+          "astuces_foxie": [
+            "L'exposant, c'est le nombre de fois que tu copies le nombre dans la multiplication !"
+          ],
+          "questions_socratiques": [
+            "Combien de fois multiplies-tu la base ?",
+            "Quelle règle utilises-tu ?"
+          ],
+          "prerequis": [
+            "Multiplication",
+            "Nombres relatifs"
+          ],
+          "mots_cles": [
+            "puissance",
+            "exposant",
+            "base",
+            "carré",
+            "cube",
+            "notation scientifique"
+          ]
+        },
+        {
+          "id": "4e-math-004",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Le théorème de Pythagore",
+          "definition": "Dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés. Si ABC est rectangle en A : BC² = AB² + AC².",
+          "methode": [
+            "1. Identifie le triangle rectangle et l'hypoténuse (le plus grand côté, face à l'angle droit)",
+            "2. Applique la formule : hypoténuse² = côté1² + côté2²",
+            "3. Pour trouver un côté : côté² = hypoténuse² - autre côté²",
+            "4. N'oublie pas la racine carrée à la fin !",
+            "5. Réciproque : si a² = b² + c², alors le triangle est rectangle"
+          ],
+          "erreurs_frequentes": [
+            "Confondre l'hypoténuse avec un autre côté",
+            "Oublier la racine carrée"
+          ],
+          "exemples": [
+            {
+              "enonce": "Triangle rectangle avec côtés 3 et 4. Hypoténuse ?",
+              "solution_guidee": "h² = 3² + 4² = 9 + 16 = 25 → h = √25 = 5"
+            }
+          ],
+          "astuces_foxie": [
+            "3-4-5 : le trio magique de Pythagore ! (et aussi 5-12-13, 8-15-17)"
+          ],
+          "questions_socratiques": [
+            "Où est l'angle droit ?",
+            "Quel est le plus grand côté ?"
+          ],
+          "prerequis": [
+            "Carrés, racines carrées"
+          ],
+          "mots_cles": [
+            "Pythagore",
+            "hypoténuse",
+            "triangle rectangle",
+            "carré",
+            "racine carrée",
+            "théorème"
+          ]
+        },
+        {
+          "id": "4e-math-005",
+          "niveau": "4ème",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Les transformations : translation et rotation",
+          "definition": "Une translation déplace une figure dans une direction donnée. Une rotation fait tourner une figure autour d'un point (centre) selon un angle donné.",
+          "methode": [
+            "1. Translation : chaque point se déplace de la même distance, même direction, même sens",
+            "2. On utilise un vecteur pour décrire la translation",
+            "3. Rotation : on donne le centre, l'angle et le sens (horaire ou anti-horaire)",
+            "4. Les figures transformées conservent les distances et les angles"
+          ],
+          "erreurs_frequentes": [
+            "Se tromper de sens dans la rotation",
+            "Confondre translation et symétrie"
+          ],
+          "exemples": [
+            {
+              "enonce": "Rotation de 90° d'un point autour de O",
+              "solution_guidee": "On tourne le point de 90° dans le sens demandé autour du centre O."
+            }
+          ],
+          "astuces_foxie": [
+            "Translation = glisser. Rotation = tourner. Symétrie = retourner."
+          ],
+          "questions_socratiques": [
+            "Dans quelle direction se déplace la figure ?",
+            "Quel est le centre de rotation ?"
+          ],
+          "prerequis": [
+            "Symétrie axiale et centrale"
+          ],
+          "mots_cles": [
+            "translation",
+            "rotation",
+            "vecteur",
+            "transformation",
+            "centre",
+            "angle"
+          ]
+        }
+      ],
+      "francais": [
+        {
+          "id": "4e-fr-001",
+          "niveau": "4ème",
+          "matiere": "francais",
+          "chapitre": "Littérature",
+          "concept": "La fiction pour interroger le réel",
+          "definition": "En 4ème, on étudie comment le roman réaliste ou naturaliste du XIXe utilise la fiction pour décrire et critiquer la société (Zola, Maupassant, Hugo).",
+          "methode": [
+            "1. Contexte historique : XIXe siècle, industrialisation",
+            "2. Réalisme : décrire le réel tel qu'il est",
+            "3. Naturalisme : montrer l'influence du milieu sur l'individu",
+            "4. Analyser : personnages, décor, registre, intention de l'auteur"
+          ],
+          "erreurs_frequentes": [
+            "Confondre réalisme et réalité",
+            "Ne pas voir la critique sociale"
+          ],
+          "exemples": [
+            {
+              "enonce": "Germinal de Zola",
+              "solution_guidee": "Zola décrit la vie terrible des mineurs pour dénoncer les conditions de travail et les inégalités sociales."
+            }
+          ],
+          "astuces_foxie": [
+            "Les auteurs réalistes sont comme des photographes : ils montrent la réalité, même la plus dure."
+          ],
+          "questions_socratiques": [
+            "Que dénonce l'auteur ?",
+            "Cette histoire pourrait-elle être vraie ?"
+          ],
+          "prerequis": [
+            "Récit structuré"
+          ],
+          "mots_cles": [
+            "réalisme",
+            "naturalisme",
+            "roman",
+            "société",
+            "XIXe",
+            "Zola",
+            "Maupassant"
+          ]
+        },
+        {
+          "id": "4e-fr-002",
+          "niveau": "4ème",
+          "matiere": "francais",
+          "chapitre": "Grammaire",
+          "concept": "La voix active et la voix passive",
+          "definition": "À la voix active, le sujet fait l'action. À la voix passive, le sujet subit l'action. Le chat mange la souris (actif) → La souris est mangée par le chat (passif).",
+          "methode": [
+            "1. Voix active : Sujet + Verbe + COD",
+            "2. Voix passive : COD devient sujet + être + participe passé + par + ancien sujet",
+            "3. Le temps de 'être' au passif = le temps du verbe à l'actif",
+            "4. Accord du participe passé avec le sujet au passif"
+          ],
+          "erreurs_frequentes": [
+            "Oublier l'accord du participe passé",
+            "Se tromper dans le temps de 'être'"
+          ],
+          "exemples": [
+            {
+              "enonce": "Mets à la voix passive : Le médecin soigne le patient.",
+              "solution_guidee": "Le patient est soigné par le médecin."
+            }
+          ],
+          "astuces_foxie": [
+            "Au passif, le sujet ne fait plus rien : il subit ! C'est le 'par' qui fait l'action."
+          ],
+          "questions_socratiques": [
+            "Qui fait l'action ?",
+            "Qui subit l'action ?"
+          ],
+          "prerequis": [
+            "COD, sujet, verbe"
+          ],
+          "mots_cles": [
+            "voix active",
+            "voix passive",
+            "sujet",
+            "complément d'agent",
+            "participe passé"
+          ]
+        },
+        {
+          "id": "4e-fr-003",
+          "niveau": "4ème",
+          "matiere": "francais",
+          "chapitre": "Expression écrite",
+          "concept": "L'argumentation",
+          "definition": "Argumenter, c'est défendre un point de vue avec des arguments (raisons) et des exemples. On structure : thèse, arguments, exemples, conclusion.",
+          "methode": [
+            "1. Thèse : ce que tu veux prouver",
+            "2. Arguments : les raisons qui soutiennent ta thèse",
+            "3. Exemples : des faits concrets pour illustrer",
+            "4. Connecteurs logiques : d'abord, de plus, en revanche, donc",
+            "5. Conclusion : reformule ta thèse de façon convaincante"
+          ],
+          "erreurs_frequentes": [
+            "Arguments sans exemples",
+            "Pas de connecteurs",
+            "Thèse pas claire"
+          ],
+          "exemples": [
+            {
+              "enonce": "'Le sport est bon pour la santé'",
+              "solution_guidee": "Thèse : le sport est bénéfique. Arg 1 : renforce le cœur. Arg 2 : réduit le stress. Arg 3 : favorise le sommeil."
+            }
+          ],
+          "astuces_foxie": [
+            "Un argument sans exemple, c'est comme une pizza sans garniture : pas très convaincant !"
+          ],
+          "questions_socratiques": [
+            "Quelle est ta thèse ?",
+            "Quels arguments la soutiennent ?",
+            "As-tu un exemple concret ?"
+          ],
+          "prerequis": [
+            "Production d'écrits"
+          ],
+          "mots_cles": [
+            "argumentation",
+            "thèse",
+            "argument",
+            "exemple",
+            "connecteur",
+            "convaincre"
+          ]
+        }
+      ],
+      "histoire": [
+        {
+          "id": "4e-hist-001",
+          "niveau": "4ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 1 - Le XVIIIe siècle, expansions, Lumières et révolutions",
+          "concept": "Les Lumières et la Révolution française",
+          "definition": "Les philosophes des Lumières (Voltaire, Rousseau, Montesquieu, Diderot) critiquent la monarchie absolue et défendent la raison, la liberté et l'égalité. Leurs idées inspirent la Révolution française de 1789.",
+          "methode": [
+            "1. Les Lumières : raison vs superstition, liberté, tolérance",
+            "2. L'Encyclopédie de Diderot et d'Alembert : diffuser le savoir",
+            "3. Séparation des pouvoirs (Montesquieu)",
+            "4. Contrat social (Rousseau) : le pouvoir vient du peuple",
+            "5. Révolution 1789 : DDHC, fin de l'Ancien Régime"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les philosophes et leurs idées"
+          ],
+          "exemples": [
+            {
+              "enonce": "Qu'apporte Montesquieu ?",
+              "solution_guidee": "L'idée de séparation des pouvoirs (législatif, exécutif, judiciaire) pour empêcher la tyrannie."
+            }
+          ],
+          "astuces_foxie": [
+            "Les Lumières ont 'éclairé' les esprits. Leurs idées sont encore les bases de notre démocratie !"
+          ],
+          "questions_socratiques": [
+            "Que critiquent les Lumières ?",
+            "En quoi leurs idées sont-elles révolutionnaires ?"
+          ],
+          "prerequis": [
+            "La monarchie absolue"
+          ],
+          "mots_cles": [
+            "Lumières",
+            "Voltaire",
+            "Rousseau",
+            "Montesquieu",
+            "Révolution",
+            "1789",
+            "DDHC"
+          ]
+        },
+        {
+          "id": "4e-hist-002",
+          "niveau": "4ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 2 - L'Europe et le monde au XIXe siècle",
+          "concept": "L'industrialisation et ses conséquences sociales",
+          "definition": "Le XIXe siècle voit la révolution industrielle transformer l'Europe : machines, usines, chemins de fer. Les ouvriers vivent dans des conditions difficiles, ce qui fait naître les luttes sociales.",
+          "methode": [
+            "1. Innovations : machine à vapeur, acier, électricité",
+            "2. Conséquences : urbanisation, classe ouvrière, bourgeoisie industrielle",
+            "3. Conditions ouvrières : travail des enfants, bas salaires, logements insalubres",
+            "4. Luttes sociales : syndicats, grèves, lois sociales"
+          ],
+          "erreurs_frequentes": [
+            "Voir l'industrialisation comme uniquement positive ou uniquement négative"
+          ],
+          "exemples": [
+            {
+              "enonce": "Quelles sont les conditions de vie des ouvriers au XIXe ?",
+              "solution_guidee": "Journées de 12-14h, salaires très bas, logements insalubres, travail des enfants dès 6 ans."
+            }
+          ],
+          "astuces_foxie": [
+            "La révolution industrielle = plus de richesse MAIS aussi plus d'inégalités. Comme toute médaille, elle a deux faces."
+          ],
+          "questions_socratiques": [
+            "Qui profite de l'industrialisation ?",
+            "Comment réagissent les ouvriers ?"
+          ],
+          "prerequis": [
+            "Révolution française"
+          ],
+          "mots_cles": [
+            "industrialisation",
+            "ouvriers",
+            "usine",
+            "bourgeoisie",
+            "syndicat",
+            "XIXe siècle"
+          ]
+        }
+      ],
+      "geographie": [
+        {
+          "id": "4e-geo-001",
+          "niveau": "4ème",
+          "matiere": "geographie",
+          "chapitre": "Thème 1 - L'urbanisation du monde",
+          "concept": "Espaces et paysages de l'urbanisation",
+          "definition": "Plus de la moitié de l'humanité vit en ville. L'urbanisation transforme les paysages : centres-villes, banlieues, bidonvilles, mégapoles. Ce phénomène est mondial mais inégal.",
+          "methode": [
+            "1. Définir : taux d'urbanisation, mégapole (> 10M habitants)",
+            "2. Comparer : villes de pays développés vs en développement",
+            "3. Problèmes : pollution, embouteillages, inégalités, étalement urbain",
+            "4. Solutions : transports en commun, écoquartiers, planification"
+          ],
+          "erreurs_frequentes": [
+            "Confondre mégapole et métropole"
+          ],
+          "exemples": [
+            {
+              "enonce": "Tokyo est-elle une mégapole ?",
+              "solution_guidee": "Oui ! Avec plus de 37 millions d'habitants, c'est la plus grande mégapole du monde."
+            }
+          ],
+          "astuces_foxie": [
+            "Méga = très grand. Une mégapole, c'est une ville géante !"
+          ],
+          "questions_socratiques": [
+            "Pourquoi les gens s'installent-ils en ville ?",
+            "Quels problèmes cela pose-t-il ?"
+          ],
+          "prerequis": [
+            "Métropoles (6ème)"
+          ],
+          "mots_cles": [
+            "urbanisation",
+            "mégapole",
+            "métropole",
+            "ville",
+            "banlieue",
+            "bidonville"
+          ]
+        },
+        {
+          "id": "4e-geo-002",
+          "niveau": "4ème",
+          "matiere": "geographie",
+          "chapitre": "Thème 3 - Des espaces transformés par la mondialisation",
+          "concept": "La mondialisation et ses effets",
+          "definition": "La mondialisation, c'est l'intensification des échanges (marchandises, informations, personnes, capitaux) à l'échelle mondiale. Elle connecte les territoires mais crée aussi des inégalités.",
+          "methode": [
+            "1. Flux : marchandises, capitaux, informations, personnes",
+            "2. Acteurs : FTN (firmes transnationales), États, organisations internationales",
+            "3. Conséquences : interconnexion, inégalités, uniformisation culturelle",
+            "4. Débats : protectionnisme vs libre-échange, identités culturelles"
+          ],
+          "erreurs_frequentes": [
+            "Voir la mondialisation comme uniquement économique"
+          ],
+          "exemples": [
+            {
+              "enonce": "Ton t-shirt vient de Chine. Pourquoi ?",
+              "solution_guidee": "La main-d'œuvre est moins chère, les entreprises délocalisent pour réduire les coûts. C'est la mondialisation de la production."
+            }
+          ],
+          "astuces_foxie": [
+            "Ton smartphone contient des composants de 10 pays différents. C'est ça, la mondialisation !"
+          ],
+          "questions_socratiques": [
+            "D'où viennent les objets de ton quotidien ?",
+            "Qui gagne et qui perd dans la mondialisation ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "mondialisation",
+            "échanges",
+            "flux",
+            "FTN",
+            "délocalisation",
+            "inégalités"
+          ]
+        }
+      ],
+      "sciences": [
+        {
+          "id": "4e-sci-001",
+          "niveau": "4ème",
+          "matiere": "sciences",
+          "chapitre": "Physique-Chimie",
+          "concept": "Les lois de l'électricité",
+          "definition": "Le courant électrique circule dans un circuit fermé. La tension (V) pousse le courant, l'intensité (A) mesure le débit. La loi d'Ohm relie tension, résistance et intensité : U = R × I.",
+          "methode": [
+            "1. Circuit en série : le courant est le même partout (I identique)",
+            "2. Circuit en dérivation : la tension est la même aux bornes de chaque branche",
+            "3. Loi d'Ohm : U = R × I",
+            "4. Unités : U en Volts (V), I en Ampères (A), R en Ohms (Ω)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre série et dérivation",
+            "Se tromper dans la loi d'Ohm"
+          ],
+          "exemples": [
+            {
+              "enonce": "U = 12V, R = 4Ω. Trouve I.",
+              "solution_guidee": "U = R × I → I = U/R = 12/4 = 3A"
+            }
+          ],
+          "astuces_foxie": [
+            "Pense à l'eau : la tension c'est la pression, l'intensité c'est le débit, la résistance c'est le rétrécissement du tuyau !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qui est constant en série ?",
+            "Quelle formule utilises-tu ?"
+          ],
+          "prerequis": [
+            "Circuits simples"
+          ],
+          "mots_cles": [
+            "électricité",
+            "tension",
+            "intensité",
+            "résistance",
+            "Ohm",
+            "circuit",
+            "série",
+            "dérivation"
+          ]
+        },
+        {
+          "id": "4e-sci-002",
+          "niveau": "4ème",
+          "matiere": "sciences",
+          "chapitre": "SVT",
+          "concept": "La reproduction et la puberté",
+          "definition": "À la puberté, le corps change sous l'effet des hormones. Les caractères sexuels secondaires apparaissent et les organes reproducteurs deviennent fonctionnels.",
+          "methode": [
+            "1. Puberté : transformation du corps (10-16 ans)",
+            "2. Hormones : testostérone (garçons), œstrogènes (filles)",
+            "3. Caractères sexuels secondaires : voix, pilosité, formes",
+            "4. Reproduction : fécondation = rencontre ovule + spermatozoïde"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les hormones",
+            "Croire que la puberté arrive au même âge pour tous"
+          ],
+          "exemples": [
+            {
+              "enonce": "Qu'est-ce que la puberté ?",
+              "solution_guidee": "C'est la période de transformation du corps (environ 10-16 ans) où on passe de l'enfance à l'âge adulte."
+            }
+          ],
+          "astuces_foxie": [
+            "La puberté, c'est comme une mise à jour de ton corps : ça prend du temps mais c'est normal !"
+          ],
+          "questions_socratiques": [
+            "Quels changements observes-tu ?",
+            "Qu'est-ce qui provoque ces changements ?"
+          ],
+          "prerequis": [
+            "Le vivant"
+          ],
+          "mots_cles": [
+            "puberté",
+            "hormone",
+            "reproduction",
+            "fécondation",
+            "caractère sexuel"
+          ]
+        }
+      ],
+      "emc": [
+        {
+          "id": "4e-emc-001",
+          "niveau": "4ème",
+          "matiere": "emc",
+          "chapitre": "Acquérir les valeurs de la République",
+          "concept": "Justice et droit en France",
+          "definition": "La justice en France repose sur des principes : égalité devant la loi, présomption d'innocence, droit à un procès équitable. Le système judiciaire comprend des tribunaux civils et pénaux.",
+          "methode": [
+            "1. Justice civile : litiges entre personnes (divorce, contrat)",
+            "2. Justice pénale : infractions à la loi (contravention, délit, crime)",
+            "3. Présomption d'innocence : on est innocent jusqu'à preuve du contraire",
+            "4. Le juge est indépendant du pouvoir politique"
+          ],
+          "erreurs_frequentes": [
+            "Confondre justice civile et pénale",
+            "Oublier la présomption d'innocence"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi la présomption d'innocence est-elle importante ?",
+              "solution_guidee": "Elle protège chacun : tant qu'on n'a pas prouvé ta culpabilité, tu es considéré innocent. C'est un droit fondamental."
+            }
+          ],
+          "astuces_foxie": [
+            "La justice, c'est la balance : elle pèse les arguments des deux côtés avant de décider."
+          ],
+          "questions_socratiques": [
+            "Quels sont les droits de l'accusé ?",
+            "Pourquoi la justice doit-elle être indépendante ?"
+          ],
+          "prerequis": [
+            "Droits et devoirs"
+          ],
+          "mots_cles": [
+            "justice",
+            "droit",
+            "tribunal",
+            "présomption",
+            "innocence",
+            "procès",
+            "loi"
+          ]
+        }
+      ]
+    },
+    "3ème": {
+      "level_info": {
+        "age": "14-15 ans",
+        "cycle": "Cycle 4",
+        "tone": "Exigeant et structuré, favorise l'autonomie et l'esprit critique"
+      },
+      "maths": [
+        {
+          "id": "3e-math-001",
+          "niveau": "3ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les fonctions",
+          "definition": "Une fonction associe à chaque nombre x un unique nombre, noté f(x). Elle se représente par un tableau, une formule ou une courbe.",
+          "methode": [
+            "1. f(x) = expression → remplace x par la valeur pour calculer l'image",
+            "2. Image de 3 par f : calcule f(3)",
+            "3. Antécédent de 5 : trouve x tel que f(x) = 5",
+            "4. Fonction linéaire : f(x) = ax (droite passant par l'origine)",
+            "5. Fonction affine : f(x) = ax + b (droite quelconque)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre image et antécédent",
+            "Confondre linéaire et affine"
+          ],
+          "exemples": [
+            {
+              "enonce": "f(x) = 2x + 3. Calcule f(4).",
+              "solution_guidee": "f(4) = 2×4 + 3 = 8 + 3 = 11. L'image de 4 est 11."
+            }
+          ],
+          "astuces_foxie": [
+            "La fonction c'est une machine : tu mets un nombre dedans (x), elle te donne un résultat (f(x)) !"
+          ],
+          "questions_socratiques": [
+            "Quelle est l'image de ce nombre ?",
+            "Quel est l'antécédent ?"
+          ],
+          "prerequis": [
+            "Calcul littéral",
+            "Équations"
+          ],
+          "mots_cles": [
+            "fonction",
+            "image",
+            "antécédent",
+            "linéaire",
+            "affine",
+            "courbe",
+            "f(x)"
+          ]
+        },
+        {
+          "id": "3e-math-002",
+          "niveau": "3ème",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "Le théorème de Thalès",
+          "definition": "Le théorème de Thalès donne un rapport entre les longueurs des côtés de triangles formés par deux droites parallèles coupées par deux sécantes.",
+          "methode": [
+            "1. Vérifie que les droites sont bien parallèles",
+            "2. Identifie les triangles emboîtés",
+            "3. Écris les rapports égaux : AM/AB = AN/AC = MN/BC",
+            "4. Utilise le produit en croix pour trouver la longueur manquante",
+            "5. Réciproque : si les rapports sont égaux, les droites sont parallèles"
+          ],
+          "erreurs_frequentes": [
+            "Mal identifier les rapports",
+            "Oublier de vérifier le parallélisme"
+          ],
+          "exemples": [
+            {
+              "enonce": "Si AM/AB = 2/5 et AC = 10, trouve AN.",
+              "solution_guidee": "AM/AB = AN/AC → 2/5 = AN/10 → AN = 20/5 = 4"
+            }
+          ],
+          "astuces_foxie": [
+            "Thalès, c'est un agrandissement/réduction : tout grandit ou rétrécit dans les mêmes proportions !"
+          ],
+          "questions_socratiques": [
+            "Les droites sont-elles parallèles ?",
+            "Quels sont les rapports ?"
+          ],
+          "prerequis": [
+            "Proportionnalité",
+            "Pythagore"
+          ],
+          "mots_cles": [
+            "Thalès",
+            "parallèle",
+            "rapport",
+            "proportion",
+            "sécante",
+            "théorème"
+          ]
+        },
+        {
+          "id": "3e-math-003",
+          "niveau": "3ème",
+          "matiere": "maths",
+          "chapitre": "Nombres et calculs",
+          "concept": "Les probabilités",
+          "definition": "La probabilité d'un événement est un nombre entre 0 et 1 qui mesure la chance qu'il se produise. 0 = impossible, 1 = certain.",
+          "methode": [
+            "1. Probabilité = nombre de cas favorables / nombre de cas possibles",
+            "2. Événement certain : P = 1. Impossible : P = 0",
+            "3. P(contraire de A) = 1 - P(A)",
+            "4. Expérience aléatoire : on ne peut pas prévoir le résultat"
+          ],
+          "erreurs_frequentes": [
+            "Confondre probabilité et statistique",
+            "P > 1 (impossible !)"
+          ],
+          "exemples": [
+            {
+              "enonce": "On lance un dé. Quelle est la probabilité d'obtenir un 6 ?",
+              "solution_guidee": "1 cas favorable (le 6) sur 6 cas possibles = 1/6 ≈ 0,17 = 17%"
+            }
+          ],
+          "astuces_foxie": [
+            "La probabilité c'est comme la météo : ça donne les chances, pas une certitude !"
+          ],
+          "questions_socratiques": [
+            "Combien de résultats possibles ?",
+            "Combien de résultats favorables ?"
+          ],
+          "prerequis": [
+            "Fractions",
+            "Proportionnalité"
+          ],
+          "mots_cles": [
+            "probabilité",
+            "événement",
+            "aléatoire",
+            "chance",
+            "dé",
+            "expérience"
+          ]
+        },
+        {
+          "id": "3e-math-004",
+          "niveau": "3ème",
+          "matiere": "maths",
+          "chapitre": "Géométrie",
+          "concept": "La trigonométrie dans le triangle rectangle",
+          "definition": "Dans un triangle rectangle, les rapports entre les côtés définissent le cosinus, sinus et tangente d'un angle : cos = adj/hyp, sin = opp/hyp, tan = opp/adj.",
+          "methode": [
+            "1. Identifie l'angle et les côtés (adjacent, opposé, hypoténuse)",
+            "2. Choisis la formule selon les données : cos, sin ou tan",
+            "3. cos(α) = côté adjacent / hypoténuse",
+            "4. sin(α) = côté opposé / hypoténuse",
+            "5. tan(α) = côté opposé / côté adjacent"
+          ],
+          "erreurs_frequentes": [
+            "Confondre adjacent et opposé",
+            "Utiliser la mauvaise formule"
+          ],
+          "exemples": [
+            {
+              "enonce": "Angle de 30°, hypoténuse = 10. Trouve le côté opposé.",
+              "solution_guidee": "sin(30°) = opp/hyp → 0,5 = opp/10 → opp = 5"
+            }
+          ],
+          "astuces_foxie": [
+            "SOH-CAH-TOA ! Sin=Opp/Hyp, Cos=Adj/Hyp, Tan=Opp/Adj."
+          ],
+          "questions_socratiques": [
+            "Quel côté est opposé à l'angle ?",
+            "Quelle formule utilises-tu ?"
+          ],
+          "prerequis": [
+            "Pythagore",
+            "Angles"
+          ],
+          "mots_cles": [
+            "trigonométrie",
+            "cosinus",
+            "sinus",
+            "tangente",
+            "triangle rectangle",
+            "angle"
+          ]
+        }
+      ],
+      "francais": [
+        {
+          "id": "3e-fr-001",
+          "niveau": "3ème",
+          "matiere": "francais",
+          "chapitre": "Littérature",
+          "concept": "Agir dans la cité : individu et pouvoir",
+          "definition": "En 3ème, on étudie comment la littérature engage l'individu face au pouvoir : résistance, engagement, dénonciation (poésie engagée, témoignages, théâtre).",
+          "methode": [
+            "1. Contexte historique : guerres, dictatures, injustices",
+            "2. Engagement de l'auteur : pourquoi écrit-il ?",
+            "3. Formes : poésie (Éluard, Aragon), témoignage (Primo Levi), théâtre (Anouilh)",
+            "4. Analyser les procédés : métaphore, ironie, apostrophe"
+          ],
+          "erreurs_frequentes": [
+            "Confondre l'auteur et le narrateur",
+            "Ne pas voir l'engagement"
+          ],
+          "exemples": [
+            {
+              "enonce": "Liberté de Paul Éluard",
+              "solution_guidee": "Poème de résistance écrit pendant l'Occupation. 'Liberté' répété = espoir, engagement contre le nazisme."
+            }
+          ],
+          "astuces_foxie": [
+            "Les écrivains engagés utilisent les mots comme des armes : pour dénoncer, pour résister, pour espérer."
+          ],
+          "questions_socratiques": [
+            "Contre quoi l'auteur s'engage-t-il ?",
+            "Quels procédés utilise-t-il pour convaincre ?"
+          ],
+          "prerequis": [
+            "Argumentation"
+          ],
+          "mots_cles": [
+            "engagement",
+            "résistance",
+            "pouvoir",
+            "poésie",
+            "témoignage",
+            "dénonciation"
+          ]
+        },
+        {
+          "id": "3e-fr-002",
+          "niveau": "3ème",
+          "matiere": "francais",
+          "chapitre": "Grammaire",
+          "concept": "Les temps du récit et du discours",
+          "definition": "Le système du récit utilise passé simple + imparfait (temps de base). Le système du discours utilise présent + passé composé. Le choix des temps dépend de la situation d'énonciation.",
+          "methode": [
+            "1. Récit (écrit, littéraire) : passé simple (actions ponctuelles) + imparfait (descriptions, habitudes)",
+            "2. Discours (oral, lettres) : passé composé + présent",
+            "3. Plus-que-parfait : antériorité dans le passé",
+            "4. Repère les indicateurs temporels"
+          ],
+          "erreurs_frequentes": [
+            "Mélanger les deux systèmes",
+            "Mal utiliser le plus-que-parfait"
+          ],
+          "exemples": [
+            {
+              "enonce": "Il marchait (imparfait=description) quand soudain il tomba (passé simple=action ponctuelle).",
+              "solution_guidee": "L'imparfait peint le décor, le passé simple fait avancer l'action."
+            }
+          ],
+          "astuces_foxie": [
+            "L'imparfait = la caméra fait un panoramique. Le passé simple = la caméra zoome sur l'action !"
+          ],
+          "questions_socratiques": [
+            "C'est une description ou une action ?",
+            "On est dans un récit ou un discours ?"
+          ],
+          "prerequis": [
+            "Imparfait",
+            "Passé simple",
+            "Passé composé"
+          ],
+          "mots_cles": [
+            "récit",
+            "discours",
+            "passé simple",
+            "imparfait",
+            "énonciation",
+            "temps"
+          ]
+        },
+        {
+          "id": "3e-fr-003",
+          "niveau": "3ème",
+          "matiere": "francais",
+          "chapitre": "Expression écrite",
+          "concept": "Se raconter, se représenter (autobiographie)",
+          "definition": "L'autobiographie est un récit dans lequel l'auteur raconte sa propre vie. Auteur = narrateur = personnage principal. On étudie aussi le journal intime et le portrait de soi.",
+          "methode": [
+            "1. Pacte autobiographique : auteur = narrateur = personnage",
+            "2. Le 'je' qui raconte (maintenant) ≠ le 'je' raconté (passé)",
+            "3. Analyser : les motivations, la mémoire sélective, la sincérité",
+            "4. Formes : autobiographie, mémoires, journal intime, autoportrait"
+          ],
+          "erreurs_frequentes": [
+            "Confondre autobiographie et roman autobiographique",
+            "Croire que tout est vrai"
+          ],
+          "exemples": [
+            {
+              "enonce": "Les Confessions de Rousseau",
+              "solution_guidee": "Rousseau raconte sa vie avec sincérité. Il est à la fois l'auteur, le narrateur et le personnage."
+            }
+          ],
+          "astuces_foxie": [
+            "L'autobiographie, c'est se regarder dans le miroir du passé et raconter ce qu'on voit."
+          ],
+          "questions_socratiques": [
+            "Qui est le narrateur ?",
+            "Pourquoi raconte-t-il sa vie ?"
+          ],
+          "prerequis": [
+            "Récit structuré"
+          ],
+          "mots_cles": [
+            "autobiographie",
+            "journal",
+            "narrateur",
+            "auteur",
+            "mémoire",
+            "intime",
+            "je"
+          ]
+        }
+      ],
+      "histoire": [
+        {
+          "id": "3e-hist-001",
+          "niveau": "3ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 1 - L'Europe, un théâtre majeur des guerres totales (1914-1945)",
+          "concept": "La Première Guerre mondiale et ses conséquences",
+          "definition": "La guerre de 1914-1918 est une guerre totale : mobilisation de toute la société, violence de masse, tranchées. Elle fait 10 millions de morts et redessine la carte de l'Europe.",
+          "methode": [
+            "1. Causes : nationalisme, rivalités coloniales, alliances",
+            "2. Guerre de tranchées : front ouest, conditions terribles",
+            "3. Guerre totale : mobilisation économique, propagande, censure",
+            "4. Conséquences : traité de Versailles, SDN, traumatisme"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les deux guerres",
+            "Simplifier les causes"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi parle-t-on de 'guerre totale' ?",
+              "solution_guidee": "Toute la société est mobilisée : soldats, femmes dans les usines, économie de guerre, propagande. La guerre touche tout le monde."
+            }
+          ],
+          "astuces_foxie": [
+            "Guerre totale = tout le pays fait la guerre, pas seulement les soldats."
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qui rend cette guerre différente des précédentes ?"
+          ],
+          "prerequis": [
+            "L'Europe au XIXe"
+          ],
+          "mots_cles": [
+            "1914-1918",
+            "tranchées",
+            "guerre totale",
+            "Verdun",
+            "armistice",
+            "Versailles"
+          ]
+        },
+        {
+          "id": "3e-hist-002",
+          "niveau": "3ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 1 - Guerres totales (suite)",
+          "concept": "La Seconde Guerre mondiale et la Shoah",
+          "definition": "La guerre de 1939-1945 est marquée par les totalitarismes (nazisme, fascisme), l'extermination des Juifs d'Europe (Shoah) et la résistance. Elle se termine par la victoire des Alliés.",
+          "methode": [
+            "1. Montée des totalitarismes : Hitler, Mussolini, Staline",
+            "2. La Shoah : génocide de 6 millions de Juifs",
+            "3. Régime de Vichy et Résistance en France",
+            "4. Bilan : 60 millions de morts, bombe atomique, ONU, procès de Nuremberg"
+          ],
+          "erreurs_frequentes": [
+            "Minimiser la Shoah",
+            "Confondre France libre et Vichy"
+          ],
+          "exemples": [
+            {
+              "enonce": "Qu'est-ce que la Shoah ?",
+              "solution_guidee": "Le génocide (extermination planifiée) de 6 millions de Juifs d'Europe par le régime nazi pendant la 2e Guerre mondiale."
+            }
+          ],
+          "astuces_foxie": [
+            "Le devoir de mémoire est essentiel : connaître le passé pour ne pas répéter ses erreurs."
+          ],
+          "questions_socratiques": [
+            "Comment expliquer la montée du nazisme ?",
+            "Qu'est-ce qu'un génocide ?"
+          ],
+          "prerequis": [
+            "Première Guerre mondiale"
+          ],
+          "mots_cles": [
+            "1939-1945",
+            "Shoah",
+            "nazisme",
+            "Résistance",
+            "Vichy",
+            "Alliés",
+            "génocide"
+          ]
+        },
+        {
+          "id": "3e-hist-003",
+          "niveau": "3ème",
+          "matiere": "histoire",
+          "chapitre": "Thème 3 - Françaises et Français dans une République repensée",
+          "concept": "La Ve République et la démocratie",
+          "definition": "La Ve République, fondée par de Gaulle en 1958, donne un pouvoir fort au président. La démocratie française repose sur le suffrage universel, la séparation des pouvoirs et les libertés fondamentales.",
+          "methode": [
+            "1. 1958 : Constitution de la Ve République, de Gaulle président",
+            "2. Président élu au suffrage universel direct (depuis 1962)",
+            "3. Séparation des pouvoirs : exécutif, législatif, judiciaire",
+            "4. Évolutions : droits des femmes, majorité à 18 ans, abolition de la peine de mort (1981)"
+          ],
+          "erreurs_frequentes": [
+            "Confondre les institutions",
+            "Oublier les évolutions sociales"
+          ],
+          "exemples": [
+            {
+              "enonce": "Quels sont les 3 pouvoirs ?",
+              "solution_guidee": "Exécutif (Président + Gouvernement), Législatif (Assemblée + Sénat), Judiciaire (tribunaux)."
+            }
+          ],
+          "astuces_foxie": [
+            "Les 3 pouvoirs sont séparés pour que personne n'ait TOUT le pouvoir. C'est l'idée de Montesquieu !"
+          ],
+          "questions_socratiques": [
+            "Pourquoi séparer les pouvoirs ?",
+            "Comment est élu le président ?"
+          ],
+          "prerequis": [
+            "Les Lumières",
+            "La Révolution"
+          ],
+          "mots_cles": [
+            "Ve République",
+            "Constitution",
+            "président",
+            "séparation des pouvoirs",
+            "démocratie",
+            "suffrage"
+          ]
+        }
+      ],
+      "geographie": [
+        {
+          "id": "3e-geo-001",
+          "niveau": "3ème",
+          "matiere": "geographie",
+          "chapitre": "Thème 1 - Dynamiques territoriales de la France contemporaine",
+          "concept": "Les aires urbaines françaises",
+          "definition": "En France, 85% de la population vit dans une aire urbaine. Une aire urbaine comprend : la ville-centre, la banlieue et la couronne périurbaine.",
+          "methode": [
+            "1. Ville-centre : cœur historique, services, emplois",
+            "2. Banlieue : zones résidentielles proches",
+            "3. Couronne périurbaine : pavillons, besoin de voiture",
+            "4. Étalement urbain : la ville grignote la campagne",
+            "5. Métropolisation : les grandes villes concentrent les richesses"
+          ],
+          "erreurs_frequentes": [
+            "Confondre aire urbaine et agglomération"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi l'étalement urbain pose-t-il problème ?",
+              "solution_guidee": "Il consomme des terres agricoles, augmente les trajets en voiture (pollution) et coûte cher en infrastructures."
+            }
+          ],
+          "astuces_foxie": [
+            "L'aire urbaine, c'est comme un œuf au plat : le jaune c'est le centre, le blanc c'est la banlieue et le périurbain !"
+          ],
+          "questions_socratiques": [
+            "Où vivent la plupart des Français ?",
+            "Quels sont les problèmes liés à l'étalement ?"
+          ],
+          "prerequis": [],
+          "mots_cles": [
+            "aire urbaine",
+            "périurbain",
+            "étalement",
+            "métropolisation",
+            "France",
+            "territoire"
+          ]
+        },
+        {
+          "id": "3e-geo-002",
+          "niveau": "3ème",
+          "matiere": "geographie",
+          "chapitre": "Thème 3 - La France et l'Union européenne",
+          "concept": "L'Union européenne, un projet de paix et de coopération",
+          "definition": "L'UE est une organisation de 27 pays européens qui coopèrent dans de nombreux domaines : économie (marché unique, euro), politique, environnement. C'est un projet né de la volonté de paix après 1945.",
+          "methode": [
+            "1. Origines : CECA (1951), CEE (1957), UE (1992)",
+            "2. Principes : libre circulation des personnes, marchandises, capitaux",
+            "3. Institutions : Commission, Parlement, Conseil européen",
+            "4. Défis : Brexit, migrations, souveraineté nationale"
+          ],
+          "erreurs_frequentes": [
+            "Confondre UE et Europe",
+            "Ne pas connaître les institutions"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi l'UE a-t-elle été créée ?",
+              "solution_guidee": "Pour garantir la paix après les deux guerres mondiales, en coopérant économiquement et politiquement."
+            }
+          ],
+          "astuces_foxie": [
+            "L'UE, c'est l'idée que les pays qui commercent ensemble ne se font plus la guerre !"
+          ],
+          "questions_socratiques": [
+            "Quels avantages l'UE apporte-t-elle ?",
+            "Quels sont ses défis actuels ?"
+          ],
+          "prerequis": [
+            "Les guerres mondiales"
+          ],
+          "mots_cles": [
+            "Union européenne",
+            "euro",
+            "marché unique",
+            "paix",
+            "coopération",
+            "institutions"
+          ]
+        }
+      ],
+      "sciences": [
+        {
+          "id": "3e-sci-001",
+          "niveau": "3ème",
+          "matiere": "sciences",
+          "chapitre": "Physique-Chimie",
+          "concept": "L'énergie et ses conversions",
+          "definition": "L'énergie existe sous différentes formes et peut se convertir. La puissance électrique P = U × I. L'énergie consommée E = P × t.",
+          "methode": [
+            "1. P = U × I (Puissance en Watts, Tension en Volts, Intensité en Ampères)",
+            "2. E = P × t (Énergie en Joules ou Wh, temps en secondes ou heures)",
+            "3. Rendement = énergie utile / énergie totale × 100",
+            "4. Sources renouvelables vs non renouvelables"
+          ],
+          "erreurs_frequentes": [
+            "Confondre puissance et énergie",
+            "Erreurs d'unités"
+          ],
+          "exemples": [
+            {
+              "enonce": "Lampe 60W allumée 5h. Énergie consommée ?",
+              "solution_guidee": "E = P × t = 60 × 5 = 300 Wh = 0,3 kWh"
+            }
+          ],
+          "astuces_foxie": [
+            "La puissance c'est la vitesse de consommation. L'énergie c'est le total consommé !"
+          ],
+          "questions_socratiques": [
+            "Quelle est la puissance de l'appareil ?",
+            "Combien de temps est-il allumé ?"
+          ],
+          "prerequis": [
+            "Loi d'Ohm"
+          ],
+          "mots_cles": [
+            "énergie",
+            "puissance",
+            "watt",
+            "joule",
+            "kWh",
+            "rendement",
+            "renouvelable"
+          ]
+        },
+        {
+          "id": "3e-sci-002",
+          "niveau": "3ème",
+          "matiere": "sciences",
+          "chapitre": "SVT",
+          "concept": "L'évolution des êtres vivants et la génétique",
+          "definition": "L'ADN porte l'information génétique sous forme de gènes. Les mutations créent de la diversité. La sélection naturelle favorise les individus les mieux adaptés à leur milieu.",
+          "methode": [
+            "1. ADN → gènes → protéines → caractères",
+            "2. Chaque individu a une combinaison unique de gènes (sauf vrais jumeaux)",
+            "3. Mutations : modifications de l'ADN (hasard)",
+            "4. Sélection naturelle : les plus adaptés survivent et se reproduisent",
+            "5. Évolution : changement des espèces au fil du temps"
+          ],
+          "erreurs_frequentes": [
+            "Croire que l'évolution est dirigée",
+            "Confondre mutation et adaptation"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi les girafes ont-elles un long cou ?",
+              "solution_guidee": "Par sélection naturelle : les girafes au cou plus long atteignaient plus de feuilles, survivaient mieux et transmettaient ce caractère."
+            }
+          ],
+          "astuces_foxie": [
+            "L'évolution, c'est pas 'le plus fort qui gagne' mais 'le mieux adapté qui survit' !"
+          ],
+          "questions_socratiques": [
+            "Qu'est-ce qui crée la diversité ?",
+            "Comment fonctionne la sélection naturelle ?"
+          ],
+          "prerequis": [
+            "Cellule",
+            "Reproduction"
+          ],
+          "mots_cles": [
+            "ADN",
+            "gène",
+            "mutation",
+            "évolution",
+            "sélection naturelle",
+            "génétique",
+            "Darwin"
+          ]
+        }
+      ],
+      "emc": [
+        {
+          "id": "3e-emc-001",
+          "niveau": "3ème",
+          "matiere": "emc",
+          "chapitre": "Construire une culture civique",
+          "concept": "La défense et la paix",
+          "definition": "La défense nationale protège le pays et ses intérêts. Depuis 1997, le service national est suspendu mais la JDC (Journée Défense et Citoyenneté) est obligatoire. La France contribue à la paix dans le monde (ONU, OTAN).",
+          "methode": [
+            "1. Défense nationale : armée, sécurité intérieure, cybersécurité",
+            "2. JDC : obligatoire à 16 ans, information sur la défense",
+            "3. Engagements internationaux : ONU, maintien de la paix, OTAN",
+            "4. Devoir de mémoire : commémorer pour ne pas oublier"
+          ],
+          "erreurs_frequentes": [
+            "Croire que le service militaire existe encore"
+          ],
+          "exemples": [
+            {
+              "enonce": "Pourquoi la JDC est-elle obligatoire ?",
+              "solution_guidee": "Pour informer les jeunes citoyens sur la défense et les engagements de la France, et les sensibiliser au devoir de mémoire."
+            }
+          ],
+          "astuces_foxie": [
+            "La défense, ce n'est pas que l'armée : c'est aussi la cybersécurité, les secours, la solidarité internationale."
+          ],
+          "questions_socratiques": [
+            "Comment la France contribue-t-elle à la paix ?",
+            "Qu'est-ce que le devoir de mémoire ?"
+          ],
+          "prerequis": [
+            "La Ve République"
+          ],
+          "mots_cles": [
+            "défense",
+            "JDC",
+            "paix",
+            "ONU",
+            "OTAN",
+            "armée",
+            "citoyenneté"
+          ]
+        }
+      ]
+    }
+  }
+}

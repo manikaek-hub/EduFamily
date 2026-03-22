@@ -25,6 +25,7 @@ app.use('/api/profile', require('./routes/profile'));
 app.use('/api/parent', require('./routes/parent'));
 app.use('/api/avatar', require('./routes/avatar'));
 app.use('/api/feedback', require('./routes/feedback'));
+app.use('/api/elevenlabs', require('./routes/elevenlabs'));
 
 // Agent d'amélioration continue — endpoint d'analyse
 const { runAnalysis, getTrends } = require('./agents/improvementAgent');

@@ -169,10 +169,124 @@ function getProgressionData(memberId) {
   } catch { return []; }
 }
 
+// ─── Agent 2: Mastery Graph (SM-2 simplifié) ────────────────────────────────
+
+/**
+ * SM-2 simplifié pour la répétition espacée.
+ * Intervalles en jours selon le nombre de révisions réussies :
+ *   1 → 1j, 2 → 3j, 3 → 7j, 4 → 14j, 5 → 30j, 6+ → 60j
+ */
+const SM2_INTERVALS = [1, 3, 7, 14, 30, 60];
+
+function sm2NextReview(attempts, wasCorrect, currentScore) {
+  if (!wasCorrect) {
+    // Échec : reset à J+1, score baisse
+    return { interval: 1, score: Math.max(0, currentScore - 0.5) };
+  }
+
+  // Succès : avance dans les intervalles, score monte
+  const idx = Math.min(attempts, SM2_INTERVALS.length - 1);
+  const interval = SM2_INTERVALS[idx];
+  const newScore = Math.min(5, currentScore + (5 - currentScore) * 0.3);
+  return { interval, score: newScore };
+}
+
+/**
+ * Met à jour le graphe de maîtrise pour un concept donné.
+ * Crée l'entrée si elle n'existe pas, sinon met à jour score + next_review.
+ */
+function updateMasteryGraph(memberId, conceptId, subject, wasCorrect) {
+  const existing = db.prepare(
+    'SELECT * FROM mastery_graph WHERE member_id = ? AND concept_id = ?'
+  ).get(memberId, conceptId);
+
+  const now = new Date().toISOString();
+
+  if (!existing) {
+    // Première fois : score initial basé sur le résultat
+    const initialScore = wasCorrect ? 1.5 : 0.5;
+    const nextDate = new Date(Date.now() + SM2_INTERVALS[0] * 86400000).toISOString().split('T')[0];
+
+    db.prepare(`
+      INSERT INTO mastery_graph (member_id, concept_id, subject, score, attempts, last_seen, next_review)
+      VALUES (?, ?, ?, ?, 1, ?, ?)
+    `).run(memberId, conceptId, subject, initialScore, now, nextDate);
+
+    return { score: initialScore, nextReview: nextDate, isNew: true };
+  }
+
+  // Mise à jour avec SM-2
+  const newAttempts = existing.attempts + 1;
+  const { interval, score: newScore } = sm2NextReview(newAttempts, wasCorrect, existing.score);
+  const nextDate = new Date(Date.now() + interval * 86400000).toISOString().split('T')[0];
+
+  db.prepare(`
+    UPDATE mastery_graph SET score = ?, attempts = ?, last_seen = ?, next_review = ?
+    WHERE id = ?
+  `).run(Math.round(newScore * 100) / 100, newAttempts, now, nextDate, existing.id);
+
+  return { score: newScore, nextReview: nextDate, attempts: newAttempts, isNew: false };
+}
+
+/**
+ * Retourne le graphe de maîtrise complet pour un enfant,
+ * groupé par matière avec statistiques.
+ */
+function getMasteryProfile(memberId) {
+  const concepts = db.prepare(
+    'SELECT * FROM mastery_graph WHERE member_id = ? ORDER BY subject, score ASC'
+  ).all(memberId);
+
+  // Grouper par matière
+  const bySubject = {};
+  for (const c of concepts) {
+    if (!bySubject[c.subject]) {
+      bySubject[c.subject] = { concepts: [], totalScore: 0, count: 0 };
+    }
+    bySubject[c.subject].concepts.push(c);
+    bySubject[c.subject].totalScore += c.score;
+    bySubject[c.subject].count++;
+  }
+
+  const subjects = Object.entries(bySubject).map(([subject, data]) => ({
+    subject,
+    avgScore: Math.round((data.totalScore / data.count) * 100) / 100,
+    conceptCount: data.count,
+    weakCount: data.concepts.filter(c => c.score < 2).length,
+    strongCount: data.concepts.filter(c => c.score >= 4).length,
+    concepts: data.concepts,
+  }));
+
+  // Concepts à revoir (next_review dépassé)
+  const today = new Date().toISOString().split('T')[0];
+  const dueForReview = db.prepare(
+    'SELECT * FROM mastery_graph WHERE member_id = ? AND next_review <= ? ORDER BY score ASC'
+  ).all(memberId, today);
+
+  return { subjects, dueForReview, totalConcepts: concepts.length };
+}
+
+/**
+ * Retourne les N concepts les plus faibles pour prioriser les révisions.
+ * Prend en compte le score ET la date de dernière révision.
+ */
+function getWeakConcepts(memberId, limit = 5) {
+  return db.prepare(`
+    SELECT * FROM mastery_graph
+    WHERE member_id = ?
+    ORDER BY score ASC, last_seen ASC
+    LIMIT ?
+  `).all(memberId, limit);
+}
+
 module.exports = {
   getLearnerProfile,
   buildProfileContext,
   computeCompetencies,
   logEvent,
   getProgressionData,
+  // Agent 2: Mastery Graph
+  updateMasteryGraph,
+  getMasteryProfile,
+  getWeakConcepts,
 };

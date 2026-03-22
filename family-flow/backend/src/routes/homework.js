@@ -6,6 +6,8 @@ const { searchCurriculum, detectSubject } = require('../services/curriculum');
 const { buildHomeworkPrompt, buildMockOralPrompt } = require('../services/prompts');
 const kb = require('../services/knowledgebase');
 const { buildProfileContext, logEvent } = require('../services/learnerProfile');
+const { annotateAndStore } = require('../agents/dataCollector');
+const { scoreEngagement, getLatestEngagement } = require('../agents/engagementScorer');
 
 // POST /api/homework/sessions - Create a new session
 router.post('/sessions', (req, res) => {
@@ -51,6 +53,7 @@ router.get('/sessions/:id/messages', (req, res) => {
 
 // POST /api/homework/chat - Chat with Foxie
 router.post('/chat', async (req, res) => {
+  req._requestStartTime = Date.now();
   try {
     const { memberId, message, sessionId, image, subject, mode } = req.body;
 
@@ -97,13 +100,23 @@ router.post('/chat', async (req, res) => {
       kbContext = kb.getFoxieContext(memberId, detectedSubject);
     }
 
+    // Agent 5: Check engagement BEFORE calling Claude
+    const engagement = getLatestEngagement(memberId, sessionId);
+    let engagementHint = '';
+    if (engagement.score < 60) {
+      engagementHint = `\n\n[ALERTE ENGAGEMENT: score ${engagement.score}/100]
+L'enfant montre des signes de fatigue ou de désengagement.
+Propose un mini-défi amusant ou change de sujet. Sois encourageant.
+Ne pose PAS de question difficile maintenant — redonne-lui confiance d'abord.\n`;
+    }
+
     const child = { name: member.name, age: member.age, grade: member.grade };
     let systemPrompt;
     if (mode === 'oral') {
       systemPrompt = buildMockOralPrompt(child);
     } else {
       const profileCtx = buildProfileContext(memberId);
-      systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx);
+      systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx) + engagementHint;
     }
     const response = await sendMessage(systemPrompt, history);
 
@@ -142,7 +155,22 @@ router.post('/chat', async (req, res) => {
       }
     }
 
-    res.json({ success: true, response, fichesUsed: fiches.length });
+    res.json({ success: true, response, fichesUsed: fiches.length, engagement: engagement.score });
+
+    // ─── ASYNC POST-PROCESSING (ne bloque pas la réponse) ───
+    // Agent 5: Score engagement for this message
+    const engResult = scoreEngagement(memberId, sessionId, message, history, req._requestStartTime ? Date.now() - req._requestStartTime : null);
+
+    // Agent 1: Annotate the exchange and update mastery graph
+    // Find the training_data row just inserted by the middleware
+    const latestTD = db.prepare(
+      'SELECT id FROM training_data WHERE member_id = ? ORDER BY id DESC LIMIT 1'
+    ).get(memberId);
+
+    if (latestTD) {
+      annotateAndStore(latestTD.id, memberId, response, message, detectedSubject, null)
+        .catch(err => console.error('Agent 1 async error:', err.message));
+    }
   } catch (error) {
     console.error('Chat error:', error);
     res.status(500).json({ success: false, error: error.message });

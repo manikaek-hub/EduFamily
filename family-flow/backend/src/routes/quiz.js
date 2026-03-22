@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db/init');
 const { generateJSON } = require('../services/claude');
-const { buildQuizPrompt } = require('../services/prompts');
+const { buildQuizPrompt, buildChapterQuizPrompt } = require('../services/prompts');
 const kb = require('../services/knowledgebase');
 
 // POST /api/quiz/generate
@@ -49,7 +49,20 @@ router.post('/generate', async (req, res) => {
       LIMIT 40
     `).all(sevenDaysAgo, today);
 
-    const systemPrompt = buildQuizPrompt(children, childrenContext, today, recentQuestions);
+    // Fetch weak grades for all children (for adaptive quiz focus)
+    const weakGrades = [];
+    for (const child of children) {
+      try {
+        const childGrades = db.prepare(`
+          SELECT *, ? as name FROM kb_grades
+          WHERE member_id = ? AND (student_avg < 10 OR (class_avg IS NOT NULL AND student_avg < class_avg - 2))
+          ORDER BY student_avg ASC LIMIT 3
+        `).all(child.name, child.id);
+        weakGrades.push(...childGrades);
+      } catch {}
+    }
+
+    const systemPrompt = buildQuizPrompt(children, childrenContext, today, recentQuestions, weakGrades);
     let userMessage = 'Genere le quiz du soir pour la famille.';
     if (topics && topics.length > 0) {
       userMessage += '\nAujourd\'hui, les enfants ont travaille sur:\n';
@@ -183,6 +196,14 @@ router.post('/answer', (req, res) => {
     ).run(memberId, today);
   }
 
+  // Award XP for quiz answer
+  if (isCorrect) {
+    const xpMap = { easy: 10, medium: 15, hard: 20 };
+    awardXP(memberId, 'quiz_correct', xpMap[question.difficulty] || 10, `Quiz: ${question.subject}`);
+  } else {
+    awardXP(memberId, 'quiz_attempt', 2, `Quiz: ${question.subject}`);
+  }
+
   res.json({
     success: true,
     isCorrect: !!isCorrect,
@@ -214,5 +235,59 @@ router.get('/scores', (req, res) => {
 
   res.json({ success: true, scores: streaks });
 });
+
+// POST /api/quiz/chapter - Quick 5-question quiz on a specific topic
+router.post('/chapter', async (req, res) => {
+  const { memberId, subject, topic } = req.body;
+  if (!memberId || !subject || !topic) {
+    return res.status(400).json({ success: false, error: 'memberId, subject, topic requis' });
+  }
+  const member = db.prepare('SELECT * FROM members WHERE id = ?').get(memberId);
+  if (!member) return res.status(404).json({ success: false, error: 'Membre introuvable' });
+
+  try {
+    const systemPrompt = buildChapterQuizPrompt(member, subject, topic);
+    const questions = await generateJSON(systemPrompt, 'Genere le quiz rapide.');
+    if (!Array.isArray(questions) || questions.length === 0) {
+      return res.status(500).json({ success: false, error: 'Quiz non genere' });
+    }
+    res.json({ success: true, questions: questions.slice(0, 5) });
+  } catch (e) {
+    console.error('Chapter quiz error:', e);
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
+// POST /api/quiz/chapter/result - Save chapter quiz result
+router.post('/chapter/result', (req, res) => {
+  const { memberId, subject, topic, score, total } = req.body;
+  db.prepare(
+    'INSERT INTO chapter_quiz_results (member_id, subject, topic, score, total) VALUES (?, ?, ?, ?, ?)'
+  ).run(memberId, subject, topic, score, total || 5);
+
+  // Award XP based on score
+  const pct = score / (total || 5);
+  const xp = pct >= 0.8 ? 30 : pct >= 0.6 ? 20 : 10;
+  awardXP(memberId, 'chapter_quiz', xp, `Quiz ${subject}: ${topic} (${score}/${total || 5})`);
+
+  res.json({ success: true });
+});
+
+// ─── Helper (local to this route file) ─────────────────────────────────────
+function awardXP(memberId, eventType, points, description) {
+  try {
+    db.prepare('INSERT INTO xp_events (member_id, event_type, points, description) VALUES (?, ?, ?, ?)')
+      .run(memberId, eventType, points, description);
+    const existing = db.prepare('SELECT total_xp FROM xp_totals WHERE member_id = ?').get(memberId);
+    if (existing) {
+      const newTotal = existing.total_xp + points;
+      const level = Math.floor(Math.sqrt(newTotal / 50)) + 1;
+      db.prepare('UPDATE xp_totals SET total_xp = ?, level = ?, updated_at = datetime("now") WHERE member_id = ?')
+        .run(newTotal, level, memberId);
+    } else {
+      db.prepare('INSERT INTO xp_totals (member_id, total_xp, level) VALUES (?, ?, 1)').run(memberId, points);
+    }
+  } catch (e) { console.error('XP award error:', e); }
+}
 
 module.exports = router;

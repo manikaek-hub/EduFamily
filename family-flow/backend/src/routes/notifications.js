@@ -66,19 +66,59 @@ router.get('/', (req, res) => {
     }
   }
 
-  // Daily photo reminder (afternoon only, 15h-20h)
+  // Evening EDT-based review + photo reminder (17h-21h weekdays)
   const hour = today.getHours();
-  if (hour >= 15 && hour <= 20) {
-    const dayOfWeek = today.getDay();
-    if (dayOfWeek >= 1 && dayOfWeek <= 5) {
-      notifications.push({
-        type: 'tip',
-        icon: '📸',
-        title: 'Photo des cours du jour ?',
-        description: 'Prenez en photo les cours et exercices d\'aujourd\'hui pour que Foxie puisse mieux vous aider !',
-        action: 'photo',
-      });
+  const dayOfWeek = today.getDay();
+  if (hour >= 17 && hour <= 21 && dayOfWeek >= 1 && dayOfWeek <= 5) {
+    for (const child of children) {
+      const todayClasses = db.prepare(
+        'SELECT DISTINCT subject FROM kb_timetable WHERE member_id = ? AND day_of_week = ?'
+      ).all(child.id, dayOfWeek);
+
+      if (todayClasses.length > 0) {
+        const subjectList = todayClasses.map(c => c.subject).join(', ');
+        const dueReviews = db.prepare(`
+          SELECT COUNT(*) as c FROM kb_topics
+          WHERE member_id = ? AND (next_review_date IS NULL OR next_review_date <= ?)
+        `).get(child.id, todayStr);
+
+        if (dueReviews?.c > 0) {
+          notifications.push({
+            type: 'tip',
+            icon: '🔁',
+            title: `${child.name} : ${dueReviews.c} revision${dueReviews.c > 1 ? 's' : ''} a faire ce soir`,
+            description: `Cours du jour: ${subjectList}. Methode 2-3-5-7 active !`,
+            memberId: child.id,
+            action: 'review',
+          });
+        } else {
+          notifications.push({
+            type: 'tip',
+            icon: '📖',
+            title: `${child.name} : cours du jour a relire`,
+            description: `Aujourd'hui: ${subjectList}. 10 min de relecture pour ancrer la memoire !`,
+            memberId: child.id,
+            action: 'kb',
+          });
+        }
+      }
     }
+
+    notifications.push({
+      type: 'tip',
+      icon: '🌙',
+      title: 'Routine du soir — on s\'y met ?',
+      description: 'Photos des cours + évaluations → Foxie génère votre plan de révision personnalisé !',
+      action: 'routine',
+    });
+  } else if (hour >= 15 && hour < 17 && dayOfWeek >= 1 && dayOfWeek <= 5) {
+    notifications.push({
+      type: 'tip',
+      icon: '🌙',
+      title: 'Routine du soir — prépare tes cours',
+      description: 'Prends en photo tes cours du jour pour que Foxie prépare ton plan de révision ce soir !',
+      action: 'routine',
+    });
   }
 
   // Revision reminder if no active plan
@@ -98,6 +138,28 @@ router.get('/', (req, res) => {
         action: 'revision',
       });
     }
+  }
+
+  // Low grade alerts
+  for (const child of children) {
+    try {
+      const weakGrades = db.prepare(`
+        SELECT * FROM kb_grades
+        WHERE member_id = ? AND (student_avg < 10 OR (class_avg IS NOT NULL AND student_avg < class_avg - 2))
+        ORDER BY student_avg ASC LIMIT 2
+      `).all(child.id);
+      if (weakGrades.length > 0) {
+        const subjects = weakGrades.map(g => `${g.subject} (${g.student_avg}/20)`).join(', ');
+        notifications.push({
+          type: 'warning',
+          icon: '📉',
+          title: `${child.name} : notes à renforcer`,
+          description: subjects,
+          memberId: child.id,
+          action: 'revision',
+        });
+      }
+    } catch {}
   }
 
   // Sort: urgent first, then warning, then info, then tips

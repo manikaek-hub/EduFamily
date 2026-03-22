@@ -3,8 +3,9 @@ const router = express.Router();
 const db = require('../db/init');
 const { sendMessage } = require('../services/claude');
 const { searchCurriculum, detectSubject } = require('../services/curriculum');
-const { buildHomeworkPrompt } = require('../services/prompts');
+const { buildHomeworkPrompt, buildMockOralPrompt } = require('../services/prompts');
 const kb = require('../services/knowledgebase');
+const { buildProfileContext, logEvent } = require('../services/learnerProfile');
 
 // POST /api/homework/sessions - Create a new session
 router.post('/sessions', (req, res) => {
@@ -51,7 +52,7 @@ router.get('/sessions/:id/messages', (req, res) => {
 // POST /api/homework/chat - Chat with Foxie
 router.post('/chat', async (req, res) => {
   try {
-    const { memberId, message, sessionId, image, subject } = req.body;
+    const { memberId, message, sessionId, image, subject, mode } = req.body;
 
     const member = db.prepare('SELECT * FROM members WHERE id = ?').get(memberId);
     if (!member) {
@@ -97,13 +98,22 @@ router.post('/chat', async (req, res) => {
     }
 
     const child = { name: member.name, age: member.age, grade: member.grade };
-    const systemPrompt = buildHomeworkPrompt(child, fiches, kbContext);
+    let systemPrompt;
+    if (mode === 'oral') {
+      systemPrompt = buildMockOralPrompt(child);
+    } else {
+      const profileCtx = buildProfileContext(memberId);
+      systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx);
+    }
     const response = await sendMessage(systemPrompt, history);
 
     // Auto-add topic to KB from this conversation
     if (detectedSubject && message.length > 10) {
       kb.addTopic(memberId, detectedSubject, message.slice(0, 80), message);
     }
+
+    // Log learning event
+    logEvent(memberId, 'foxie_session', detectedSubject, message.slice(0, 60));
 
     // Save messages to DB
     if (sessionId) {

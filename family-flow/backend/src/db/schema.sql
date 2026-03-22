@@ -199,3 +199,74 @@ CREATE TABLE IF NOT EXISTS revision_progress (
   done_at     TEXT,
   UNIQUE(plan_id, day_index, item_index)
 );
+
+-- Mind maps for annual bilan (stored as JSON)
+CREATE TABLE IF NOT EXISTS kb_mindmaps (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  member_id   INTEGER NOT NULL REFERENCES members(id),
+  subject     TEXT NOT NULL,
+  topic       TEXT NOT NULL,
+  map_data    TEXT NOT NULL,
+  created_at  TEXT DEFAULT (datetime('now')),
+  updated_at  TEXT DEFAULT (datetime('now'))
+);
+
+-- Flashcards extracted from course photos (or created manually)
+CREATE TABLE IF NOT EXISTS kb_flashcards (
+  id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  member_id       INTEGER NOT NULL REFERENCES members(id),
+  subject         TEXT,
+  topic           TEXT,
+  front           TEXT NOT NULL,
+  back            TEXT NOT NULL,
+  source          TEXT DEFAULT 'photo',
+  next_review     TEXT,
+  review_interval INTEGER DEFAULT 1,
+  review_count    INTEGER DEFAULT 0,
+  mastery         INTEGER DEFAULT 0 CHECK(mastery BETWEEN 0 AND 5),
+  created_at      TEXT DEFAULT (datetime('now'))
+);
+
+-- Chapter (quick 5-question) quiz results
+CREATE TABLE IF NOT EXISTS chapter_quiz_results (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  member_id   INTEGER NOT NULL REFERENCES members(id),
+  subject     TEXT NOT NULL,
+  topic       TEXT NOT NULL,
+  score       INTEGER DEFAULT 0,
+  total       INTEGER DEFAULT 5,
+  taken_at    TEXT DEFAULT (datetime('now'))
+);
+
+-- XP events log
+CREATE TABLE IF NOT EXISTS xp_events (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  member_id   INTEGER NOT NULL REFERENCES members(id),
+  event_type  TEXT NOT NULL,
+  points      INTEGER NOT NULL,
+  description TEXT,
+  created_at  TEXT DEFAULT (datetime('now'))
+);
+
+-- XP totals per member
+CREATE TABLE IF NOT EXISTS xp_totals (
+  member_id   INTEGER PRIMARY KEY REFERENCES members(id),
+  total_xp    INTEGER DEFAULT 0,
+  level       INTEGER DEFAULT 1,
+  updated_at  TEXT DEFAULT (datetime('now'))
+);
+
+-- Learning events timeline (auto-logged from all interactions)
+CREATE TABLE IF NOT EXISTS kb_learning_events (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  member_id   INTEGER NOT NULL REFERENCES members(id),
+  event_type  TEXT NOT NULL CHECK(event_type IN (
+    'course_photo','eval_photo','foxie_session','quiz_correct','quiz_wrong',
+    'chapter_quiz','topic_added','routine_done','homework_done'
+  )),
+  subject     TEXT,
+  topic       TEXT,
+  score       INTEGER,
+  notes       TEXT,
+  created_at  TEXT DEFAULT (datetime('now'))
+);

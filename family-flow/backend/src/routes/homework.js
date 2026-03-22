@@ -8,6 +8,7 @@ const kb = require('../services/knowledgebase');
 const { buildProfileContext, logEvent } = require('../services/learnerProfile');
 const { annotateAndStore } = require('../agents/dataCollector');
 const { scoreEngagement, getLatestEngagement } = require('../agents/engagementScorer');
+const { getStyle, detectStyle, buildStyleInstruction } = require('../agents/learningStyleDetector');
 
 // POST /api/homework/sessions - Create a new session
 router.post('/sessions', (req, res) => {
@@ -110,13 +111,36 @@ Propose un mini-défi amusant ou change de sujet. Sois encourageant.
 Ne pose PAS de question difficile maintenant — redonne-lui confiance d'abord.\n`;
     }
 
+    // Agent 6: Get learning style for this subject
+    const styleProfile = getStyle(memberId, detectedSubject);
+    const styleInstruction = buildStyleInstruction(styleProfile);
+
+    // Recent errors context (last 5 errors from training_data)
+    let recentErrorsHint = '';
+    try {
+      const recentErrors = db.prepare(`
+        SELECT subject, error_type, substr(child_message, 1, 60) as msg
+        FROM training_data
+        WHERE member_id = ? AND label IN ('incorrect','partial') AND error_type IS NOT NULL
+        ORDER BY created_at DESC LIMIT 5
+      `).all(memberId);
+      if (recentErrors.length > 0) {
+        recentErrorsHint = '\n\n[ERREURS RECENTES de cet enfant]\n';
+        recentErrors.forEach(e => {
+          recentErrorsHint += `- ${e.subject}: ${e.error_type} ("${e.msg}")\n`;
+        });
+        recentErrorsHint += 'Tiens compte de ces erreurs pour anticiper ses difficultés.\n';
+      }
+    } catch {}
+
     const child = { name: member.name, age: member.age, grade: member.grade };
     let systemPrompt;
     if (mode === 'oral') {
       systemPrompt = buildMockOralPrompt(child);
     } else {
       const profileCtx = buildProfileContext(memberId);
-      systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx) + engagementHint;
+      const styleSection = styleInstruction ? `\n\n[STYLE D'APPRENTISSAGE]\n${styleInstruction}\n` : '';
+      systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx) + styleSection + engagementHint + recentErrorsHint;
     }
     const response = await sendMessage(systemPrompt, history);
 
@@ -171,6 +195,15 @@ Ne pose PAS de question difficile maintenant — redonne-lui confiance d'abord.\
       annotateAndStore(latestTD.id, memberId, response, message, detectedSubject, null)
         .catch(err => console.error('Agent 1 async error:', err.message));
     }
+
+    // Agent 6: Update learning style detection periodically (every 5 messages)
+    try {
+      const msgCount = db.prepare('SELECT COUNT(*) as c FROM training_data WHERE member_id = ? AND subject LIKE ?')
+        .get(memberId, `%${detectedSubject || ''}%`);
+      if (msgCount?.c > 0 && msgCount.c % 5 === 0 && detectedSubject) {
+        detectStyle(memberId, detectedSubject);
+      }
+    } catch {}
   } catch (error) {
     console.error('Chat error:', error);
     res.status(500).json({ success: false, error: error.message });

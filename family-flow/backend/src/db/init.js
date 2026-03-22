@@ -67,6 +67,16 @@ const migrations = [
     signals     TEXT,
     created_at  TEXT DEFAULT (datetime('now'))
   )`,
+  // --- Agent 6: Style d'apprentissage ---
+  `CREATE TABLE IF NOT EXISTS learning_style_profile (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    member_id       INTEGER NOT NULL REFERENCES members(id),
+    subject         TEXT NOT NULL,
+    preferred_style TEXT CHECK(preferred_style IN ('analogie_concrete','visuel_schema','textuel_structure','exploratoire_defi')),
+    confidence      REAL DEFAULT 0,
+    updated_at      TEXT DEFAULT (datetime('now')),
+    UNIQUE(member_id, subject)
+  )`,
 ];
 for (const sql of migrations) {
   try { db.exec(sql); } catch {}

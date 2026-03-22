@@ -310,4 +310,5 @@ module.exports = {
   updateMastery,
   addTopic,
   getAllChildrenContext,
+  isQuizzableSubject,
 };

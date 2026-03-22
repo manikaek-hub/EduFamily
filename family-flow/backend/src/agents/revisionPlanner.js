@@ -15,6 +15,7 @@
 
 const db = require('../db/init');
 const { getMasteryProfile, getWeakConcepts } = require('../services/learnerProfile');
+const { isQuizzableSubject } = require('../services/knowledgebase');
 
 /**
  * Génère un plan de révision priorisé pour un enfant.
@@ -39,6 +40,9 @@ function generatePlan(memberId) {
 
   const hwSubjects = new Set();
   for (const hw of upcomingHomework) {
+    // Skip non-quizzable subjects (music, arts, EPS)
+    if (!isQuizzableSubject(hw.subject)) continue;
+
     const daysUntil = Math.ceil((new Date(hw.due_date) - today) / 86400000);
     const conceptId = `${hw.subject.toLowerCase().replace(/\s+/g, '_')}_devoir`;
 

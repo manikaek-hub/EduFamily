@@ -28,6 +28,7 @@ async function pushToCloud() {
     grades: rows('SELECT subject, student_avg, class_avg, period FROM kb_grades WHERE member_id = ?', c.id),
     textbooks: rows('SELECT subject, title, publisher, isbn, chapters, digital_url FROM kb_textbooks WHERE member_id = ?', c.id),
     topics: rows('SELECT subject, topic FROM kb_topics WHERE member_id = ?', c.id),
+    mastery: rows('SELECT concept_id, subject, score, attempts, last_seen, next_review FROM mastery_graph WHERE member_id = ?', c.id),
   }));
 
   const loginRes = await fetch(`${CLOUD_URL}/api/auth/login`, {

@@ -535,6 +535,17 @@ router.post('/import', (req, res) => {
             counts.topics++;
           }
         }
+        // Graph de maîtrise (répétition espacée) — remplacement par la version du Mac
+        if (Array.isArray(m.mastery)) {
+          counts.mastery = 0;
+          db.prepare('DELETE FROM mastery_graph WHERE member_id = ?').run(id);
+          const ins = db.prepare('INSERT OR IGNORE INTO mastery_graph (member_id, concept_id, subject, score, attempts, last_seen, next_review) VALUES (?,?,?,?,?,?,?)');
+          for (const g of m.mastery) {
+            if (!g.concept_id) continue;
+            ins.run(id, g.concept_id, g.subject || null, g.score ?? 0, g.attempts ?? 0, g.last_seen || null, g.next_review || null);
+            counts.mastery++;
+          }
+        }
         report[m.name] = counts;
       }
     });

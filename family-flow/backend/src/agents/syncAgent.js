@@ -106,6 +106,18 @@ async function runSync() {
 
     logSync('success', JSON.stringify(Object.keys(results)));
     console.log('[SyncAgent] Synchronisation terminée avec succès');
+
+    // Option B : pousser vers le cloud (uniquement si PUSH_TO_CLOUD=true, càd sur le Mac)
+    try {
+      const { pushToCloud, isEnabled } = require('../services/cloudPush');
+      if (isEnabled()) {
+        const report = await pushToCloud();
+        console.log('[SyncAgent] ✓ Devoirs poussés vers le cloud:', JSON.stringify(report));
+      }
+    } catch (e) {
+      console.error('[SyncAgent] Push cloud échoué:', e.message);
+    }
+
     return { success: true, results };
 
   } catch (err) {

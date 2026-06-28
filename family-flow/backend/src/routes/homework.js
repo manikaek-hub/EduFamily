@@ -4,15 +4,67 @@ const db = require('../db/init');
 const { sendMessage } = require('../services/claude');
 const { searchCurriculum, detectSubject } = require('../services/curriculum');
 const { buildHomeworkPrompt, buildMockOralPrompt } = require('../services/prompts');
+
+// In-memory cache of attachments per session, so Foxie keeps "seeing" the document
+// across the whole conversation (the DB only stores `has_image` flag, not the binary).
+// TTL: 2 hours of inactivity. Evicted on backend restart (fine for a small family app).
+const sessionAttachments = new Map(); // sessionId -> { items: [{kind:'pdf'|'image', data:base64}], ts:number, count:number }
+const ATTACHMENT_TTL_MS = 2 * 60 * 60 * 1000;
+
+function cacheAttachments(sessionId, items) {
+  if (!sessionId || !items?.length) return;
+  sessionAttachments.set(sessionId, {
+    items,
+    ts: Date.now(),
+    count: (sessionAttachments.get(sessionId)?.count || 0) + 1,
+  });
+}
+
+function getCachedAttachment(sessionId) {
+  if (!sessionId) return null;
+  const entry = sessionAttachments.get(sessionId);
+  if (!entry) return null;
+  if (Date.now() - entry.ts > ATTACHMENT_TTL_MS) {
+    sessionAttachments.delete(sessionId);
+    return null;
+  }
+  return entry;
+}
+
+// Periodic cleanup of stale entries to bound memory usage
+setInterval(() => {
+  const now = Date.now();
+  for (const [sid, entry] of sessionAttachments.entries()) {
+    if (now - entry.ts > ATTACHMENT_TTL_MS) sessionAttachments.delete(sid);
+  }
+}, 15 * 60 * 1000).unref?.();
 const kb = require('../services/knowledgebase');
 const { buildProfileContext, logEvent } = require('../services/learnerProfile');
 const { annotateAndStore } = require('../agents/dataCollector');
 const { scoreEngagement, getLatestEngagement } = require('../agents/engagementScorer');
 const { getStyle, detectStyle, buildStyleInstruction } = require('../agents/learningStyleDetector');
+const { awardCoins } = require('../services/coins');
 
-// POST /api/homework/sessions - Create a new session
+// POST /api/homework/sessions - Find recent session or create new one
 router.post('/sessions', (req, res) => {
   const { memberId, subject, topic } = req.body;
+
+  // Look for an existing session today with messages (reuse it)
+  const existing = db.prepare(`
+    SELECT hs.id FROM homework_sessions hs
+    INNER JOIN homework_messages hm ON hs.id = hm.session_id
+    WHERE hs.member_id = ? AND hs.subject = ?
+      AND hs.started_at > datetime('now', '-24 hours')
+    GROUP BY hs.id
+    HAVING COUNT(hm.id) >= 1
+    ORDER BY hs.started_at DESC
+    LIMIT 1
+  `).get(memberId, subject);
+
+  if (existing) {
+    return res.json({ success: true, sessionId: existing.id, resumed: true });
+  }
+
   const result = db.prepare(
     'INSERT INTO homework_sessions (member_id, subject, topic) VALUES (?, ?, ?)'
   ).run(memberId, subject, topic || null);
@@ -56,7 +108,7 @@ router.get('/sessions/:id/messages', (req, res) => {
 router.post('/chat', async (req, res) => {
   req._requestStartTime = Date.now();
   try {
-    const { memberId, message, sessionId, image, subject, mode } = req.body;
+    const { memberId, message, sessionId, image, images, pdf, pdfs, subject, mode } = req.body;
 
     const member = db.prepare('SELECT * FROM members WHERE id = ?').get(memberId);
     if (!member) {
@@ -75,40 +127,83 @@ router.post('/chat', async (req, res) => {
 
     // Build conversation history from session
     let history = [];
+    let previousAssistantMessage = null;
     if (sessionId) {
       const dbMessages = db.prepare(
         'SELECT role, content FROM homework_messages WHERE session_id = ? ORDER BY created_at ASC'
       ).all(sessionId);
       history = dbMessages.map(m => ({ role: m.role, content: m.content }));
+      previousAssistantMessage = [...dbMessages].reverse().find(m => m.role === 'assistant')?.content || null;
     }
 
+    const freshAttachments = [];
+    if (pdf) freshAttachments.push({ kind: 'pdf', data: pdf });
+    if (Array.isArray(pdfs)) {
+      pdfs.filter(Boolean).forEach(item => {
+        freshAttachments.push({ kind: 'pdf', data: typeof item === 'string' ? item : item.base64 || item.data });
+      });
+    }
+    if (image) freshAttachments.push({ kind: 'image', data: image });
+    if (Array.isArray(images)) {
+      images.filter(Boolean).forEach(item => {
+        freshAttachments.push({ kind: 'image', data: typeof item === 'string' ? item : item.base64 || item.data });
+      });
+    }
+
+    // Cache the new attachments if any, so subsequent turns keep "seeing" them
+    if (freshAttachments.length > 0) cacheAttachments(sessionId, freshAttachments);
+
+    // Resolve which attachment Claude should see for THIS turn:
+    // - Use the freshly uploaded ones if present
+    // - Otherwise fall back to the cached one from earlier in the same session
+    const cached = freshAttachments.length === 0 ? getCachedAttachment(sessionId) : null;
+    const effectiveAttachments = freshAttachments.length > 0 ? freshAttachments : (cached?.items || []);
+
     // Add current message
-    if (image) {
+    if (effectiveAttachments.length > 0) {
+      const content = effectiveAttachments
+        .filter(att => att.data)
+        .map(att => att.kind === 'pdf'
+          ? { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: att.data } }
+          : { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: att.data } }
+        );
+      content.push({ type: 'text', text: message || "Voici mon document. Peux-tu m'aider ?" });
       history.push({
         role: 'user',
-        content: [
-          { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: image } },
-          { type: 'text', text: message || "Voici mon exercice. Peux-tu m'aider ?" },
-        ],
+        content,
       });
     } else {
       history.push({ role: 'user', content: message });
     }
 
-    // Get KB context for this child's subject
+    // Get KB context — TOUJOURS chargé (même sans matière détectée) pour que
+    // Foxie voie les devoirs EcoleDirecte + l'emploi du temps. Indispensable
+    // pour répondre à "qu'est-ce que j'ai pour demain ?" / "fais-moi un plan".
     let kbContext = null;
-    if (detectedSubject) {
-      kbContext = kb.getFoxieContext(memberId, detectedSubject);
+    try {
+      kbContext = kb.getFoxieContext(memberId, detectedSubject || '');
+    } catch (e) {
+      console.error('getFoxieContext error:', e.message);
     }
 
     // Agent 5: Check engagement BEFORE calling Claude
     const engagement = getLatestEngagement(memberId, sessionId);
     let engagementHint = '';
-    if (engagement.score < 60) {
+    if (engagement.score < 30) {
+      engagementHint = `\n\n[ALERTE ENGAGEMENT CRITIQUE: score ${engagement.score}/100]
+L'enfant est très découragé ou fatigué. PRIORITÉ ABSOLUE: redonner confiance.
+- Arrête les questions, donne directement les explications clés
+- Propose de faire une PAUSE ou de changer complètement de sujet
+- Dis quelque chose comme "Eh, on a bien bossé ! On fait un truc plus fun ?"
+- Si l'enfant persiste, simplifie au maximum et valorise chaque micro-progrès
+- Ne pose PAS de question — explique, montre, rassure\n`;
+    } else if (engagement.score < 60) {
       engagementHint = `\n\n[ALERTE ENGAGEMENT: score ${engagement.score}/100]
 L'enfant montre des signes de fatigue ou de désengagement.
-Propose un mini-défi amusant ou change de sujet. Sois encourageant.
-Ne pose PAS de question difficile maintenant — redonne-lui confiance d'abord.\n`;
+- Commence par récapituler ce qu'il a BIEN compris (valoriser)
+- Propose un mini-défi amusant ou un exemple concret de la vie quotidienne
+- Réduis la difficulté — donne des indices plus directs
+- Sois plus chaleureux que d'habitude, encourage davantage\n`;
     }
 
     // Agent 6: Get learning style for this subject
@@ -140,9 +235,13 @@ Ne pose PAS de question difficile maintenant — redonne-lui confiance d'abord.\
     } else {
       const profileCtx = buildProfileContext(memberId);
       const styleSection = styleInstruction ? `\n\n[STYLE D'APPRENTISSAGE]\n${styleInstruction}\n` : '';
-      systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx) + styleSection + engagementHint + recentErrorsHint;
+      systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx, mode) + styleSection + engagementHint + recentErrorsHint;
     }
-    const response = await sendMessage(systemPrompt, history, 350);
+    // Use Sonnet for accuracy + extended thinking for math/science to avoid calculation errors
+    const isMathOrScience = detectedSubject && /math|science|physiq|chimie|svt/i.test(detectedSubject);
+    const response = await sendMessage(systemPrompt, history, 800, {
+      thinking: isMathOrScience,
+    });
 
     // Auto-add topic to KB from this conversation
     if (detectedSubject && message.length > 10) {
@@ -157,7 +256,7 @@ Ne pose PAS de question difficile maintenant — redonne-lui confiance d'abord.\
       const insertMsg = db.prepare(
         'INSERT INTO homework_messages (session_id, role, content, has_image) VALUES (?, ?, ?, ?)'
       );
-      insertMsg.run(sessionId, 'user', message, image ? 1 : 0);
+      insertMsg.run(sessionId, 'user', message, freshAttachments.length > 0 ? 1 : 0);
       insertMsg.run(sessionId, 'assistant', response, 0);
     }
 
@@ -179,20 +278,34 @@ Ne pose PAS de question difficile maintenant — redonne-lui confiance d'abord.\
       }
     }
 
-    res.json({ success: true, response, fichesUsed: fiches.length, engagement: engagement.score });
+    // Award coins for homework effort (every 5 messages in a session = 5 coins)
+    let coinsEarned = 0;
+    try {
+      if (sessionId) {
+        const msgCount = db.prepare('SELECT COUNT(*) as c FROM homework_messages WHERE session_id = ? AND role = ?').get(sessionId, 'user');
+        if (msgCount && msgCount.c > 0 && msgCount.c % 5 === 0) {
+          coinsEarned = 5;
+          awardCoins(memberId, coinsEarned, `Session devoirs: ${detectedSubject || 'cours'} (${msgCount.c} messages)`, 'homework', sessionId);
+        }
+      }
+    } catch (e) { console.error('Coins award error (homework):', e.message); }
+
+    res.json({ success: true, response, fichesUsed: fiches.length, engagement: engagement.score, coinsEarned });
 
     // ─── ASYNC POST-PROCESSING (ne bloque pas la réponse) ───
     // Agent 5: Score engagement for this message
     const engResult = scoreEngagement(memberId, sessionId, message, history, req._requestStartTime ? Date.now() - req._requestStartTime : null);
 
-    // Agent 1: Annotate the exchange and update mastery graph
-    // Find the training_data row just inserted by the middleware
+    // Agent 1: annotate the child's reaction to Foxie's previous message.
+    // If this was the first message, do not pretend the child answered Foxie's new response.
     const latestTD = db.prepare(
-      'SELECT id FROM training_data WHERE member_id = ? ORDER BY id DESC LIMIT 1'
-    ).get(memberId);
+      `SELECT id FROM training_data
+       WHERE member_id = ? AND (? IS NULL OR session_id = ?)
+       ORDER BY id DESC LIMIT 1`
+    ).get(memberId, sessionId || null, sessionId || null);
 
-    if (latestTD) {
-      annotateAndStore(latestTD.id, memberId, response, message, detectedSubject, null)
+    if (latestTD && previousAssistantMessage) {
+      annotateAndStore(latestTD.id, memberId, previousAssistantMessage, message, detectedSubject, null, sessionId)
         .catch(err => console.error('Agent 1 async error:', err.message));
     }
 

@@ -13,6 +13,57 @@ db.pragma('foreign_keys = ON');
 const schema = fs.readFileSync(SCHEMA_PATH, 'utf-8');
 db.exec(schema);
 
+// ─── Tables additionnelles (présentes en local mais hors schema.sql) ───
+// Indispensable pour qu'une base NEUVE (ex: hébergement en ligne) ait tout.
+// Idempotent : IF NOT EXISTS ne touche pas une base déjà complète.
+const extraTables = [
+  `CREATE TABLE IF NOT EXISTS ed_double_auth (
+    username TEXT PRIMARY KEY,
+    cn TEXT NOT NULL,
+    cv TEXT NOT NULL,
+    created_at TEXT DEFAULT (datetime('now'))
+  )`,
+  `CREATE TABLE IF NOT EXISTS ed_settings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    student_id TEXT,
+    student_name TEXT,
+    student_class TEXT,
+    connected INTEGER DEFAULT 0,
+    last_sync TEXT,
+    UNIQUE(username, student_id)
+  )`,
+  `CREATE TABLE IF NOT EXISTS ed_sessions_persistent (
+    username TEXT PRIMARY KEY,
+    token TEXT NOT NULL,
+    login_time INTEGER NOT NULL,
+    expires_at INTEGER NOT NULL,
+    student_accounts_json TEXT,
+    is_parent INTEGER DEFAULT 0
+  )`,
+  `CREATE TABLE IF NOT EXISTS kb_textbooks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    member_id INTEGER NOT NULL REFERENCES members(id),
+    subject TEXT NOT NULL,
+    title TEXT NOT NULL,
+    publisher TEXT,
+    isbn TEXT,
+    chapters TEXT,
+    digital_url TEXT,
+    UNIQUE(member_id, subject, isbn)
+  )`,
+  // Recherche plein-texte des documents (FTS5). Les tables _data/_idx/etc.
+  // sont créées automatiquement par SQLite.
+  `CREATE VIRTUAL TABLE IF NOT EXISTS kb_documents_fts USING fts5(
+    raw_text, title, topics, key_concepts, subject,
+    content='kb_documents',
+    content_rowid='id'
+  )`,
+];
+for (const sql of extraTables) {
+  try { db.exec(sql); } catch (e) { console.error('[DB] extra table:', e.message); }
+}
+
 // Migrations: add columns to existing tables (safe, idempotent)
 const migrations = [
   "ALTER TABLE kb_topics ADD COLUMN next_review_date TEXT",

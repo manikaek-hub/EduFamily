@@ -428,7 +428,9 @@ Les reponses fausses doivent etre PLAUSIBLES.
 Les explications doivent etre INSTRUCTIVES (2-3 phrases).
 
 FORMAT JSON array strict (12 elements):
-[{"question_text":"...","choices":["A","B","C","D"],"correct_answer":0,"difficulty":"medium","target_member_name":"Charles","subject":"Maths","explanation":"..."}]
+[{"question_text":"...","choices":["A","B","C","D"],"correct_answer":0,"difficulty":"medium","target_member_name":"Charles","subject":"Maths","concept":"fractions_egales","explanation":"..."}]
+
+Le champ "concept" est un identifiant court de la notion testee (minuscules, underscores, sans accents : ex "fractions_egales", "accord_participe_passe", "cites_grecques"). Si la question reprend une notion fragile fournie, REUTILISE le meme identifiant.
 
 Reponds UNIQUEMENT avec le JSON array.`;
 }

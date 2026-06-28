@@ -66,6 +66,7 @@ for (const sql of extraTables) {
 
 // Migrations: add columns to existing tables (safe, idempotent)
 const migrations = [
+  "ALTER TABLE quiz_questions ADD COLUMN concept_id TEXT",
   "ALTER TABLE kb_topics ADD COLUMN next_review_date TEXT",
   "ALTER TABLE kb_topics ADD COLUMN review_interval INTEGER DEFAULT 1",
   "ALTER TABLE kb_topics ADD COLUMN review_count INTEGER DEFAULT 0",

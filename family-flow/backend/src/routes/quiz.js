@@ -5,7 +5,15 @@ const { generateJSON } = require('../services/claude');
 const { buildQuizPrompt, buildChapterQuizPrompt } = require('../services/prompts');
 const kb = require('../services/knowledgebase');
 const { awardCoins } = require('../services/coins');
-const { getMasteryProfile } = require('../services/learnerProfile');
+const { getMasteryProfile, updateMasteryGraph } = require('../services/learnerProfile');
+
+// Identifiant de concept normalisé (minuscules, sans accents, underscores)
+function slugConcept(s) {
+  if (!s) return null;
+  const slug = String(s).normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 60);
+  return slug || null;
+}
 
 // POST /api/quiz/generate
 router.post('/generate', async (req, res) => {
@@ -113,7 +121,7 @@ router.post('/generate', async (req, res) => {
       const sessionId = session.lastInsertRowid;
 
       const insertQ = db.prepare(
-        'INSERT INTO quiz_questions (quiz_session_id, target_member, question_text, choices, correct_answer, difficulty, subject, explanation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+        'INSERT INTO quiz_questions (quiz_session_id, target_member, question_text, choices, correct_answer, difficulty, subject, explanation, concept_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
       );
 
       let savedCount = 0;
@@ -135,7 +143,8 @@ router.post('/generate', async (req, res) => {
           correctAnswer,
           diff,
           q.subject || '',
-          q.explanation || ''
+          q.explanation || '',
+          slugConcept(q.concept)
         );
         savedCount++;
       }
@@ -206,6 +215,12 @@ router.post('/answer', (req, res) => {
   db.prepare(
     'INSERT INTO quiz_answers (question_id, member_id, answer, is_correct) VALUES (?, ?, ?, ?)'
   ).run(questionId, memberId, answer, isCorrect);
+
+  // Répétition espacée : la réponse au quiz met à jour le mastery_graph (SM-2)
+  if (question.concept_id) {
+    try { updateMasteryGraph(memberId, question.concept_id, question.subject || null, !!isCorrect); }
+    catch (e) { console.error('updateMasteryGraph (quiz) error:', e.message); }
+  }
 
   // Update streak
   const today = new Date().toISOString().split('T')[0];

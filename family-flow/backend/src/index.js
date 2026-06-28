@@ -19,6 +19,12 @@ process.on('uncaughtException', (err) => {
 // Training data collector middleware (Agent 1)
 const { preCollector, postCollector } = require('./middleware/trainingCollector');
 
+// ─── Authentification par code d'accès familial ───
+// Route publique (login/status) puis protection de toutes les autres routes /api.
+const { requireAuth } = require('./middleware/auth');
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api', requireAuth);
+
 // Routes
 app.use('/api/family', require('./routes/family'));
 app.use('/api/homework', preCollector, postCollector, require('./routes/homework'));

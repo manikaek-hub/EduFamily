@@ -468,4 +468,67 @@ function awardXP(memberId, eventType, points, description) {
   }
 }
 
+// POST /api/kb/import — reçoit les données EcoleDirecte synchronisées depuis le
+// Mac (Option B : le Mac sait parler à EcoleDirecte, il pousse ici devoirs /
+// notes / emploi du temps / manuels). Membres résolus par NOM (IDs peuvent différer).
+router.post('/import', (req, res) => {
+  try {
+    const { members } = req.body || {};
+    if (!Array.isArray(members)) {
+      return res.status(400).json({ success: false, error: 'members[] requis' });
+    }
+    const findMember = db.prepare('SELECT id FROM members WHERE name = ? LIMIT 1');
+    const report = {};
+    const tx = db.transaction(() => {
+      for (const m of members) {
+        const row = m.name ? findMember.get(m.name) : null;
+        if (!row) { report[m.name || '?'] = 'membre introuvable'; continue; }
+        const id = row.id;
+        const counts = { homework: 0, grades: 0, timetable: 0, textbooks: 0 };
+
+        if (Array.isArray(m.homework)) {
+          db.prepare('DELETE FROM kb_homework WHERE member_id = ?').run(id);
+          const ins = db.prepare('INSERT OR IGNORE INTO kb_homework (member_id, subject, description, due_date, done) VALUES (?,?,?,?,?)');
+          for (const h of m.homework) {
+            if (!h.subject || !h.description || !h.due_date) continue;
+            ins.run(id, h.subject, h.description, h.due_date, h.done ? 1 : 0);
+            counts.homework++;
+          }
+        }
+        if (Array.isArray(m.timetable)) {
+          db.prepare('DELETE FROM kb_timetable WHERE member_id = ?').run(id);
+          const ins = db.prepare('INSERT OR IGNORE INTO kb_timetable (member_id, subject, teacher, room, day_of_week, start_time, end_time) VALUES (?,?,?,?,?,?,?)');
+          for (const t of m.timetable) {
+            if (!t.subject || t.day_of_week == null || !t.start_time || !t.end_time) continue;
+            ins.run(id, t.subject, t.teacher || null, t.room || null, t.day_of_week, t.start_time, t.end_time);
+            counts.timetable++;
+          }
+        }
+        if (Array.isArray(m.grades)) {
+          const ins = db.prepare('INSERT OR REPLACE INTO kb_grades (member_id, subject, student_avg, class_avg, period) VALUES (?,?,?,?,?)');
+          for (const g of m.grades) {
+            if (!g.subject) continue;
+            ins.run(id, g.subject, g.student_avg ?? null, g.class_avg ?? null, g.period || null);
+            counts.grades++;
+          }
+        }
+        if (Array.isArray(m.textbooks)) {
+          const ins = db.prepare('INSERT OR REPLACE INTO kb_textbooks (member_id, subject, title, publisher, isbn, chapters, digital_url) VALUES (?,?,?,?,?,?,?)');
+          for (const b of m.textbooks) {
+            if (!b.subject || !b.title) continue;
+            ins.run(id, b.subject, b.title, b.publisher || null, b.isbn || null, b.chapters || null, b.digital_url || null);
+            counts.textbooks++;
+          }
+        }
+        report[m.name] = counts;
+      }
+    });
+    tx();
+    res.json({ success: true, report });
+  } catch (e) {
+    console.error('KB import error:', e);
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
 module.exports = router;

@@ -2,10 +2,31 @@ require('dotenv').config({ override: true });
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
+
+// ─── Seed minimal de la famille si la base est vide (1er démarrage en ligne) ───
+// Crée les membres de la famille sur une base neuve, sans données de démo.
+const db = require('./db/init');
+try {
+  const { n } = db.prepare('SELECT COUNT(*) AS n FROM members').get();
+  if (n === 0) {
+    const members = [
+      { name: 'Victoire', role: 'child', grade: 'CE1', age: 7, avatar_color: '#E8A0BF' },
+      { name: 'Charles', role: 'child', grade: '6eme', age: 11, avatar_color: '#4A90D9' },
+      { name: 'Gauthier', role: 'child', grade: '4eme', age: 14, avatar_color: '#7C9082' },
+      { name: 'Manika', role: 'parent', grade: null, age: null, avatar_color: '#C4A484' },
+    ];
+    const ins = db.prepare('INSERT INTO members (name, role, grade, age, avatar_color) VALUES (?, ?, ?, ?, ?)');
+    for (const m of members) ins.run(m.name, m.role, m.grade, m.age, m.avatar_color);
+    console.log('[Seed] Famille créée (base neuve).');
+  }
+} catch (e) {
+  console.error('[Seed] Erreur seed initial:', e?.message || e);
+}
 
 // ─── Global error protection ───
 process.on('unhandledRejection', (err) => {
@@ -110,7 +131,16 @@ app.get('/api/health', (req, res) => {
 });
 
 // ─── Serve React frontend in production ───
-const frontendBuild = path.join(__dirname, '..', '..', 'frontend', 'build');
+// On cherche le build dans l'ordre : variable d'env, submodule (dev local),
+// puis backend/public (build embarqué pour l'hébergement en ligne).
+const buildCandidates = [
+  process.env.FRONTEND_BUILD,
+  path.join(__dirname, '..', '..', 'frontend', 'build'),
+  path.join(__dirname, '..', 'public'),
+].filter(Boolean);
+const frontendBuild =
+  buildCandidates.find(p => { try { return fs.existsSync(path.join(p, 'index.html')); } catch { return false; } }) ||
+  buildCandidates[buildCandidates.length - 1];
 app.use(express.static(frontendBuild, {
   setHeaders: (res, filePath) => {
     if (filePath.endsWith('.html') || filePath.endsWith('asset-manifest.json')) {

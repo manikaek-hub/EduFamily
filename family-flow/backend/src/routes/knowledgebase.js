@@ -505,10 +505,13 @@ router.post('/import', (req, res) => {
           }
         }
         if (Array.isArray(m.grades)) {
+          db.prepare('DELETE FROM kb_grades WHERE member_id = ?').run(id);
           const ins = db.prepare('INSERT OR REPLACE INTO kb_grades (member_id, subject, student_avg, class_avg, period) VALUES (?,?,?,?,?)');
           for (const g of m.grades) {
             if (!g.subject) continue;
-            ins.run(id, g.subject, g.student_avg ?? null, g.class_avg ?? null, g.period || null);
+            const v = Number(g.student_avg);
+            if (!(v >= 0 && v <= 20)) continue; // ignore notes invalides
+            ins.run(id, g.subject, v, g.class_avg ?? null, g.period || null);
             counts.grades++;
           }
         }

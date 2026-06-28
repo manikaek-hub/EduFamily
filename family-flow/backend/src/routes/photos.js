@@ -281,8 +281,10 @@ function updateGradeFromPhoto(memberId, extracted) {
   const score = parseFloat(match[1]);
   const outOf = parseFloat(match[2]);
   if (isNaN(score) || isNaN(outOf) || outOf === 0) return;
+  // Garde-fou : note mal lue (ex: "37/20" ou barème farfelu) -> on ignore.
+  if (score < 0 || score > outOf || outOf > 100) return;
 
-  const normalizedScore = (score / outOf) * 20; // Normalize to /20
+  const normalizedScore = Math.max(0, Math.min(20, (score / outOf) * 20)); // /20, borné
 
   // Update kb_grades
   const period = new Date().toISOString().slice(0, 7); // YYYY-MM
@@ -290,8 +292,8 @@ function updateGradeFromPhoto(memberId, extracted) {
     .get(memberId, extracted.subject, period);
 
   if (existing) {
-    // Average with existing
-    const newAvg = (existing.student_avg + normalizedScore) / 2;
+    // Moyenne avec l'existant, bornée /20
+    const newAvg = Math.max(0, Math.min(20, (existing.student_avg + normalizedScore) / 2));
     db.prepare('UPDATE kb_grades SET student_avg = ? WHERE id = ?').run(newAvg, existing.id);
   } else {
     db.prepare('INSERT INTO kb_grades (member_id, subject, student_avg, period) VALUES (?, ?, ?, ?)')

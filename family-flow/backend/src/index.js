@@ -171,7 +171,15 @@ const HOST = process.env.HOST || '0.0.0.0';
 app.listen(PORT, HOST, () => {
   console.log(`\nFamily Flow running on http://${HOST}:${PORT}\n`);
   // Start agents
-  startSyncAgent();
+  // ⚠️ La synchro EcoleDirecte ne tourne QUE sur le Mac (ED_SYNC_ENABLED=true).
+  // Sur le serveur cloud (IP datacenter), EcoleDirecte bloque et envoie des
+  // emails de sécurité -> on ne lance PAS l'agent là-bas (Option B).
+  if (String(process.env.ED_SYNC_ENABLED || '').toLowerCase() === 'true') {
+    startSyncAgent();
+    console.log('[SyncAgent] Synchro EcoleDirecte activée (ED_SYNC_ENABLED=true)');
+  } else {
+    console.log('[SyncAgent] Synchro EcoleDirecte désactivée sur cette instance (cloud).');
+  }
   startCleanupAgent();
   // Show local network URL for mobile access
   try {

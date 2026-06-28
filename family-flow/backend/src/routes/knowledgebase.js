@@ -523,10 +523,11 @@ router.post('/import', (req, res) => {
             counts.textbooks++;
           }
         }
-        // Notions (kb_topics) : fusion (INSERT OR IGNORE) — ne PAS effacer celles
-        // créées en ligne par l'usage de Foxie.
+        // Notions (kb_topics) : remplacement par les notions PROPRES du Mac
+        // (le Mac est la source de vérité ; évite d'accumuler du bruit sur le cloud).
         if (Array.isArray(m.topics)) {
           counts.topics = 0;
+          db.prepare('DELETE FROM kb_topics WHERE member_id = ?').run(id);
           const ins = db.prepare("INSERT OR IGNORE INTO kb_topics (member_id, subject, topic, source) VALUES (?,?,?, 'ecoledirecte')");
           for (const t of m.topics) {
             if (!t.subject || !t.topic) continue;

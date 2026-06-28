@@ -159,19 +159,21 @@ router.post('/chat', async (req, res) => {
     const cached = freshAttachments.length === 0 ? getCachedAttachment(sessionId) : null;
     const effectiveAttachments = freshAttachments.length > 0 ? freshAttachments : (cached?.items || []);
 
-    // Add current message
+    // Add current message — format de contenu NEUTRE attendu par la couche LLM
+    // ({type:'image', mediaType, data}). Les images partent vers le tier vision.
     if (effectiveAttachments.length > 0) {
-      const content = effectiveAttachments
-        .filter(att => att.data)
-        .map(att => att.kind === 'pdf'
-          ? { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: att.data } }
-          : { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: att.data } }
-        );
-      content.push({ type: 'text', text: message || "Voici mon document. Peux-tu m'aider ?" });
-      history.push({
-        role: 'user',
-        content,
+      const content = [];
+      let hasPdf = false;
+      for (const att of effectiveAttachments.filter(a => a.data)) {
+        if (att.kind === 'pdf') { hasPdf = true; continue; } // GPT ne lit pas les PDF en chat
+        content.push({ type: 'image', mediaType: att.mediaType || 'image/jpeg', data: att.data });
+      }
+      content.push({
+        type: 'text',
+        text: (message || "Voici mon document. Peux-tu m'aider ?")
+          + (hasPdf ? "\n[Un PDF a été joint mais ne peut pas être lu directement pour l'instant — décris-le ou prends une photo.]" : ''),
       });
+      history.push({ role: 'user', content });
     } else {
       history.push({ role: 'user', content: message });
     }

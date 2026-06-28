@@ -68,6 +68,7 @@ app.use('/api/fiches', require('./routes/fiches'));
 app.use('/api/discoveries', require('./routes/discoveries'));
 app.use('/api/dictation', require('./routes/dictation'));
 app.use('/api/llm', require('./routes/llm'));
+app.use('/api/progress', require('./routes/progress'));
 
 // Agent d'amélioration continue — endpoint d'analyse
 const { runAnalysis, getTrends } = require('./agents/improvementAgent');

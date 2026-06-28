@@ -1,0 +1,4 @@
+[submodule "family-flow/frontend"]
+	path = family-flow/frontend
+	url = https://github.com/manikaek-hub/EduFamily-frontend.git
+	branch = main

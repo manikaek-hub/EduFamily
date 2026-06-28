@@ -2,11 +2,30 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db/init');
 const { processImage } = require('../services/claude');
-const { logEvent } = require('../services/learnerProfile');
+const { logEvent, updateMasteryGraph } = require('../services/learnerProfile');
 const { extractAndStore } = require('../services/vocabularyExtractor');
+const normalizeSubject = require('../utils/normalizeSubject');
+const { officialSubjects, toOfficial } = require('../config/subjects');
 const fs = require('fs');
 const path = require('path');
 const { PHOTOS_DIR } = require('../config/paths');
+
+// Identifiant de concept normalisé (minuscules, sans accents, underscores)
+function slugConcept(s) {
+  if (!s) return null;
+  const slug = String(s).normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 60);
+  return slug || null;
+}
+// Parse une note "15/20" -> { score20, raw } borné /20
+function parseGrade20(g) {
+  const m = String(g || '').match(/([\d.,]+)\s*\/\s*([\d.,]+)/);
+  if (!m) return null;
+  const score = parseFloat(m[1].replace(',', '.'));
+  const outOf = parseFloat(m[2].replace(',', '.'));
+  if (isNaN(score) || isNaN(outOf) || outOf === 0 || score < 0 || score > outOf || outOf > 100) return null;
+  return Math.round((score / outOf) * 20 * 10) / 10;
+}
 if (!fs.existsSync(PHOTOS_DIR)) fs.mkdirSync(PHOTOS_DIR, { recursive: true });
 
 // POST /api/photos/upload — process a photo with Haiku Vision
@@ -310,5 +329,92 @@ function updateGradeFromPhoto(memberId, extracted) {
     }
   }
 }
+
+// ─── Scanner un contrôle : 1) ANALYSE (aucune sauvegarde) ───
+// Renvoie ce que l'IA a lu, pour validation par le parent avant enregistrement.
+router.post('/controle/analyze', async (req, res) => {
+  try {
+    const { memberId, imageData, mediaType = 'image/jpeg' } = req.body;
+    if (!memberId || !imageData) return res.status(400).json({ success: false, error: 'memberId et imageData requis' });
+    const member = db.prepare('SELECT * FROM members WHERE id = ?').get(memberId);
+    if (!member) return res.status(404).json({ success: false, error: 'Membre non trouvé' });
+
+    const base64 = imageData.replace(/^data:image\/\w+;base64,/, '');
+    const extracted = await processImage(base64, mediaType, `${member.name}, ${member.age} ans, ${member.grade}`);
+
+    const officials = officialSubjects(member.grade);
+    const subjectOfficial = toOfficial(extracted.subject, officials) || normalizeSubject(extracted.subject) || '';
+    const concepts = [...new Set([...(extracted.key_concepts || []), ...(extracted.topics || [])].filter(Boolean))].slice(0, 8);
+
+    res.json({
+      success: true,
+      preview: {
+        subject: subjectOfficial,
+        subjectOptions: officials,
+        grade20: parseGrade20(extracted.grade),
+        gradeRaw: extracted.grade || null,
+        concepts,
+        title: extracted.title || '',
+        docType: extracted.doc_type || 'controle',
+        gradeComments: extracted.grade_comments || null,
+      },
+    });
+  } catch (e) {
+    console.error('controle/analyze error:', e);
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
+// ─── Scanner un contrôle : 2) ENREGISTREMENT (après validation parent) ───
+// Sauvegarde la note (validée /20) ET nourrit le mastery_graph (répétition espacée).
+router.post('/controle/save', (req, res) => {
+  try {
+    const { memberId, subject, grade20, concepts, title } = req.body || {};
+    const member = db.prepare('SELECT * FROM members WHERE id = ?').get(memberId);
+    if (!member) return res.status(404).json({ success: false, error: 'Membre non trouvé' });
+    if (!subject) return res.status(400).json({ success: false, error: 'Matière requise' });
+
+    const g = Number(grade20);
+    const validGrade = g >= 0 && g <= 20;
+    const period = new Date().toISOString().slice(0, 7);
+
+    const tx = db.transaction(() => {
+      // Document
+      db.prepare(`INSERT INTO kb_documents (member_id, doc_type, subject, title, topics, key_concepts, grade, doc_date)
+                  VALUES (?, 'controle', ?, ?, ?, ?, ?, date('now'))`)
+        .run(memberId, subject, title || null, JSON.stringify(concepts || []), JSON.stringify(concepts || []),
+             validGrade ? `${g}/20` : null);
+
+      // Note (validée)
+      if (validGrade) {
+        const existing = db.prepare('SELECT id, student_avg FROM kb_grades WHERE member_id=? AND subject=? AND period=?').get(memberId, subject, period);
+        if (existing) {
+          const avg = Math.max(0, Math.min(20, (existing.student_avg + g) / 2));
+          db.prepare('UPDATE kb_grades SET student_avg=? WHERE id=?').run(avg, existing.id);
+        } else {
+          db.prepare('INSERT INTO kb_grades (member_id, subject, student_avg, period) VALUES (?,?,?,?)').run(memberId, subject, g, period);
+        }
+      }
+
+      // Mastery graph : un contrôle est un vrai signal de maîtrise.
+      // Note >= 11/20 -> concepts maîtrisés ; en dessous -> à revoir bientôt.
+      const wasCorrect = validGrade ? g >= 11 : true;
+      let fed = 0;
+      for (const c of (concepts || [])) {
+        const slug = slugConcept(c);
+        if (!slug) continue;
+        try { updateMasteryGraph(memberId, slug, subject, wasCorrect); fed++; } catch {}
+      }
+      return fed;
+    });
+    const conceptsFed = tx();
+
+    logEvent(memberId, 'eval_photo', subject, title || 'Contrôle', validGrade ? g : null, null);
+    res.json({ success: true, saved: { subject, grade20: validGrade ? g : null, conceptsFed } });
+  } catch (e) {
+    console.error('controle/save error:', e);
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
 
 module.exports = router;

@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/init');
-const Anthropic = require('@anthropic-ai/sdk');
+const { generateJSON } = require('../services/llm');
 const { logEvent } = require('../services/learnerProfile');
-
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const { awardCoins } = require('../services/coins');
 
 // POST /api/routine/analyze
 router.post('/analyze', async (req, res) => {
@@ -40,7 +39,7 @@ router.post('/analyze', async (req, res) => {
           topicsToday: [],
           evalErrors: [],
           tomorrowPrep: tomorrowClasses.map(c => ({ subject: c.subject, keyPoints: [], tip: `Cours de ${c.subject} demain à ${c.start_time}` })),
-          eveningMessage: `Bonsoir ${member.name} ! Commence par tes devoirs, puis révise les cours de demain. Courage ! 🦊`,
+          eveningMessage: `Bonsoir ${member.name} ! Commence par tes devoirs, puis révise les cours de demain. Courage !`,
           pendingHomework,
           tomorrowClasses,
         },
@@ -70,14 +69,14 @@ router.post('/analyze', async (req, res) => {
     if (coursPhotos.length > 0) {
       messageContent.push({ type: 'text', text: `Voici ${coursPhotos.length} photo(s) des cours du jour :` });
       coursPhotos.forEach(b64 => {
-        messageContent.push({ type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: b64 } });
+        messageContent.push({ type: 'image', mediaType: 'image/jpeg', data: b64 });
       });
     }
 
     if (evalPhotos.length > 0) {
       messageContent.push({ type: 'text', text: `Voici ${evalPhotos.length} photo(s) des évaluations/exercices corrigés du jour :` });
       evalPhotos.forEach(b64 => {
-        messageContent.push({ type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: b64 } });
+        messageContent.push({ type: 'image', mediaType: 'image/jpeg', data: b64 });
       });
     }
 
@@ -85,20 +84,9 @@ router.post('/analyze', async (req, res) => {
 
     const systemPrompt = buildRoutinePrompt(member, contextSection);
 
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 2048,
-      system: systemPrompt,
-      messages: [{ role: 'user', content: messageContent }],
-    });
-
-    const text = response.content[0].text;
     let plan;
-
     try {
-      let cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
-      const objMatch = cleaned.match(/\{[\s\S]*\}/);
-      plan = JSON.parse(objMatch ? objMatch[0] : cleaned);
+      plan = await generateJSON(systemPrompt, messageContent, 2048);
     } catch {
       return res.status(500).json({ success: false, error: 'Analyse impossible, réessaie.' });
     }
@@ -128,7 +116,16 @@ router.post('/analyze', async (req, res) => {
     if (coursPhotos.length > 0) logEvent(memberId, 'course_photo', null, null, coursPhotos.length);
     if (evalPhotos.length > 0) logEvent(memberId, 'eval_photo', null, null, evalPhotos.length);
 
-    res.json({ success: true, plan });
+    // Award coins for completing evening routine
+    let coinsEarned = 0;
+    try {
+      coinsEarned = 10; // base reward for routine
+      coinsEarned += coursPhotos.length * 3; // bonus per photo
+      coinsEarned += evalPhotos.length * 3;
+      awardCoins(memberId, coinsEarned, `Routine du soir (${coursPhotos.length} cours, ${evalPhotos.length} évals)`, 'routine');
+    } catch (e) { console.error('Coins award error (routine):', e.message); }
+
+    res.json({ success: true, plan, coinsEarned });
   } catch (error) {
     console.error('Routine analyze error:', error);
     res.status(500).json({ success: false, error: error.message });

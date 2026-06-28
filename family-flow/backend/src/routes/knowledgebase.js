@@ -4,7 +4,6 @@ const db = require('../db/init');
 const kb = require('../services/knowledgebase');
 const ed = require('../services/ecoledirecte');
 const { generateJSON } = require('../services/claude');
-const Anthropic = require('@anthropic-ai/sdk');
 
 // Spaced repetition intervals in days (2-3-5-7 method extended)
 const REVIEW_INTERVALS = [1, 2, 3, 5, 7, 14, 30, 60];
@@ -42,6 +41,21 @@ router.post('/sync', async (req, res) => {
   } catch (error) {
     console.error('KB sync error:', error);
     res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// GET /api/kb/homework/:memberId - Get pending homework for dashboard
+router.get('/homework/:memberId', (req, res) => {
+  const memberId = parseInt(req.params.memberId);
+  try {
+    const today = new Date();
+    const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+    const homework = db.prepare(
+      'SELECT id, subject, description, due_date, done FROM kb_homework WHERE member_id = ? AND done = 0 AND due_date >= ? ORDER BY due_date ASC LIMIT 15'
+    ).all(memberId, todayStr);
+    res.json({ success: true, homework });
+  } catch (err) {
+    res.json({ success: true, homework: [] });
   }
 });
 
@@ -108,6 +122,34 @@ router.post('/homework', (req, res) => {
       'INSERT OR IGNORE INTO kb_homework (member_id, subject, description, due_date) VALUES (?, ?, ?, ?)'
     ).run(memberId, subject, description, due_date);
     res.json({ success: true });
+  } catch (e) {
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
+// PUT /api/kb/homework/:id/done - Mark homework as done/undone
+router.put('/homework/:id/done', (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const { done } = req.body; // 1 or 0
+    const newDone = done ? 1 : 0;
+
+    const hw = db.prepare('SELECT * FROM kb_homework WHERE id = ?').get(id);
+    if (!hw) return res.status(404).json({ success: false, error: 'Devoir non trouvé' });
+
+    db.prepare('UPDATE kb_homework SET done = ? WHERE id = ?').run(newDone, id);
+
+    // Award coins when marking as done (not when un-marking)
+    if (newDone === 1) {
+      try {
+        const { awardCoins } = require('../services/coins');
+        awardCoins(hw.member_id, 10, `Devoir terminé : ${hw.subject}`, 'homework_done', id);
+      } catch (coinErr) {
+        console.warn('[KB] Coin award failed:', coinErr.message);
+      }
+    }
+
+    res.json({ success: true, done: newDone, coinsAwarded: newDone === 1 ? 10 : 0 });
   } catch (e) {
     res.status(500).json({ success: false, error: e.message });
   }
@@ -215,7 +257,7 @@ Regles:
     // Save or update
     const existing = db.prepare('SELECT id FROM kb_mindmaps WHERE member_id = ? AND subject = ? AND topic = ?').get(memberId, subject, topic);
     if (existing) {
-      db.prepare('UPDATE kb_mindmaps SET map_data = ?, updated_at = datetime("now") WHERE id = ?')
+      db.prepare("UPDATE kb_mindmaps SET map_data = ?, updated_at = datetime('now') WHERE id = ?")
         .run(JSON.stringify(mapData), existing.id);
     } else {
       db.prepare('INSERT INTO kb_mindmaps (member_id, subject, topic, map_data) VALUES (?, ?, ?, ?)')
@@ -264,20 +306,11 @@ router.post('/flashcards/extract', async (req, res) => {
   if (!member) return res.status(404).json({ success: false, error: 'Membre introuvable' });
 
   try {
-    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 2048,
-      messages: [{
-        role: 'user',
-        content: [
-          {
-            type: 'image',
-            source: { type: 'base64', media_type: mediaType || 'image/jpeg', data: imageBase64 },
-          },
-          {
-            type: 'text',
-            text: `Analyse ce cours de ${subject || 'matiere inconnue'} pour ${member.name} (${member.grade}).
+    const visionContent = [
+      { type: 'image', mediaType: mediaType || 'image/jpeg', data: imageBase64 },
+      {
+        type: 'text',
+        text: `Analyse ce cours de ${subject || 'matiere inconnue'} pour ${member.name} (${member.grade}).
 Extrait les concepts cles sous forme de flashcards question/reponse.
 
 FORMAT JSON strict (array):
@@ -289,17 +322,12 @@ Regles:
 - Reponses concises (1-2 phrases max)
 - Adapte au niveau ${member.grade}
 - Reponds UNIQUEMENT avec le JSON array`,
-          },
-        ],
-      }],
-    });
+      },
+    ];
 
-    const text = response.content[0].text;
     let flashcards;
     try {
-      const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
-      const arrMatch = cleaned.match(/\[[\s\S]*\]/);
-      flashcards = JSON.parse(arrMatch ? arrMatch[0] : cleaned);
+      flashcards = await generateJSON('', visionContent, 2048, { tier: 'vision' });
     } catch {
       return res.status(500).json({ success: false, error: 'Impossible d\'extraire les flashcards' });
     }
@@ -430,7 +458,7 @@ function awardXP(memberId, eventType, points, description) {
     if (existing) {
       const newTotal = existing.total_xp + points;
       const level = Math.floor(Math.sqrt(newTotal / 50)) + 1;
-      db.prepare('UPDATE xp_totals SET total_xp = ?, level = ?, updated_at = datetime("now") WHERE member_id = ?')
+      db.prepare("UPDATE xp_totals SET total_xp = ?, level = ?, updated_at = datetime('now') WHERE member_id = ?")
         .run(newTotal, level, memberId);
     } else {
       db.prepare('INSERT INTO xp_totals (member_id, total_xp, level) VALUES (?, ?, 1)').run(memberId, points);

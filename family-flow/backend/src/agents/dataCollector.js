@@ -8,21 +8,19 @@
  * Fonctionne de manière ASYNCHRONE — ne bloque jamais le chat.
  */
 
-const Anthropic = require('@anthropic-ai/sdk');
+const { generateJSON } = require('../services/llm');
 const db = require('../db/init');
-const { updateMasteryGraph } = require('../services/learnerProfile');
-
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const { updateMasteryGraph, recordLearningObservation } = require('../services/learnerProfile');
 
 const ANNOTATION_PROMPT = `Tu es un annotateur pédagogique. Analyse cet échange entre un tuteur (Foxie) et un enfant.
 
 ÉCHANGE :
-Foxie : "{foxie}"
-Enfant : "{child}"
+Dernier message de Foxie : "{foxie}"
+Réaction de l'enfant : "{child}"
 Matière : {subject}
 Concept : {concept}
 
-CLASSIFIE la réponse de l'enfant :
+CLASSIFIE la réaction de l'enfant au dernier message de Foxie :
 - "correct" : l'enfant a compris et répond juste
 - "partial" : réponse partiellement correcte ou raisonnement bon mais résultat faux
 - "incorrect" : réponse fausse
@@ -36,7 +34,15 @@ Si "incorrect" ou "partial", identifie le TYPE D'ERREUR :
 - "vocabulaire" : ne connaît pas un mot clé de la question
 
 Réponds UNIQUEMENT en JSON :
-{"label":"correct|partial|incorrect|hors_sujet","error_type":"null|erreur_conceptuelle|erreur_calcul|erreur_lecture_enonce|inattention|vocabulaire","confidence":0.85}`;
+{
+  "label":"correct|partial|incorrect|hors_sujet",
+  "error_type":"null|erreur_conceptuelle|erreur_calcul|erreur_lecture_enonce|inattention|vocabulaire",
+  "concept_id":"concept_court_en_snake_case_ou_null",
+  "observation_status":"strength|partial|difficulty|engagement|unknown",
+  "observation":"phrase courte utile pour Foxie la prochaine fois",
+  "next_action":"action pédagogique concrète à tenter ensuite",
+  "confidence":0.85
+}`;
 
 /**
  * Annote une réponse enfant via Claude (async, ne bloque pas).
@@ -54,24 +60,14 @@ async function annotateResponse(foxieMessage, childMessage, subject, concept) {
     .replace('{concept}', concept || 'inconnu');
 
   try {
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 150,
-      messages: [{ role: 'user', content: prompt }],
-    });
-
-    const text = response.content[0].text.trim();
-    // Extract JSON from response
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
-      console.error('Agent 1: no JSON in annotation response');
-      return { label: null, error_type: null, confidence: 0 };
-    }
-
-    const parsed = JSON.parse(jsonMatch[0]);
+    const parsed = await generateJSON('', prompt, 150, { tier: 'fast' });
     return {
       label: parsed.label || null,
       error_type: parsed.error_type === 'null' ? null : (parsed.error_type || null),
+      concept_id: parsed.concept_id === 'null' ? null : (parsed.concept_id || null),
+      observation_status: parsed.observation_status || null,
+      observation: parsed.observation || null,
+      next_action: parsed.next_action || null,
       confidence: parsed.confidence || 0.5,
     };
   } catch (err) {
@@ -87,21 +83,40 @@ async function annotateResponse(foxieMessage, childMessage, subject, concept) {
  *
  * Appelé de manière async après la réponse de Foxie.
  */
-async function annotateAndStore(trainingDataId, memberId, foxieMessage, childMessage, subject, concept) {
+async function annotateAndStore(trainingDataId, memberId, foxieMessage, childMessage, subject, concept, sessionId = null) {
   try {
     const annotation = await annotateResponse(foxieMessage, childMessage, subject, concept);
 
     if (annotation.label) {
       // 1. Update training_data
       db.prepare(`
-        UPDATE training_data SET label = ?, error_type = ? WHERE id = ?
-      `).run(annotation.label, annotation.error_type, trainingDataId);
+        UPDATE training_data SET label = ?, error_type = ?, concept_id = ? WHERE id = ?
+      `).run(annotation.label, annotation.error_type, annotation.concept_id || concept || null, trainingDataId);
 
       // 2. Update mastery_graph if we have a concept
-      const conceptId = concept || (subject ? `${subject.toLowerCase().replace(/\s+/g, '_')}_general` : null);
+      const conceptId = annotation.concept_id || concept || (subject ? `${subject.toLowerCase().replace(/\s+/g, '_')}_general` : null);
       if (conceptId) {
         const wasCorrect = annotation.label === 'correct' || annotation.label === 'partial';
         updateMasteryGraph(memberId, conceptId, subject || 'Général', wasCorrect);
+      }
+
+      // 3. Store a short reusable memory for Foxie and the parent view
+      if (annotation.observation) {
+        recordLearningObservation({
+          memberId,
+          sessionId,
+          subject,
+          conceptId,
+          status: annotation.observation_status || (
+            annotation.label === 'correct' ? 'strength' :
+            annotation.label === 'partial' ? 'partial' :
+            annotation.label === 'incorrect' ? 'difficulty' : 'unknown'
+          ),
+          summary: annotation.observation,
+          evidence: childMessage,
+          nextAction: annotation.next_action,
+          confidence: annotation.confidence,
+        });
       }
 
       console.log(`Agent 1: annotated [${annotation.label}] ${annotation.error_type || '-'} (confidence: ${annotation.confidence})`);

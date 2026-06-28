@@ -4,6 +4,8 @@ const db = require('../db/init');
 const { generateJSON } = require('../services/claude');
 const { buildQuizPrompt, buildChapterQuizPrompt } = require('../services/prompts');
 const kb = require('../services/knowledgebase');
+const { awardCoins } = require('../services/coins');
+const { getMasteryProfile } = require('../services/learnerProfile');
 
 // POST /api/quiz/generate
 router.post('/generate', async (req, res) => {
@@ -62,7 +64,35 @@ router.post('/generate', async (req, res) => {
       } catch {}
     }
 
-    const systemPrompt = buildQuizPrompt(children, childrenContext, today, recentQuestions, weakGrades);
+    // Fetch mastery data — prioritize weak topics (mastery < 3/5)
+    const weakTopics = [];
+    for (const child of children) {
+      try {
+        const topics = db.prepare(`
+          SELECT topic, subject, mastery, ? as name FROM kb_topics
+          WHERE member_id = ? AND mastery IS NOT NULL AND mastery < 3
+          ORDER BY mastery ASC LIMIT 5
+        `).all(child.name, child.id);
+        weakTopics.push(...topics);
+      } catch {}
+    }
+
+    // Répétition espacée : concepts DUS à révision (mastery_graph / SM-2) — priorité
+    for (const child of children) {
+      try {
+        const mastery = getMasteryProfile(child.id);
+        const pretty = id => String(id || '').replace(/_/g, ' ').replace(/\bgeneral\b/g, '').trim();
+        const due = (mastery.dueForReview || [])
+          .filter(c => c.concept_id && !/_general$/i.test(c.concept_id) && c.subject !== 'Foxie')
+          .slice(0, 5);
+        due.forEach(c => weakTopics.push({
+          topic: pretty(c.concept_id), subject: c.subject,
+          mastery: Math.round((c.score || 0) * 5), name: child.name,
+        }));
+      } catch {}
+    }
+
+    const systemPrompt = buildQuizPrompt(children, childrenContext, today, recentQuestions, weakGrades, weakTopics);
     let userMessage = 'Genere le quiz du soir pour la famille.';
     if (topics && topics.length > 0) {
       userMessage += '\nAujourd\'hui, les enfants ont travaille sur:\n';
@@ -204,11 +234,25 @@ router.post('/answer', (req, res) => {
     awardXP(memberId, 'quiz_attempt', 2, `Quiz: ${question.subject}`);
   }
 
+  // Award coins for quiz answer
+  let coinsEarned = 0;
+  try {
+    if (isCorrect) {
+      const coinMap = { easy: 5, medium: 10, hard: 15 };
+      coinsEarned = coinMap[question.difficulty] || 5;
+      awardCoins(memberId, coinsEarned, `Quiz correct: ${question.subject}`, 'quiz', questionId);
+    } else {
+      coinsEarned = 1;
+      awardCoins(memberId, coinsEarned, `Tentative quiz: ${question.subject}`, 'quiz', questionId);
+    }
+  } catch (e) { console.error('Coins award error (quiz):', e.message); }
+
   res.json({
     success: true,
     isCorrect: !!isCorrect,
     explanation: question.explanation,
     correctAnswer: question.correct_answer,
+    coinsEarned,
   });
 });
 
@@ -270,7 +314,14 @@ router.post('/chapter/result', (req, res) => {
   const xp = pct >= 0.8 ? 30 : pct >= 0.6 ? 20 : 10;
   awardXP(memberId, 'chapter_quiz', xp, `Quiz ${subject}: ${topic} (${score}/${total || 5})`);
 
-  res.json({ success: true });
+  // Award coins based on score
+  let coinsEarned = 0;
+  try {
+    coinsEarned = pct >= 0.8 ? 20 : pct >= 0.6 ? 10 : 5;
+    awardCoins(memberId, coinsEarned, `Quiz ${subject}: ${topic} (${score}/${total || 5})`, 'quiz');
+  } catch (e) { console.error('Coins award error (chapter quiz):', e.message); }
+
+  res.json({ success: true, coinsEarned });
 });
 
 // ─── Helper (local to this route file) ─────────────────────────────────────
@@ -282,7 +333,7 @@ function awardXP(memberId, eventType, points, description) {
     if (existing) {
       const newTotal = existing.total_xp + points;
       const level = Math.floor(Math.sqrt(newTotal / 50)) + 1;
-      db.prepare('UPDATE xp_totals SET total_xp = ?, level = ?, updated_at = datetime("now") WHERE member_id = ?')
+      db.prepare("UPDATE xp_totals SET total_xp = ?, level = ?, updated_at = datetime('now') WHERE member_id = ?")
         .run(newTotal, level, memberId);
     } else {
       db.prepare('INSERT INTO xp_totals (member_id, total_xp, level) VALUES (?, ?, 1)').run(memberId, points);

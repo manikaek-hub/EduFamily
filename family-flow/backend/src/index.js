@@ -62,7 +62,6 @@ app.use('/api/profile', require('./routes/profile'));
 app.use('/api/parent', require('./routes/parent'));
 app.use('/api/avatar', require('./routes/avatar'));
 app.use('/api/feedback', require('./routes/feedback'));
-app.use('/api/elevenlabs', require('./routes/elevenlabs'));
 app.use('/api/photos', require('./routes/photos'));
 app.use('/api/fiches', require('./routes/fiches'));
 app.use('/api/discoveries', require('./routes/discoveries'));

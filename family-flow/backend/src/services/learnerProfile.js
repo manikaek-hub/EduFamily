@@ -109,6 +109,7 @@ function buildProfileContext(memberId) {
   if (!profile?.member) return '';
 
   const { member, competencies, recentTopics } = profile;
+  const observations = getRecentLearningObservations(memberId, 6);
 
   let ctx = `\n\n[PROFIL APPRENANT: ${member.name}]\n`;
   ctx += `Niveau scolaire: ${member.grade}, ${member.age} ans\n`;
@@ -136,9 +137,35 @@ function buildProfileContext(memberId) {
     }
   }
 
+  // Répétition espacée : concepts dus à révision (mastery_graph / SM-2)
+  try {
+    const mastery = getMasteryProfile(memberId);
+    const pretty = id => String(id || '').replace(/_/g, ' ').replace(/\bgeneral\b/g, '').trim();
+    const due = (mastery.dueForReview || [])
+      .filter(c => c.concept_id && !/_general$/i.test(c.concept_id))
+      .slice(0, 6);
+    if (due.length > 0) {
+      ctx += `🔁 À réviser aujourd'hui (répétition espacée): ${due.map(c => `${c.subject} > ${pretty(c.concept_id)}`).join(' | ')}\n`;
+      ctx += `   → Si c'est pertinent, propose spontanément un court rappel ou une question sur l'une de ces notions.\n`;
+    }
+  } catch {}
+
   if (recentTopics.length > 0) {
     const recent = recentTopics.slice(0, 5).map(t => `${t.subject}: ${t.topic}`).join(', ');
     ctx += `📚 Vu récemment: ${recent}\n`;
+  }
+
+  if (observations.length > 0) {
+    ctx += `\n[MEMOIRE RECENTE DE FOXIE]\n`;
+    observations.forEach(obs => {
+      const label = obs.status === 'difficulty' ? 'Difficulté' :
+        obs.status === 'partial' ? 'À consolider' :
+        obs.status === 'strength' ? 'Point fort' :
+        obs.status === 'engagement' ? 'Engagement' : 'Observation';
+      ctx += `- ${label}${obs.subject ? ` en ${obs.subject}` : ''}: ${obs.summary}`;
+      if (obs.next_action) ctx += ` Prochaine action: ${obs.next_action}`;
+      ctx += '\n';
+    });
   }
 
   ctx += `[FIN PROFIL — utilise ces données pour personnaliser chaque réponse]\n`;
@@ -153,6 +180,55 @@ function logEvent(memberId, eventType, subject, topic, score, notes) {
       VALUES (?, ?, ?, ?, ?, ?)
     `).run(memberId, eventType, subject || null, topic || null, score ?? null, notes || null);
   } catch {}
+}
+
+function recordLearningObservation({
+  memberId,
+  sessionId,
+  subject,
+  conceptId,
+  status,
+  summary,
+  evidence,
+  nextAction,
+  confidence,
+}) {
+  if (!memberId || !summary || summary.trim().length < 5) return null;
+
+  const normalizedStatus = ['strength', 'partial', 'difficulty', 'engagement', 'unknown'].includes(status)
+    ? status
+    : 'unknown';
+
+  const result = db.prepare(`
+    INSERT INTO learning_observations (
+      member_id, session_id, subject, concept_id, status, summary, evidence, next_action, confidence
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).run(
+    memberId,
+    sessionId || null,
+    subject || null,
+    conceptId || null,
+    normalizedStatus,
+    summary.trim().slice(0, 260),
+    evidence ? String(evidence).trim().slice(0, 260) : null,
+    nextAction ? String(nextAction).trim().slice(0, 260) : null,
+    typeof confidence === 'number' ? confidence : 0
+  );
+
+  return result.lastInsertRowid;
+}
+
+function getRecentLearningObservations(memberId, limit = 8) {
+  try {
+    return db.prepare(`
+      SELECT * FROM learning_observations
+      WHERE member_id = ?
+      ORDER BY created_at DESC, id DESC
+      LIMIT ?
+    `).all(memberId, limit);
+  } catch {
+    return [];
+  }
 }
 
 // ─── Progression over time: events per week for last 8 weeks ──────────────────
@@ -284,6 +360,8 @@ module.exports = {
   buildProfileContext,
   computeCompetencies,
   logEvent,
+  recordLearningObservation,
+  getRecentLearningObservations,
   getProgressionData,
   // Agent 2: Mastery Graph
   updateMasteryGraph,

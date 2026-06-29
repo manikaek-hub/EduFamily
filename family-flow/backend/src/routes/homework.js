@@ -1,9 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/init');
-const { sendMessage } = require('../services/claude');
+const { sendMessage, processImage } = require('../services/claude');
 const { searchCurriculum, detectSubject } = require('../services/curriculum');
 const { buildHomeworkPrompt, buildMockOralPrompt } = require('../services/prompts');
+const normalizeSubject = require('../utils/normalizeSubject');
+const { officialSubjects, toOfficial } = require('../config/subjects');
+
+// Parse une note "15/20" -> nombre /20 borné, sinon null
+function parseGrade20(g) {
+  const m = String(g || '').match(/([\d.,]+)\s*\/\s*([\d.,]+)/);
+  if (!m) return null;
+  const score = parseFloat(m[1].replace(',', '.'));
+  const outOf = parseFloat(m[2].replace(',', '.'));
+  if (isNaN(score) || isNaN(outOf) || outOf === 0 || score < 0 || score > outOf || outOf > 100) return null;
+  return Math.round((score / outOf) * 20 * 10) / 10;
+}
 
 // In-memory cache of attachments per session, so Foxie keeps "seeing" the document
 // across the whole conversation (the DB only stores `has_image` flag, not the binary).
@@ -241,9 +253,28 @@ L'enfant montre des signes de fatigue ou de désengagement.
     }
     // Use Sonnet for accuracy + extended thinking for math/science to avoid calculation errors
     const isMathOrScience = detectedSubject && /math|science|physiq|chimie|svt/i.test(detectedSubject);
-    const response = await sendMessage(systemPrompt, history, 800, {
-      thinking: isMathOrScience,
-    });
+    // Détection contrôle EN PARALLÈLE de la réponse (pas de latence ajoutée) :
+    // si la photo est un contrôle, on proposera de l'archiver dans les progrès.
+    const firstImage = effectiveAttachments.find(a => a.kind === 'image' && a.data);
+    const [response, detection] = await Promise.all([
+      sendMessage(systemPrompt, history, 800, { thinking: isMathOrScience }),
+      firstImage
+        ? processImage(firstImage.data, firstImage.mediaType || 'image/jpeg', `${member.name}, ${member.grade}`).catch(() => null)
+        : Promise.resolve(null),
+    ]);
+
+    let controleSuggestion = null;
+    if (detection && (detection.doc_type === 'controle' || parseGrade20(detection.grade) != null)) {
+      const officials = officialSubjects(member.grade);
+      controleSuggestion = {
+        memberId,
+        subject: toOfficial(detection.subject, officials) || normalizeSubject(detection.subject) || '',
+        subjectOptions: officials,
+        grade20: parseGrade20(detection.grade),
+        title: detection.title || '',
+        concepts: [...new Set([...(detection.key_concepts || []), ...(detection.topics || [])].filter(Boolean))].slice(0, 8),
+      };
+    }
 
     // Auto-add topic to KB from this conversation
     if (detectedSubject && message.length > 10) {
@@ -292,7 +323,7 @@ L'enfant montre des signes de fatigue ou de désengagement.
       }
     } catch (e) { console.error('Coins award error (homework):', e.message); }
 
-    res.json({ success: true, response, fichesUsed: fiches.length, engagement: engagement.score, coinsEarned });
+    res.json({ success: true, response, fichesUsed: fiches.length, engagement: engagement.score, coinsEarned, controleSuggestion });
 
     // ─── ASYNC POST-PROCESSING (ne bloque pas la réponse) ───
     // Agent 5: Score engagement for this message

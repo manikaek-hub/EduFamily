@@ -6,6 +6,8 @@ const { searchCurriculum, detectSubject } = require('../services/curriculum');
 const { buildHomeworkPrompt, buildMockOralPrompt } = require('../services/prompts');
 const normalizeSubject = require('../utils/normalizeSubject');
 const { officialSubjects, toOfficial } = require('../config/subjects');
+const { saveControleArchive } = require('../services/controleArchive');
+const { archiveSchoolDocument } = require('../services/homeworkArchive');
 
 // Parse une note "15/20" -> nombre /20 borné, sinon null
 function parseGrade20(g) {
@@ -254,7 +256,7 @@ L'enfant montre des signes de fatigue ou de désengagement.
     // Use Sonnet for accuracy + extended thinking for math/science to avoid calculation errors
     const isMathOrScience = detectedSubject && /math|science|physiq|chimie|svt/i.test(detectedSubject);
     // Détection contrôle EN PARALLÈLE de la réponse (pas de latence ajoutée) :
-    // si la photo est un contrôle, on proposera de l'archiver dans les progrès.
+    // si la photo est un contrôle, on l'archive automatiquement une seule fois.
     const firstImage = effectiveAttachments.find(a => a.kind === 'image' && a.data);
     const [response, detection] = await Promise.all([
       sendMessage(systemPrompt, history, 800, { thinking: isMathOrScience }),
@@ -263,17 +265,38 @@ L'enfant montre des signes de fatigue ou de désengagement.
         : Promise.resolve(null),
     ]);
 
-    let controleSuggestion = null;
+    let controleArchive = null;
+    let documentArchive = null;
     if (detection && (detection.doc_type === 'controle' || parseGrade20(detection.grade) != null)) {
       const officials = officialSubjects(member.grade);
-      controleSuggestion = {
-        memberId,
-        subject: toOfficial(detection.subject, officials) || normalizeSubject(detection.subject) || '',
-        subjectOptions: officials,
-        grade20: parseGrade20(detection.grade),
-        title: detection.title || '',
-        concepts: [...new Set([...(detection.key_concepts || []), ...(detection.topics || [])].filter(Boolean))].slice(0, 8),
-      };
+      const subjectOfficial = toOfficial(detection.subject, officials) || normalizeSubject(detection.subject) || detectedSubject || '';
+      if (subjectOfficial) {
+        try {
+          controleArchive = saveControleArchive({
+            memberId,
+            subject: subjectOfficial,
+            grade20: parseGrade20(detection.grade),
+            title: detection.title || '',
+            concepts: [...new Set([...(detection.key_concepts || []), ...(detection.topics || [])].filter(Boolean))].slice(0, 8),
+            rawText: detection.raw_text || null,
+            gradeComments: detection.grade_comments || null,
+          });
+        } catch (e) {
+          console.warn('[homework] controle auto-archive failed:', e.message);
+          controleArchive = { success: false, inserted: false };
+        }
+      }
+    } else if (detection) {
+      try {
+        documentArchive = archiveSchoolDocument({
+          memberId,
+          extracted: detection,
+          fallbackSubject: detectedSubject,
+        });
+      } catch (e) {
+        console.warn('[homework] document auto-archive failed:', e.message);
+        documentArchive = { success: false, inserted: false };
+      }
     }
 
     // Auto-add topic to KB from this conversation
@@ -323,7 +346,7 @@ L'enfant montre des signes de fatigue ou de désengagement.
       }
     } catch (e) { console.error('Coins award error (homework):', e.message); }
 
-    res.json({ success: true, response, fichesUsed: fiches.length, engagement: engagement.score, coinsEarned, controleSuggestion });
+    res.json({ success: true, response, fichesUsed: fiches.length, engagement: engagement.score, coinsEarned, controleArchive, documentArchive });
 
     // ─── ASYNC POST-PROCESSING (ne bloque pas la réponse) ───
     // Agent 5: Score engagement for this message
@@ -338,7 +361,7 @@ L'enfant montre des signes de fatigue ou de désengagement.
     ).get(memberId, sessionId || null, sessionId || null);
 
     if (latestTD && previousAssistantMessage) {
-      annotateAndStore(latestTD.id, memberId, previousAssistantMessage, message, detectedSubject, null, sessionId)
+      annotateAndStore(latestTD.id, memberId, previousAssistantMessage, message, detectedSubject, null, sessionId, response)
         .catch(err => console.error('Agent 1 async error:', err.message));
     }
 

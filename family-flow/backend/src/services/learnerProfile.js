@@ -39,7 +39,7 @@ function computeCompetencies(memberId) {
     try {
       const g = db.prepare(`
         SELECT AVG(student_avg) as avg_grade FROM kb_grades
-        WHERE member_id = ? AND subject LIKE ?
+        WHERE member_id = ? AND subject LIKE ? AND student_avg BETWEEN 0 AND 20
       `).get(memberId, `%${s.subject}%`);
       if (g?.avg_grade) scores.push(g.avg_grade * 5);
     } catch {}
@@ -145,8 +145,8 @@ function buildProfileContext(memberId) {
       .filter(c => c.concept_id && !/_general$/i.test(c.concept_id))
       .slice(0, 6);
     if (due.length > 0) {
-      ctx += `🔁 À réviser aujourd'hui (répétition espacée): ${due.map(c => `${c.subject} > ${pretty(c.concept_id)}`).join(' | ')}\n`;
-      ctx += `   → Si c'est pertinent, propose spontanément un court rappel ou une question sur l'une de ces notions.\n`;
+      ctx += `🔁 À réviser (répétition espacée): ${due.map(c => `${c.subject} > ${pretty(c.concept_id)}`).join(' | ')}\n`;
+      ctx += `   → RÈGLE STRICTE: l'enfant vient avec SA demande, elle passe TOUJOURS en premier. Ne mentionne une de ces notions QUE si l'enfant n'a rien à faire (il demande quoi réviser, ou le devoir est terminé), et une seule à la fois, en 1 phrase. JAMAIS au milieu d'un devoir, JAMAIS de liste.\n`;
     }
   } catch {}
 

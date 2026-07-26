@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const crypto = require('crypto');
 const { Communicate } = require('edge-tts-universal');
 
 /**
@@ -14,17 +15,34 @@ const { Communicate } = require('edge-tts-universal');
  *   GET  /api/avatar/status  — Statut du service
  */
 
-// Voix françaises disponibles — Denise est parfaite pour Foxie (jeune, dynamique)
-const FOXIE_VOICE = 'fr-FR-DeniseNeural';
+// Voix par défaut : plus douce et plus posée que Denise pour les enfants.
+// Voix 100 % française. Les voix "Multilingual" détectent la langue par segment
+// et prononcent avec un accent anglais tout mot qui y ressemble (Combo, boss...).
+const FOXIE_VOICE = process.env.FOXIE_TTS_VOICE || 'fr-FR-DeniseNeural';
 
 // Voix alternatives
 const FRENCH_VOICES = [
   { id: 'fr-FR-DeniseNeural', name: 'Denise', gender: 'Female', desc: 'Jeune, dynamique — voix de Foxie' },
-  { id: 'fr-FR-VivienneMultilingualNeural', name: 'Vivienne', gender: 'Female', desc: 'Douce, multilingue' },
+  { id: 'fr-FR-VivienneMultilingualNeural', name: 'Vivienne', gender: 'Female', desc: 'Douce — accent anglais sur les mots anglais' },
   { id: 'fr-FR-EloiseNeural', name: 'Eloise', gender: 'Female', desc: 'Chaleureuse' },
   { id: 'fr-FR-HenriNeural', name: 'Henri', gender: 'Male', desc: 'Amical' },
   { id: 'fr-FR-RemyMultilingualNeural', name: 'Remy', gender: 'Male', desc: 'Multilingue' },
 ];
+const ttsCache = new Map();
+const TTS_CACHE_MAX = 80;
+
+function cacheKey({ text, voice, rate, pitch }) {
+  return crypto.createHash('sha1').update(JSON.stringify({ text, voice, rate, pitch })).digest('hex');
+}
+
+function rememberAudio(key, audioBuffer) {
+  if (ttsCache.has(key)) ttsCache.delete(key);
+  ttsCache.set(key, audioBuffer);
+  while (ttsCache.size > TTS_CACHE_MAX) {
+    const oldest = ttsCache.keys().next().value;
+    ttsCache.delete(oldest);
+  }
+}
 
 /**
  * GET /api/avatar/status
@@ -55,31 +73,44 @@ router.get('/voices', (req, res) => {
  * Returns: audio/mp3 stream
  */
 router.post('/speak', async (req, res) => {
-  const { text, voice, emotion } = req.body;
+  const { text, voice, emotion, rate: requestedRate, pitch: requestedPitch } = req.body;
 
   if (!text) {
     return res.status(400).json({ error: 'text requis' });
   }
 
   // Limiter le texte pour garder des réponses courtes
-  const cleanText = text.substring(0, 500);
+  const cleanText = String(text).replace(/\s+/g, ' ').trim().substring(0, 420);
 
   // Adapter le débit et le ton selon l'émotion
-  let rate = '+10%';   // Un peu plus rapide que normal = plus dynamique
-  let pitch = '+5Hz';  // Légèrement plus aigu = plus jeune
+  let rate = '+0%';
+  let pitch = '+0Hz';
 
   if (emotion === 'excited') {
-    rate = '+18%';
-    pitch = '+12Hz';
+    rate = '+6%';
+    pitch = '+2Hz';
   } else if (emotion === 'encouraging') {
-    rate = '+5%';
-    pitch = '+8Hz';
+    rate = '+0%';
+    pitch = '+1Hz';
   } else if (emotion === 'thinking') {
-    rate = '-5%';
+    rate = '-3%';
     pitch = '+0Hz';
   }
 
+  if (requestedRate) rate = requestedRate;
+  if (requestedPitch) pitch = requestedPitch;
+
   const selectedVoice = voice || FOXIE_VOICE;
+  const key = cacheKey({ text: cleanText, voice: selectedVoice, rate, pitch });
+  const cached = ttsCache.get(key);
+  if (cached) {
+    res.set({
+      'Content-Type': 'audio/mp3',
+      'Content-Length': cached.length,
+      'Cache-Control': 'private, max-age=3600',
+    });
+    return res.send(cached);
+  }
 
   try {
     const comm = new Communicate(cleanText, selectedVoice, { rate, pitch });
@@ -98,6 +129,7 @@ router.post('/speak', async (req, res) => {
       console.error('Edge-TTS: aucun audio reçu');
       return res.status(500).json({ error: 'Pas d\'audio généré' });
     }
+    rememberAudio(key, audioBuffer);
 
     // Envoyer l'audio MP3
     res.set({
@@ -107,7 +139,7 @@ router.post('/speak', async (req, res) => {
     });
 
     res.send(audioBuffer);
-    console.log(`🦊 Foxie parle (${cleanText.length} chars, ${audioBuffer.length} bytes) via Edge-TTS`);
+    console.log(`Foxie parle (${cleanText.length} chars, ${audioBuffer.length} bytes) via Edge-TTS`);
   } catch (err) {
     console.error('Erreur Edge-TTS:', err.message);
     res.status(500).json({ error: err.message, fallback: true });

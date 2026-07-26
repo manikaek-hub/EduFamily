@@ -265,18 +265,24 @@ L'enfant montre des signes de fatigue ou de désengagement.
         }
         const lastAnswer = recent.find(r => r.label !== 'hors_sujet');
         const lastWrong = lastAnswer && lastAnswer.label !== 'correct';
-        const guard = `\n(Ne s'applique QUE si l'enfant vient de répondre à une question d'exercice. S'il pose une question, demande de l'aide ou change de sujet : ignore ce bloc, ne parle pas de combo.)`;
+        // Les petits n'ont pas besoin du décompte de combo : ça alourdit la
+        // phrase, ça se lit mal à voix haute et ça ne leur parle pas.
+        const junior = (member.age || 0) <= 9;
+        const celebrate = junior
+          ? `- Félicite en 2 ou 3 mots ("Bravo !", "Tu assures !"). PAS de "Combo", PAS de compteur, PAS de mot anglais.`
+          : `- Annonce le combo : « Combo x${streak} ! »`;
+        const guard = `\n(Ne s'applique QUE si l'enfant vient de répondre à une question d'exercice. S'il pose une question, demande de l'aide ou change de sujet : ignore ce bloc.)`;
         if (streak >= 5) {
-          flywheelHint = `\n\n[FLYWHEEL — STREAK: ${streak} bonnes réponses d'affilée 🔥]${guard}
+          flywheelHint = `\n\n[FLYWHEEL — STREAK: ${streak} bonnes réponses d'affilée]${guard}
 La notion est probablement MAÎTRISÉE. OBLIGATOIRE maintenant :
-- Annonce le combo (« Combo x${streak} ! 🔥 ») et célèbre franchement.
-- Propose UN défi boss final (le plus dur du niveau). S'il le réussit : déclare la notion CONQUISE 🏆 et propose soit une nouvelle notion, soit d'arrêter là en beauté. Une session courte et gagnée vaut mieux qu'une session longue et molle. NE CONTINUE PAS à poser la même chose.`;
+${celebrate}
+- Propose UN dernier défi, le plus dur du niveau. S'il le réussit : dis que la notion est gagnée et propose soit autre chose, soit d'arrêter là. Une session courte et gagnée vaut mieux qu'une session longue et molle. NE CONTINUE PAS à poser la même chose.`;
         } else if (streak >= 2) {
           flywheelHint = `\n\n[FLYWHEEL — STREAK: ${streak} bonnes réponses d'affilée]${guard}
 Il/elle déroule → OBLIGATOIRE au prochain message :
 - MONTE la difficulté d'un vrai cran : SAUTE des étapes (ne suis jamais l'ordre 4,5,6,7...).
-- CHANGE de format de jeu (jamais deux fois le même d'affilée) : question à l'envers (« ? × 2 = 14 »), chrono (« en 5 secondes ! »), petit problème concret, inversion des rôles (l'enfant te pose la question et tu te trompes parfois exprès), intrus à trouver.
-- Annonce le combo : « Combo x${streak} ! »`;
+- CHANGE de format de jeu (jamais deux fois le même d'affilée) : question à l'envers (« ? × 2 = 14 »), chrono, petit problème concret, inversion des rôles (l'enfant te pose la question et tu te trompes parfois exprès), intrus à trouver.
+${celebrate}`;
         } else if (lastWrong) {
           flywheelHint = `\n\n[FLYWHEEL — dernière réponse fausse]
 Redescends d'UN cran (pas plus), donne un indice malin, et refais gagner vite pour relancer la machine. Pas de leçon, pas de drame.`;

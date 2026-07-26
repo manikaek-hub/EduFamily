@@ -244,6 +244,46 @@ L'enfant montre des signes de fatigue ou de désengagement.
       }
     } catch {}
 
+    // FLYWHEEL : streak de bonnes réponses consécutives dans CETTE session
+    // (labels posés en async par l'annotateur ; null = pas encore jugé → ignoré)
+    let flywheelHint = '';
+    try {
+      if (sessionId) {
+        // Fenêtre de 20 min : un streak d'il y a 1h ne doit pas fuiter sur une
+        // nouvelle activité (sinon Foxie annonce un « Combo x2 » hors sujet).
+        const recent = db.prepare(`
+          SELECT label FROM training_data
+          WHERE member_id = ? AND session_id = ? AND label IS NOT NULL
+            AND created_at >= datetime('now', '-20 minutes')
+          ORDER BY id DESC LIMIT 12
+        `).all(memberId, sessionId);
+        let streak = 0;
+        for (const r of recent) {
+          if (r.label === 'hors_sujet') continue; // bavardage : neutre
+          if (r.label !== 'correct') break;       // erreur : le combo s'arrête
+          streak++;
+        }
+        const lastAnswer = recent.find(r => r.label !== 'hors_sujet');
+        const lastWrong = lastAnswer && lastAnswer.label !== 'correct';
+        const guard = `\n(Ne s'applique QUE si l'enfant vient de répondre à une question d'exercice. S'il pose une question, demande de l'aide ou change de sujet : ignore ce bloc, ne parle pas de combo.)`;
+        if (streak >= 5) {
+          flywheelHint = `\n\n[FLYWHEEL — STREAK: ${streak} bonnes réponses d'affilée 🔥]${guard}
+La notion est probablement MAÎTRISÉE. OBLIGATOIRE maintenant :
+- Annonce le combo (« Combo x${streak} ! 🔥 ») et célèbre franchement.
+- Propose UN défi boss final (le plus dur du niveau). S'il le réussit : déclare la notion CONQUISE 🏆 et propose soit une nouvelle notion, soit d'arrêter là en beauté. Une session courte et gagnée vaut mieux qu'une session longue et molle. NE CONTINUE PAS à poser la même chose.`;
+        } else if (streak >= 2) {
+          flywheelHint = `\n\n[FLYWHEEL — STREAK: ${streak} bonnes réponses d'affilée]${guard}
+Il/elle déroule → OBLIGATOIRE au prochain message :
+- MONTE la difficulté d'un vrai cran : SAUTE des étapes (ne suis jamais l'ordre 4,5,6,7...).
+- CHANGE de format de jeu (jamais deux fois le même d'affilée) : question à l'envers (« ? × 2 = 14 »), chrono (« en 5 secondes ! »), petit problème concret, inversion des rôles (l'enfant te pose la question et tu te trompes parfois exprès), intrus à trouver.
+- Annonce le combo : « Combo x${streak} ! »`;
+        } else if (lastWrong) {
+          flywheelHint = `\n\n[FLYWHEEL — dernière réponse fausse]
+Redescends d'UN cran (pas plus), donne un indice malin, et refais gagner vite pour relancer la machine. Pas de leçon, pas de drame.`;
+        }
+      }
+    } catch {}
+
     const child = { name: member.name, age: member.age, grade: member.grade };
     let systemPrompt;
     if (mode === 'oral') {
@@ -251,7 +291,7 @@ L'enfant montre des signes de fatigue ou de désengagement.
     } else {
       const profileCtx = buildProfileContext(memberId);
       const styleSection = styleInstruction ? `\n\n[STYLE D'APPRENTISSAGE]\n${styleInstruction}\n` : '';
-      systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx, mode) + styleSection + engagementHint + recentErrorsHint;
+      systemPrompt = buildHomeworkPrompt(child, fiches, kbContext, profileCtx, mode) + styleSection + engagementHint + recentErrorsHint + flywheelHint;
     }
     // Use Sonnet for accuracy + extended thinking for math/science to avoid calculation errors
     const isMathOrScience = detectedSubject && /math|science|physiq|chimie|svt/i.test(detectedSubject);

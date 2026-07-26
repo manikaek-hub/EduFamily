@@ -259,12 +259,19 @@ RÉPONSE (juste le numéro):`;
   }
 }
 
+// La table kb_sync_log n'a que (member_id, sync_type, items_count, synced_at).
+// L'ancienne version écrivait dans des colonnes inexistantes : l'INSERT échouait
+// et l'erreur était avalée, donc l'agent n'a jamais rien journalisé — et on ne
+// pouvait pas savoir quand la dernière synchro avait eu lieu.
 function logSync(status, details) {
   try {
     db.prepare(
-      'INSERT INTO kb_sync_log (member_id, source, status, details) VALUES (?, ?, ?, ?)'
-    ).run(0, 'sync_agent', status, details);
-  } catch {}
+      'INSERT INTO kb_sync_log (member_id, sync_type, items_count) VALUES (?, ?, ?)'
+    ).run(0, `sync_agent:${status}`, 0);
+  } catch (err) {
+    console.error('[SyncAgent] log impossible:', err.message);
+  }
+  if (details) console.log(`[SyncAgent] ${status}: ${details}`);
 }
 
 function scheduleRetry() {
@@ -291,8 +298,25 @@ function startSyncAgent() {
 
   console.log('[SyncAgent] Agent de sync EcoleDirecte activé (toutes les 6h)');
 
-  // Sync immédiate au démarrage (avec délai de 10s pour laisser le serveur démarrer)
-  setTimeout(() => runSync(), 10000);
+  // PAS de sync systématique au démarrage : en développement le serveur redémarre
+  // souvent, et chaque redémarrage envoyait une rafale de 12 requêtes à
+  // EcoleDirecte — ce qui a fini par déclencher leur protection anti-robot.
+  // On ne synchronise au démarrage que si la dernière synchro date de plus de 6h.
+  let lastSyncAt = 0;
+  try {
+    const row = db.prepare('SELECT MAX(synced_at) AS last FROM kb_sync_log').get();
+    if (row?.last) lastSyncAt = new Date(`${row.last.replace(' ', 'T')}Z`).getTime();
+  } catch (err) {
+    console.error('[SyncAgent] lecture kb_sync_log impossible:', err.message);
+  }
+
+  const sinceLast = Date.now() - lastSyncAt;
+  if (sinceLast >= SYNC_INTERVAL) {
+    setTimeout(() => runSync(), 10000);
+  } else {
+    const dansMin = Math.round((SYNC_INTERVAL - sinceLast) / 60000);
+    console.log(`[SyncAgent] Synchro récente (il y a ${Math.round(sinceLast / 60000)} min) — prochaine dans ~${dansMin} min`);
+  }
 
   // Puis toutes les 6 heures
   syncTimer = setInterval(() => runSync(), SYNC_INTERVAL);

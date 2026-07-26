@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const crypto = require('crypto');
+const multer = require('multer');
 const { Communicate } = require('edge-tts-universal');
+
+// Audio de parole en mémoire (quelques secondes, jamais écrit sur disque).
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 25 * 1024 * 1024 } });
 
 /**
  * Routes Avatar — Voix naturelle gratuite via Edge-TTS (Microsoft Neural)
@@ -143,6 +147,45 @@ router.post('/speak', async (req, res) => {
   } catch (err) {
     console.error('Erreur Edge-TTS:', err.message);
     res.status(500).json({ error: err.message, fallback: true });
+  }
+});
+
+/**
+ * POST /api/avatar/transcribe — audio (multipart "audio") → texte français.
+ *
+ * Le mode mains libres ne peut PAS reposer sur la reconnaissance vocale du
+ * navigateur : Safari/iOS refuse de la relancer sans un nouveau geste de
+ * l'utilisateur, donc la conversation cassait au bout de 2 échanges. Ici le
+ * navigateur ne fait qu'enregistrer, et la transcription se fait côté serveur.
+ */
+router.post('/transcribe', upload.single('audio'), async (req, res) => {
+  if (!req.file || !req.file.buffer?.length) {
+    return res.status(400).json({ success: false, error: 'Aucun audio reçu' });
+  }
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    return res.status(503).json({ success: false, error: 'Transcription indisponible (OPENAI_API_KEY absente)' });
+  }
+  try {
+    const OpenAI = require('openai');
+    const client = new OpenAI({ apiKey });
+    const { toFile } = require('openai/uploads');
+    const filename = req.file.originalname || 'parole.webm';
+    const file = await toFile(req.file.buffer, filename, { type: req.file.mimetype || 'audio/webm' });
+
+    const result = await client.audio.transcriptions.create({
+      file,
+      model: process.env.TRANSCRIBE_MODEL || 'whisper-1',
+      language: 'fr',
+      // Amorce : oriente le modèle vers le vocabulaire scolaire d'un enfant.
+      prompt: 'Un enfant français répond à un exercice scolaire : calculs, tables de multiplication, conjugaison, dictée.',
+    });
+
+    const text = String(result?.text || '').trim();
+    res.json({ success: true, text });
+  } catch (err) {
+    console.error('Erreur transcription:', err.message);
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
